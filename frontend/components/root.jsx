@@ -7,10 +7,9 @@ import App from './app';
 const Root = ({ store }) => {
   return (
     <Provider store={store}>
-      <BrowserRouter>
-        <ScrollToTop>
-          <App />
-        </ScrollToTop>
+      <BrowserRouter
+        basename="/home">
+        <App />
       </BrowserRouter>
     </Provider>
   );
