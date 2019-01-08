@@ -36,7 +36,7 @@ class HomePage extends React.Component {
     const { username, page, list } = this.state;
 
     this.setState( { searching: true });
-    
+
     this.props.fetchUser(username, page)
       .then(pageData => this.handleSuccess(pageData));
   }
