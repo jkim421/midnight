@@ -7,8 +7,7 @@ import App from './app';
 const Root = ({ store }) => {
   return (
     <Provider store={store}>
-      <BrowserRouter
-        basename="/home">
+      <BrowserRouter>
         <App />
       </BrowserRouter>
     </Provider>
