@@ -9,6 +9,7 @@ class HomePage extends React.Component {
       username: "",
       page: 1,
       list: [],
+      searching: false,
     }
     this.updateSearch = this.updateSearch.bind(this);
     this.sendSearch = this.sendSearch.bind(this);
@@ -19,6 +20,7 @@ class HomePage extends React.Component {
       username: "",
       page: 1,
       list: [],
+      searching: false,
     })
   }
 
@@ -33,6 +35,8 @@ class HomePage extends React.Component {
 
     const { username, page, list } = this.state;
 
+    this.setState( { searching: true });
+    
     this.props.fetchUser(username, page)
       .then(pageData => this.handleSuccess(pageData));
   }
@@ -43,14 +47,13 @@ class HomePage extends React.Component {
 
     if (pageData.anime.length === 0) {
       this.resetSearch();
-      debugger
       this.props.receiveUser(list);
     } else {
       this.setState({
         page: page + 1,
         list: list.concat(pageData.anime),
       });
-      this.sendSearch();
+      setTimeout(500, this.sendSearch());
     }
   }
 
@@ -66,7 +69,8 @@ class HomePage extends React.Component {
             placeholder="username"
           />
           <button
-            className="">
+            className=""
+            disabled={this.state.searching}>
             Search
           </button>
 

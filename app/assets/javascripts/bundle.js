@@ -102,7 +102,6 @@ __webpack_require__.r(__webpack_exports__);
 var RECEIVE_ANIME = "RECEIVE_ANIME";
 var receiveUser = function receiveUser(anime) {
   var sortedAnime = Object(_selectors_user_selectors__WEBPACK_IMPORTED_MODULE_0__["selectAnime"])(anime);
-  debugger;
   return {
     type: RECEIVE_ANIME,
     sortedAnime: sortedAnime
@@ -207,7 +206,8 @@ function (_React$Component) {
     _this.state = {
       username: "",
       page: 1,
-      list: []
+      list: [],
+      searching: false
     };
     _this.updateSearch = _this.updateSearch.bind(_assertThisInitialized(_assertThisInitialized(_this)));
     _this.sendSearch = _this.sendSearch.bind(_assertThisInitialized(_assertThisInitialized(_this)));
@@ -220,7 +220,8 @@ function (_React$Component) {
       this.setState({
         username: "",
         page: 1,
-        list: []
+        list: [],
+        searching: false
       });
     }
   }, {
@@ -243,6 +244,9 @@ function (_React$Component) {
           username = _this$state.username,
           page = _this$state.page,
           list = _this$state.list;
+      this.setState({
+        searching: true
+      });
       this.props.fetchUser(username, page).then(function (pageData) {
         return _this2.handleSuccess(pageData);
       });
@@ -255,14 +259,13 @@ function (_React$Component) {
 
       if (pageData.anime.length === 0) {
         this.resetSearch();
-        debugger;
         this.props.receiveUser(list);
       } else {
         this.setState({
           page: page + 1,
           list: list.concat(pageData.anime)
         });
-        this.sendSearch();
+        setTimeout(500, this.sendSearch());
       }
     }
   }, {
@@ -275,7 +278,8 @@ function (_React$Component) {
         onChange: this.updateSearch,
         placeholder: "username"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: ""
+        className: "",
+        disabled: this.state.searching
       }, "Search")));
     }
   }]);
