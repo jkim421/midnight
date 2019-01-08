@@ -8,10 +8,22 @@ class HomePage extends React.Component {
     this.state = {
       username: "",
       page: 1,
-      data: [],
+      list: [],
     }
-    this.sendSearch = this.sendSearch.bind(this);
     this.updateSearch = this.updateSearch.bind(this);
+    this.sendSearch = this.sendSearch.bind(this);
+  }
+
+  resetSearch() {
+    this.setState({
+      username: "",
+      page: 1,
+      list: [],
+    })
+  }
+
+  updateSearch(e) {
+    this.setState({ username: e.target.value })
   }
 
   sendSearch(e) {
@@ -19,53 +31,27 @@ class HomePage extends React.Component {
       e.preventDefault();
     }
 
-    const username = this.state.username;
+    const { username, page, list } = this.state;
 
-    let validPage = true;
-    let page = this.state.page;
-    let data = this.state.data;
-
-    $.ajax({
-      method: 'GET',
-      url: `https://api.jikan.moe/v3/user/${username}/animelist/all/${page}`,
-      success: (pageData) => {
-        if (pageData.anime.length === 0) {
-          validPage = false;
-          debugger
-          this.props.receiveUser(data);
-        } else {
-          this.setState({
-            page: page + 1,
-            data: data.concat(pageData.anime),
-          });
-          this.sendSearch();
-        }
-      },
-    });
-
-    // while (validPage === true) {
-    //   this.props.fetchUser(this.state.username, page).then(
-    //     pageData => {
-    //       debugger
-    //       if (pageData.anime.length === 0) {
-    //         validPage = false;
-    //       } else {
-    //         page += 1;
-    //         data = data.concat(pageData.anime);
-    //       }
-    //     }
-    //   );
-    // }
-    // this.props.fetchUser(this.state.username, page).then(
-    //   pageData => {
-    //     debugger
-    //     this.props.receiveUser(pageData)
-    //   }
-    // );
+    this.props.fetchUser(username, page)
+      .then(pageData => this.handleSuccess(pageData));
   }
 
-  updateSearch(e) {
-    this.setState({ username: e.target.value })
+  handleSuccess(pageData) {
+    const page = this.state.page;
+    const list = this.state.list;
+
+    if (pageData.anime.length === 0) {
+      this.resetSearch();
+      debugger
+      this.props.receiveUser(list);
+    } else {
+      this.setState({
+        page: page + 1,
+        list: list.concat(pageData.anime),
+      });
+      this.sendSearch();
+    }
   }
 
   render() {

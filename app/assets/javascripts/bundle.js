@@ -101,8 +101,8 @@ __webpack_require__.r(__webpack_exports__);
 
 var RECEIVE_ANIME = "RECEIVE_ANIME";
 var receiveUser = function receiveUser(anime) {
-  debugger;
   var sortedAnime = Object(_selectors_user_selectors__WEBPACK_IMPORTED_MODULE_0__["selectAnime"])(anime);
+  debugger;
   return {
     type: RECEIVE_ANIME,
     sortedAnime: sortedAnime
@@ -121,11 +121,10 @@ var receiveUser = function receiveUser(anime) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchUser", function() { return fetchUser; });
-var fetchUser = function fetchUser(username, num) {
-  debugger;
+var fetchUser = function fetchUser(username, page) {
   return $.ajax({
     method: 'GET',
-    url: "https://api.jikan.moe/v3/user/".concat(username, "/animelist/all/").concat(num)
+    url: "https://api.jikan.moe/v3/user/".concat(username, "/animelist/all/").concat(page)
   });
 };
 
@@ -208,14 +207,30 @@ function (_React$Component) {
     _this.state = {
       username: "",
       page: 1,
-      data: []
+      list: []
     };
-    _this.sendSearch = _this.sendSearch.bind(_assertThisInitialized(_assertThisInitialized(_this)));
     _this.updateSearch = _this.updateSearch.bind(_assertThisInitialized(_assertThisInitialized(_this)));
+    _this.sendSearch = _this.sendSearch.bind(_assertThisInitialized(_assertThisInitialized(_this)));
     return _this;
   }
 
   _createClass(HomePage, [{
+    key: "resetSearch",
+    value: function resetSearch() {
+      this.setState({
+        username: "",
+        page: 1,
+        list: []
+      });
+    }
+  }, {
+    key: "updateSearch",
+    value: function updateSearch(e) {
+      this.setState({
+        username: e.target.value
+      });
+    }
+  }, {
     key: "sendSearch",
     value: function sendSearch(e) {
       var _this2 = this;
@@ -224,54 +239,31 @@ function (_React$Component) {
         e.preventDefault();
       }
 
-      var username = this.state.username;
-      var validPage = true;
-      var page = this.state.page;
-      var data = this.state.data;
-      $.ajax({
-        method: 'GET',
-        url: "https://api.jikan.moe/v3/user/".concat(username, "/animelist/all/").concat(page),
-        success: function success(pageData) {
-          if (pageData.anime.length === 0) {
-            validPage = false;
-            debugger;
-
-            _this2.props.receiveUser(data);
-          } else {
-            _this2.setState({
-              page: page + 1,
-              data: data.concat(pageData.anime)
-            });
-
-            _this2.sendSearch();
-          }
-        }
-      }); // while (validPage === true) {
-      //   this.props.fetchUser(this.state.username, page).then(
-      //     pageData => {
-      //       debugger
-      //       if (pageData.anime.length === 0) {
-      //         validPage = false;
-      //       } else {
-      //         page += 1;
-      //         data = data.concat(pageData.anime);
-      //       }
-      //     }
-      //   );
-      // }
-      // this.props.fetchUser(this.state.username, page).then(
-      //   pageData => {
-      //     debugger
-      //     this.props.receiveUser(pageData)
-      //   }
-      // );
+      var _this$state = this.state,
+          username = _this$state.username,
+          page = _this$state.page,
+          list = _this$state.list;
+      this.props.fetchUser(username, page).then(function (pageData) {
+        return _this2.handleSuccess(pageData);
+      });
     }
   }, {
-    key: "updateSearch",
-    value: function updateSearch(e) {
-      this.setState({
-        username: e.target.value
-      });
+    key: "handleSuccess",
+    value: function handleSuccess(pageData) {
+      var page = this.state.page;
+      var list = this.state.list;
+
+      if (pageData.anime.length === 0) {
+        this.resetSearch();
+        debugger;
+        this.props.receiveUser(list);
+      } else {
+        this.setState({
+          page: page + 1,
+          list: list.concat(pageData.anime)
+        });
+        this.sendSearch();
+      }
     }
   }, {
     key: "render",
