@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import HomePage from './home_page';
 import { fetchUser } from '../../api/user_api';
+import { receiveUser } from '../../actions/user_actions';
 
 const msp = state => {
   return {
@@ -11,7 +12,8 @@ const msp = state => {
 
 const mdp = dispatch => {
   return {
-    fetchUser: (username) => dispatch(fetchUser(username)),
+    fetchUser: (username) => fetchUser(username),
+    receiveUser: (userData) => dispatch(receiveUser(userData)),
   };
 };
 

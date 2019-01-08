@@ -1,4 +1,5 @@
 import React from 'react';
+import selectAnime from '../../selectors/user_selectors';
 
 class HomePage extends React.Component {
   constructor(props) {
@@ -12,7 +13,9 @@ class HomePage extends React.Component {
 
   sendSearch(e) {
     e.preventDefault();
-    this.props.fetchUser(this.state.username);
+    this.props.fetchUser(this.state.username).then(
+      userData => this.props.receiveUser(userData)
+    );
   }
 
   updateSearch(e) {

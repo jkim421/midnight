@@ -86,6 +86,32 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "./frontend/actions/user_actions.js":
+/*!******************************************!*\
+  !*** ./frontend/actions/user_actions.js ***!
+  \******************************************/
+/*! exports provided: RECEIVE_ANIME, receiveUser */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_ANIME", function() { return RECEIVE_ANIME; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "receiveUser", function() { return receiveUser; });
+/* harmony import */ var _selectors_user_selectors__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../selectors/user_selectors */ "./frontend/selectors/user_selectors.js");
+
+var RECEIVE_ANIME = "RECEIVE_ANIME";
+var receiveUser = function receiveUser(_ref) {
+  var anime = _ref.anime;
+  debugger;
+  var sortedAnime = Object(_selectors_user_selectors__WEBPACK_IMPORTED_MODULE_0__["selectAnime"])(anime);
+  return {
+    type: RECEIVE_ANIME,
+    sortedAnime: sortedAnime
+  };
+};
+
+/***/ }),
+
 /***/ "./frontend/api/user_api.js":
 /*!**********************************!*\
   !*** ./frontend/api/user_api.js ***!
@@ -96,10 +122,10 @@
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchUser", function() { return fetchUser; });
-var fetchUser = function fetchUser(username) {
+var fetchUser = function fetchUser(username, num) {
   return $.ajax({
     method: 'GET',
-    url: "https://api.jikan.moe/v3/user/".concat(username, "/")
+    url: "https://api.jikan.moe/v3/user/".concat(username, "/animelist/all/").concat(num)
   });
 };
 
@@ -143,6 +169,7 @@ var App = function App() {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _selectors_user_selectors__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../selectors/user_selectors */ "./frontend/selectors/user_selectors.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -160,6 +187,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
 function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
 
 
 
@@ -185,8 +213,12 @@ function (_React$Component) {
   _createClass(HomePage, [{
     key: "sendSearch",
     value: function sendSearch(e) {
+      var _this2 = this;
+
       e.preventDefault();
-      this.props.fetchUser(this.state.username);
+      this.props.fetchUser(this.state.username).then(function (userData) {
+        return _this2.props.receiveUser(userData);
+      });
     }
   }, {
     key: "updateSearch",
@@ -231,6 +263,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _home_page__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./home_page */ "./frontend/components/home_page/home_page.jsx");
 /* harmony import */ var _api_user_api__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../api/user_api */ "./frontend/api/user_api.js");
+/* harmony import */ var _actions_user_actions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../actions/user_actions */ "./frontend/actions/user_actions.js");
+
 
 
 
@@ -243,7 +277,10 @@ var msp = function msp(state) {
 var mdp = function mdp(dispatch) {
   return {
     fetchUser: function fetchUser(username) {
-      return dispatch(Object(_api_user_api__WEBPACK_IMPORTED_MODULE_3__["fetchUser"])(username));
+      return Object(_api_user_api__WEBPACK_IMPORTED_MODULE_3__["fetchUser"])(username);
+    },
+    receiveUser: function receiveUser(userData) {
+      return dispatch(Object(_actions_user_actions__WEBPACK_IMPORTED_MODULE_4__["receiveUser"])(userData));
     }
   };
 };
@@ -389,6 +426,8 @@ document.addEventListener('DOMContentLoaded', function () {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var lodash_merge__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! lodash/merge */ "./node_modules/lodash/merge.js");
 /* harmony import */ var lodash_merge__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(lodash_merge__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _actions_user_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../actions/user_actions */ "./frontend/actions/user_actions.js");
+
 
 
 var animesReducer = function animesReducer() {
@@ -397,6 +436,9 @@ var animesReducer = function animesReducer() {
   Object.freeze(state);
 
   switch (action.type) {
+    case _actions_user_actions__WEBPACK_IMPORTED_MODULE_1__["RECEIVE_ANIME"]:
+      return lodash_merge__WEBPACK_IMPORTED_MODULE_0___default()({}, action.sortedAnime);
+
     default:
       return state;
   }
@@ -420,7 +462,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var entitiesReducer = Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"])({
-  users: _animes_reducer__WEBPACK_IMPORTED_MODULE_1__["default"]
+  animes: _animes_reducer__WEBPACK_IMPORTED_MODULE_1__["default"]
 });
 /* harmony default export */ __webpack_exports__["default"] = (entitiesReducer);
 
@@ -443,6 +485,42 @@ var rootReducer = Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"])(
   entities: _entities_reducer__WEBPACK_IMPORTED_MODULE_1__["default"]
 });
 /* harmony default export */ __webpack_exports__["default"] = (rootReducer);
+
+/***/ }),
+
+/***/ "./frontend/selectors/user_selectors.js":
+/*!**********************************************!*\
+  !*** ./frontend/selectors/user_selectors.js ***!
+  \**********************************************/
+/*! exports provided: selectAnime */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "selectAnime", function() { return selectAnime; });
+var selectAnime = function selectAnime(anime) {
+  var sorted = {
+    watching: [],
+    completed: [],
+    onHold: [],
+    dropped: [],
+    planToWatch: []
+  };
+  anime.forEach(function (show) {
+    if (show.watching_status === 1) {
+      sorted.watching.push(show);
+    } else if (show.watching_status === 2) {
+      sorted.completed.push(show);
+    } else if (show.watching_status === 3) {
+      sorted.onHold.push(show);
+    } else if (show.watching_status === 4) {
+      sorted.dropped.push(show);
+    } else if (show.watching_status === 6) {
+      sorted.planToWatch.push(show);
+    }
+  });
+  return sorted;
+};
 
 /***/ }),
 
