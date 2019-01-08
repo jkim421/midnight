@@ -100,8 +100,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _selectors_user_selectors__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../selectors/user_selectors */ "./frontend/selectors/user_selectors.js");
 
 var RECEIVE_ANIME = "RECEIVE_ANIME";
-var receiveUser = function receiveUser(_ref) {
-  var anime = _ref.anime;
+var receiveUser = function receiveUser(anime) {
   debugger;
   var sortedAnime = Object(_selectors_user_selectors__WEBPACK_IMPORTED_MODULE_0__["selectAnime"])(anime);
   return {
@@ -123,6 +122,7 @@ var receiveUser = function receiveUser(_ref) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchUser", function() { return fetchUser; });
 var fetchUser = function fetchUser(username, num) {
+  debugger;
   return $.ajax({
     method: 'GET',
     url: "https://api.jikan.moe/v3/user/".concat(username, "/animelist/all/").concat(num)
@@ -170,6 +170,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _selectors_user_selectors__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../selectors/user_selectors */ "./frontend/selectors/user_selectors.js");
+/* harmony import */ var lodash_merge__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! lodash/merge */ "./node_modules/lodash/merge.js");
+/* harmony import */ var lodash_merge__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(lodash_merge__WEBPACK_IMPORTED_MODULE_2__);
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -191,6 +193,7 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 
 
 
+
 var HomePage =
 /*#__PURE__*/
 function (_React$Component) {
@@ -203,7 +206,9 @@ function (_React$Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(HomePage).call(this, props));
     _this.state = {
-      username: ""
+      username: "",
+      page: 1,
+      data: []
     };
     _this.sendSearch = _this.sendSearch.bind(_assertThisInitialized(_assertThisInitialized(_this)));
     _this.updateSearch = _this.updateSearch.bind(_assertThisInitialized(_assertThisInitialized(_this)));
@@ -215,10 +220,51 @@ function (_React$Component) {
     value: function sendSearch(e) {
       var _this2 = this;
 
-      e.preventDefault();
-      this.props.fetchUser(this.state.username).then(function (userData) {
-        return _this2.props.receiveUser(userData);
-      });
+      if (e) {
+        e.preventDefault();
+      }
+
+      var username = this.state.username;
+      var validPage = true;
+      var page = this.state.page;
+      var data = this.state.data;
+      $.ajax({
+        method: 'GET',
+        url: "https://api.jikan.moe/v3/user/".concat(username, "/animelist/all/").concat(page),
+        success: function success(pageData) {
+          if (pageData.anime.length === 0) {
+            validPage = false;
+            debugger;
+
+            _this2.props.receiveUser(data);
+          } else {
+            _this2.setState({
+              page: page + 1,
+              data: data.concat(pageData.anime)
+            });
+
+            _this2.sendSearch();
+          }
+        }
+      }); // while (validPage === true) {
+      //   this.props.fetchUser(this.state.username, page).then(
+      //     pageData => {
+      //       debugger
+      //       if (pageData.anime.length === 0) {
+      //         validPage = false;
+      //       } else {
+      //         page += 1;
+      //         data = data.concat(pageData.anime);
+      //       }
+      //     }
+      //   );
+      // }
+      // this.props.fetchUser(this.state.username, page).then(
+      //   pageData => {
+      //     debugger
+      //     this.props.receiveUser(pageData)
+      //   }
+      // );
     }
   }, {
     key: "updateSearch",
@@ -276,8 +322,8 @@ var msp = function msp(state) {
 
 var mdp = function mdp(dispatch) {
   return {
-    fetchUser: function fetchUser(username) {
-      return Object(_api_user_api__WEBPACK_IMPORTED_MODULE_3__["fetchUser"])(username);
+    fetchUser: function fetchUser(username, page) {
+      return Object(_api_user_api__WEBPACK_IMPORTED_MODULE_3__["fetchUser"])(username, page);
     },
     receiveUser: function receiveUser(userData) {
       return dispatch(Object(_actions_user_actions__WEBPACK_IMPORTED_MODULE_4__["receiveUser"])(userData));
