@@ -86,6 +86,25 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "./frontend/api/user_api.js":
+/*!**********************************!*\
+  !*** ./frontend/api/user_api.js ***!
+  \**********************************/
+/*! exports provided: fetchUser */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchUser", function() { return fetchUser; });
+var fetchUser = function fetchUser(username) {
+  return $.ajax({
+    method: 'GET',
+    url: "https://api.jikan.moe/v3/user/".concat(username, "/")
+  });
+};
+
+/***/ }),
+
 /***/ "./frontend/components/app.jsx":
 /*!*************************************!*\
   !*** ./frontend/components/app.jsx ***!
@@ -98,7 +117,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
-/* harmony import */ var _home_page_home_page__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./home_page/home_page */ "./frontend/components/home_page/home_page.jsx");
+/* harmony import */ var _home_page_home_page_container__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./home_page/home_page_container */ "./frontend/components/home_page/home_page_container.jsx");
 
 
 
@@ -106,7 +125,7 @@ __webpack_require__.r(__webpack_exports__);
 var App = function App() {
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "main-body"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_home_page_home_page__WEBPACK_IMPORTED_MODULE_2__["default"], null));
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_home_page_home_page_container__WEBPACK_IMPORTED_MODULE_2__["default"], null));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (App);
@@ -134,13 +153,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 
 
@@ -154,10 +173,13 @@ function (_React$Component) {
 
     _classCallCheck(this, HomePage);
 
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(HomePage).call(this, props));
     _this.state = {
       username: ""
     };
-    return _this = _possibleConstructorReturn(this, _getPrototypeOf(HomePage).call(this, props));
+    _this.sendSearch = _this.sendSearch.bind(_assertThisInitialized(_assertThisInitialized(_this)));
+    _this.updateSearch = _this.updateSearch.bind(_assertThisInitialized(_assertThisInitialized(_this)));
+    return _this;
   }
 
   _createClass(HomePage, [{
@@ -192,6 +214,41 @@ function (_React$Component) {
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
 /* harmony default export */ __webpack_exports__["default"] = (HomePage);
+
+/***/ }),
+
+/***/ "./frontend/components/home_page/home_page_container.jsx":
+/*!***************************************************************!*\
+  !*** ./frontend/components/home_page/home_page_container.jsx ***!
+  \***************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _home_page__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./home_page */ "./frontend/components/home_page/home_page.jsx");
+/* harmony import */ var _api_user_api__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../api/user_api */ "./frontend/api/user_api.js");
+
+
+
+
+
+var msp = function msp(state) {
+  return {};
+};
+
+var mdp = function mdp(dispatch) {
+  return {
+    fetchUser: function fetchUser(username) {
+      return dispatch(Object(_api_user_api__WEBPACK_IMPORTED_MODULE_3__["fetchUser"])(username));
+    }
+  };
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(null, mdp)(_home_page__WEBPACK_IMPORTED_MODULE_2__["default"]));
 
 /***/ }),
 

@@ -2,10 +2,12 @@ import React from 'react';
 
 class HomePage extends React.Component {
   constructor(props) {
+    super(props);
     this.state = {
       username: "",
     }
-    super(props);
+    this.sendSearch = this.sendSearch.bind(this);
+    this.updateSearch = this.updateSearch.bind(this);
   }
 
   sendSearch(e) {

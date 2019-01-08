@@ -15,4 +15,4 @@ const mdp = dispatch => {
   };
 };
 
-export default connect(msp, mdp)(HomePage);
+export default connect(null, mdp)(HomePage);

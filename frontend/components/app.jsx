@@ -1,11 +1,11 @@
 import React from 'react';
 import { Link, Route, Switch } from 'react-router-dom';
-import HomePage from './home_page/home_page';
+import HomePageContainer from './home_page/home_page_container';
 
 const App = () => {
   return (
     <div className="main-body">
-      <HomePage />
+      <HomePageContainer />
     </div>
   );
 };
