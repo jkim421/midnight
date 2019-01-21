@@ -1,24 +1,16 @@
-export const ADD_TO_LIST = "ADD_TO_LIST";
-export const ADD_TO_SELECTED = "ADD_TO_SELECTED";
-export const ADD_TO_SCRATCHED = "ADD_TO_SCRATCHED";
+export const ADD_SELECTED = "ADD_SELECTED";
+export const REMOVE_SELECTED = "REMOVE_SELECTED";
 
-export const addToList = (animeId) => {
+export const addSelected = (animeId) => {
   return {
-    type: ADD_TO_LIST,
+    type: ADD_SELECTED,
     animeId,
   };
 };
 
-export const addToSelected = (animeId) => {
+export const removeSelected = (animeId) => {
   return {
-    type: ADD_TO_SELECTED,
-    animeId,
-  };
-};
-
-export const addToScratched = (animeId) => {
-  return {
-    type: ADD_TO_SCRATCHED,
+    type: REMOVE_SELECTED,
     animeId,
   };
 };
