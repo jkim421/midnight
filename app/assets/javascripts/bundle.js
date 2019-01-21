@@ -86,6 +86,45 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "./frontend/actions/filter_actions.js":
+/*!********************************************!*\
+  !*** ./frontend/actions/filter_actions.js ***!
+  \********************************************/
+/*! exports provided: ADD_TO_LIST, ADD_TO_SELECTED, ADD_TO_SCRATCHED, addToList, addToSelected, addToScratched */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ADD_TO_LIST", function() { return ADD_TO_LIST; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ADD_TO_SELECTED", function() { return ADD_TO_SELECTED; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ADD_TO_SCRATCHED", function() { return ADD_TO_SCRATCHED; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "addToList", function() { return addToList; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "addToSelected", function() { return addToSelected; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "addToScratched", function() { return addToScratched; });
+var ADD_TO_LIST = "ADD_TO_LIST";
+var ADD_TO_SELECTED = "ADD_TO_SELECTED";
+var ADD_TO_SCRATCHED = "ADD_TO_SCRATCHED";
+var addToList = function addToList(animeId) {
+  return {
+    type: ADD_TO_LIST,
+    animeId: animeId
+  };
+};
+var addToSelected = function addToSelected(animeId) {
+  return {
+    type: ADD_TO_SELECTED,
+    animeId: animeId
+  };
+};
+var addToScratched = function addToScratched(animeId) {
+  return {
+    type: ADD_TO_SCRATCHED,
+    animeId: animeId
+  };
+};
+
+/***/ }),
+
 /***/ "./frontend/actions/user_actions.js":
 /*!******************************************!*\
   !*** ./frontend/actions/user_actions.js ***!
@@ -592,6 +631,56 @@ var entitiesReducer = Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers
 
 /***/ }),
 
+/***/ "./frontend/reducers/filters_reducer.js":
+/*!**********************************************!*\
+  !*** ./frontend/reducers/filters_reducer.js ***!
+  \**********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var lodash_merge__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! lodash/merge */ "./node_modules/lodash/merge.js");
+/* harmony import */ var lodash_merge__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(lodash_merge__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _actions_filter_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../actions/filter_actions */ "./frontend/actions/filter_actions.js");
+
+
+
+var filtersReducer = function filtersReducer() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+  Object.freeze(state);
+  var id = action.animeId;
+  var updated;
+
+  switch (action.type) {
+    case _actions_filter_actions__WEBPACK_IMPORTED_MODULE_1__["ADD_TO_LIST"]:
+      updated = {
+        id: 1
+      };
+      return lodash_merge__WEBPACK_IMPORTED_MODULE_0___default()({}, state, updated);
+
+    case _actions_filter_actions__WEBPACK_IMPORTED_MODULE_1__["ADD_TO_SELECTED"]:
+      updated = {
+        id: 2
+      };
+      return lodash_merge__WEBPACK_IMPORTED_MODULE_0___default()({}, state, updated);
+
+    case _actions_filter_actions__WEBPACK_IMPORTED_MODULE_1__["ADD_TO_SCRATCHED"]:
+      updated = {
+        id: 3
+      };
+      return lodash_merge__WEBPACK_IMPORTED_MODULE_0___default()({}, state, updated);
+
+    default:
+      return state;
+  }
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (filtersReducer);
+
+/***/ }),
+
 /***/ "./frontend/reducers/root_reducer.js":
 /*!*******************************************!*\
   !*** ./frontend/reducers/root_reducer.js ***!
@@ -603,10 +692,13 @@ var entitiesReducer = Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
 /* harmony import */ var _entities_reducer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./entities_reducer */ "./frontend/reducers/entities_reducer.js");
+/* harmony import */ var _filters_reducer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./filters_reducer */ "./frontend/reducers/filters_reducer.js");
+
 
 
 var rootReducer = Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"])({
-  entities: _entities_reducer__WEBPACK_IMPORTED_MODULE_1__["default"]
+  entities: _entities_reducer__WEBPACK_IMPORTED_MODULE_1__["default"],
+  filters: _filters_reducer__WEBPACK_IMPORTED_MODULE_2__["default"]
 });
 /* harmony default export */ __webpack_exports__["default"] = (rootReducer);
 
