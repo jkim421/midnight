@@ -1,4 +1,5 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom';
 
 class SearchBar extends React.Component {
   constructor(props) {
@@ -33,7 +34,7 @@ class SearchBar extends React.Component {
 
     const { username, page, list } = this.state;
 
-    this.setState( { searching: true });
+    this.setState({ searching: true });
 
     this.props.fetchUser(username, page)
       .then(pageData => this.handleSuccess(pageData));
@@ -46,6 +47,7 @@ class SearchBar extends React.Component {
     if (pageData.anime.length === 0) {
       this.resetSearch();
       this.props.receiveUser(list);
+      this.props.history.push("/list");
     } else {
       this.setState({
         page: page + 1,
@@ -74,4 +76,4 @@ class SearchBar extends React.Component {
   }
 }
 
-export default SearchBar;
+export default withRouter(SearchBar);
