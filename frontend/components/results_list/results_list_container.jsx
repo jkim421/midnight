@@ -2,8 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import ResultsList from './results_list';
 import {
-  addToList, addToSelected, addToScratched }
-    from '../../actions/filter_actions';
+  addSelected, removeSelected }
+    from '../../actions/selection_actions';
 
 const msp = state => {
   const anime = state.entities.animes;
@@ -18,9 +18,8 @@ const msp = state => {
 
 const mdp = dispatch => {
   return {
-    addToList: (animeId) => dispatch(addToList),
-    addToSelected: (animeId) => dispatch(addToSelected),
-    addToScratched: (animeId) => dispatch(addToScratched),
+    addSelected: (animeId) => dispatch(addSelected),
+    removeSelected: (animeId) => dispatch(removeSelected),
   };
 };
 

@@ -2,24 +2,25 @@ import merge from 'lodash/merge';
 import {
   ADD_SELECTED,
   REMOVE_SELECTED,
-  } from '../actions/filter_actions';
+} from '../actions/selection_actions';
 
-const filtersReducer = (state = {}, action) => {
+const selectionReducer = (state = {}, action) => {
   Object.freeze(state);
 
   const id = action.animeId;
-  let selection;
+  const category = action.category;
+  let selection = { id: category };
 
   switch(action.type) {
     case ADD_SELECTED:
-      selection = { id: 1 };
-      return merge({}, state, updated);
+      return merge({}, state, selection);
     case REMOVE_SELECTED:
-      selection = { id: 2 };
-      return merge({}, state, updated);
+      let newState = merge({}, state);
+      delete newState[id];
+      return newState;
     default:
       return state;
   }
 };
 
-export default filtersReducer;
+export default selectionReducer;

@@ -86,10 +86,10 @@
 /************************************************************************/
 /******/ ({
 
-/***/ "./frontend/actions/filter_actions.js":
-/*!********************************************!*\
-  !*** ./frontend/actions/filter_actions.js ***!
-  \********************************************/
+/***/ "./frontend/actions/selection_actions.js":
+/*!***********************************************!*\
+  !*** ./frontend/actions/selection_actions.js ***!
+  \***********************************************/
 /*! exports provided: ADD_SELECTED, REMOVE_SELECTED, addSelected, removeSelected */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -101,16 +101,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "removeSelected", function() { return removeSelected; });
 var ADD_SELECTED = "ADD_SELECTED";
 var REMOVE_SELECTED = "REMOVE_SELECTED";
-var addSelected = function addSelected(animeId) {
+var addSelected = function addSelected(_ref) {
+  var animeId = _ref.animeId,
+      category = _ref.category;
   return {
     type: ADD_SELECTED,
-    animeId: animeId
+    animeId: animeId,
+    category: category
   };
 };
-var removeSelected = function removeSelected(animeId) {
+var removeSelected = function removeSelected(_ref2) {
+  var animeId = _ref2.animeId,
+      category = _ref2.category;
   return {
     type: REMOVE_SELECTED,
-    animeId: animeId
+    animeId: animeId,
+    category: category
   };
 };
 
@@ -360,7 +366,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _results_list__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./results_list */ "./frontend/components/results_list/results_list.jsx");
-/* harmony import */ var _actions_filter_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../actions/filter_actions */ "./frontend/actions/filter_actions.js");
+/* harmony import */ var _actions_selection_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../actions/selection_actions */ "./frontend/actions/selection_actions.js");
 
 
 
@@ -379,14 +385,11 @@ var msp = function msp(state) {
 
 var mdp = function mdp(dispatch) {
   return {
-    addToList: function addToList(animeId) {
-      return dispatch(_actions_filter_actions__WEBPACK_IMPORTED_MODULE_3__["addToList"]);
+    addSelected: function addSelected(animeId) {
+      return dispatch(_actions_selection_actions__WEBPACK_IMPORTED_MODULE_3__["addSelected"]);
     },
-    addToSelected: function addToSelected(animeId) {
-      return dispatch(_actions_filter_actions__WEBPACK_IMPORTED_MODULE_3__["addToSelected"]);
-    },
-    addToScratched: function addToScratched(animeId) {
-      return dispatch(_actions_filter_actions__WEBPACK_IMPORTED_MODULE_3__["addToScratched"]);
+    removeSelected: function removeSelected(animeId) {
+      return dispatch(_actions_selection_actions__WEBPACK_IMPORTED_MODULE_3__["removeSelected"]);
     }
   };
 };
@@ -781,36 +784,35 @@ var rootReducer = Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"])(
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var lodash_merge__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! lodash/merge */ "./node_modules/lodash/merge.js");
 /* harmony import */ var lodash_merge__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(lodash_merge__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _actions_filter_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../actions/filter_actions */ "./frontend/actions/filter_actions.js");
+/* harmony import */ var _actions_selection_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../actions/selection_actions */ "./frontend/actions/selection_actions.js");
 
 
 
-var filtersReducer = function filtersReducer() {
+var selectionReducer = function selectionReducer() {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
   var action = arguments.length > 1 ? arguments[1] : undefined;
   Object.freeze(state);
   var id = action.animeId;
-  var selection;
+  var category = action.category;
+  var selection = {
+    id: category
+  };
 
   switch (action.type) {
-    case _actions_filter_actions__WEBPACK_IMPORTED_MODULE_1__["ADD_SELECTED"]:
-      selection = {
-        id: 1
-      };
-      return lodash_merge__WEBPACK_IMPORTED_MODULE_0___default()({}, state, updated);
+    case _actions_selection_actions__WEBPACK_IMPORTED_MODULE_2__["ADD_SELECTED"]:
+      return lodash_merge__WEBPACK_IMPORTED_MODULE_0___default()({}, state, selection);
 
-    case _actions_filter_actions__WEBPACK_IMPORTED_MODULE_1__["REMOVE_SELECTED"]:
-      selection = {
-        id: 2
-      };
-      return lodash_merge__WEBPACK_IMPORTED_MODULE_0___default()({}, state, updated);
+    case _actions_selection_actions__WEBPACK_IMPORTED_MODULE_2__["REMOVE_SELECTED"]:
+      var newState = lodash_merge__WEBPACK_IMPORTED_MODULE_0___default()({}, state);
+      delete newState[id];
+      return newState;
 
     default:
       return state;
   }
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (filtersReducer);
+/* harmony default export */ __webpack_exports__["default"] = (selectionReducer);
 
 /***/ }),
 
