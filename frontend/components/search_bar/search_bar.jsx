@@ -60,7 +60,7 @@ class SearchBar extends React.Component {
         <form
           onSubmit={this.sendSearch}>
           <input
-            className="home-search"
+            className=""
             onChange={this.updateSearch}
             placeholder="username"
           />

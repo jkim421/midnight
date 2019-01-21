@@ -453,7 +453,7 @@ function (_React$Component) {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         onSubmit: this.sendSearch
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        className: "home-search",
+        className: "",
         onChange: this.updateSearch,
         placeholder: "username"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
