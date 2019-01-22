@@ -5,6 +5,9 @@ const ListItem = ({ show }) => {
   return (
     <li className="ListItem-li">
       <div>
+        { show.type }
+      </div>
+      <div>
         { show.title }
       </div>
       <div>

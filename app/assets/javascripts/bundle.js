@@ -305,7 +305,7 @@ var ListItem = function ListItem(_ref) {
   var show = _ref.show;
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
     className: "ListItem-li"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, show.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, show.score), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, show.genres));
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, show.type), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, show.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, show.score), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, show.genres));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (ListItem);
@@ -629,6 +629,8 @@ function (_React$Component) {
       });
       this.props.fetchUser(username, page).then(function (pageData) {
         return _this2.handleSuccess(pageData);
+      }, function (error) {
+        return _this2.handleError();
       });
     }
   }, {
@@ -650,6 +652,11 @@ function (_React$Component) {
       }
     }
   }, {
+    key: "handleError",
+    value: function handleError() {
+      this.resetSearch();
+    }
+  }, {
     key: "render",
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
@@ -657,6 +664,7 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         className: "",
         onChange: this.updateSearch,
+        value: this.state.username,
         placeholder: "username"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "",

@@ -37,7 +37,10 @@ class SearchBar extends React.Component {
     this.setState({ searching: true });
 
     this.props.fetchUser(username, page)
-      .then(pageData => this.handleSuccess(pageData));
+      .then(
+        pageData => this.handleSuccess(pageData),
+        error => this.handleError()
+      );
   }
 
   handleSuccess(pageData) {
@@ -57,6 +60,10 @@ class SearchBar extends React.Component {
     }
   }
 
+  handleError() {
+    this.resetSearch();
+  }
+
   render() {
     return (
         <form
@@ -64,6 +71,7 @@ class SearchBar extends React.Component {
           <input
             className=""
             onChange={this.updateSearch}
+            value={this.state.username}
             placeholder="username"
           />
           <button
