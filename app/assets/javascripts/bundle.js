@@ -784,7 +784,7 @@ var rootReducer = Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"])(
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var lodash_merge__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! lodash/merge */ "./node_modules/lodash/merge.js");
 /* harmony import */ var lodash_merge__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(lodash_merge__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _actions_selection_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../actions/selection_actions */ "./frontend/actions/selection_actions.js");
+/* harmony import */ var _actions_selection_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../actions/selection_actions */ "./frontend/actions/selection_actions.js");
 
 
 
@@ -799,10 +799,10 @@ var selectionReducer = function selectionReducer() {
   };
 
   switch (action.type) {
-    case _actions_selection_actions__WEBPACK_IMPORTED_MODULE_2__["ADD_SELECTED"]:
+    case _actions_selection_actions__WEBPACK_IMPORTED_MODULE_1__["ADD_SELECTED"]:
       return lodash_merge__WEBPACK_IMPORTED_MODULE_0___default()({}, state, selection);
 
-    case _actions_selection_actions__WEBPACK_IMPORTED_MODULE_2__["REMOVE_SELECTED"]:
+    case _actions_selection_actions__WEBPACK_IMPORTED_MODULE_1__["REMOVE_SELECTED"]:
       var newState = lodash_merge__WEBPACK_IMPORTED_MODULE_0___default()({}, state);
       delete newState[id];
       return newState;
