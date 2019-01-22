@@ -2,7 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import ResultsList from './results_list';
 import {
-  addSelected, removeSelected }
+  addSelected,
+  removeSelected, }
     from '../../actions/selection_actions';
 
 const msp = state => {

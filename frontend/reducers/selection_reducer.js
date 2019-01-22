@@ -1,8 +1,8 @@
 import merge from 'lodash/merge';
 import {
   ADD_SELECTED,
-  REMOVE_SELECTED,
-} from '../actions/selection_actions';
+  REMOVE_SELECTED, }
+    from '../actions/selection_actions';
 
 const selectionReducer = (state = {}, action) => {
   Object.freeze(state);
