@@ -8,7 +8,9 @@ import {
 
 const msp = state => {
   const anime = state.entities.animes;
+
   return {
+    category: state.ui.category,
     completed: anime.completed,
     dropped: anime.dropped,
     onHold: anime.onHold,

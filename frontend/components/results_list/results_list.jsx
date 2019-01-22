@@ -22,6 +22,7 @@ class ResultsList extends React.Component {
 
   render() {
     const {
+      category,
       completed,
       dropped,
       onHold,
@@ -31,7 +32,7 @@ class ResultsList extends React.Component {
 
     return (
       <ul>
-        { this.showList(this.props['completed']) }
+        { this.showList(this.props[category]) }
       </ul>
     )
   }

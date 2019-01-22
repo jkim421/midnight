@@ -379,12 +379,13 @@ function (_React$Component) {
     key: "render",
     value: function render() {
       var _this$props = this.props,
+          category = _this$props.category,
           completed = _this$props.completed,
           dropped = _this$props.dropped,
           onHold = _this$props.onHold,
           planToWatch = _this$props.planToWatch,
           watching = _this$props.watching;
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, this.showList(this.props['completed']));
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, this.showList(this.props[category]));
     }
   }]);
 
@@ -417,6 +418,7 @@ __webpack_require__.r(__webpack_exports__);
 var msp = function msp(state) {
   var anime = state.entities.animes;
   return {
+    category: state.ui.category,
     completed: anime.completed,
     dropped: anime.dropped,
     onHold: anime.onHold,
@@ -772,6 +774,36 @@ var animesReducer = function animesReducer() {
 
 /***/ }),
 
+/***/ "./frontend/reducers/category_reducer.js":
+/*!***********************************************!*\
+  !*** ./frontend/reducers/category_reducer.js ***!
+  \***********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var lodash_merge__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! lodash/merge */ "./node_modules/lodash/merge.js");
+/* harmony import */ var lodash_merge__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(lodash_merge__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _actions_user_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../actions/user_actions */ "./frontend/actions/user_actions.js");
+
+
+
+var categoryReducer = function categoryReducer() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "planToWatch";
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+  Object.freeze(state);
+
+  switch (action.type) {
+    default:
+      return state;
+  }
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (categoryReducer);
+
+/***/ }),
+
 /***/ "./frontend/reducers/entities_reducer.js":
 /*!***********************************************!*\
   !*** ./frontend/reducers/entities_reducer.js ***!
@@ -804,11 +836,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
 /* harmony import */ var _entities_reducer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./entities_reducer */ "./frontend/reducers/entities_reducer.js");
 /* harmony import */ var _selection_reducer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./selection_reducer */ "./frontend/reducers/selection_reducer.js");
+/* harmony import */ var _ui_reducer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./ui_reducer */ "./frontend/reducers/ui_reducer.js");
+
 
 
 
 var rootReducer = Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"])({
   entities: _entities_reducer__WEBPACK_IMPORTED_MODULE_1__["default"],
+  ui: _ui_reducer__WEBPACK_IMPORTED_MODULE_3__["default"],
   selection: _selection_reducer__WEBPACK_IMPORTED_MODULE_2__["default"]
 });
 /* harmony default export */ __webpack_exports__["default"] = (rootReducer);
@@ -855,6 +890,26 @@ var selectionReducer = function selectionReducer() {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (selectionReducer);
+
+/***/ }),
+
+/***/ "./frontend/reducers/ui_reducer.js":
+/*!*****************************************!*\
+  !*** ./frontend/reducers/ui_reducer.js ***!
+  \*****************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
+/* harmony import */ var _category_reducer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./category_reducer */ "./frontend/reducers/category_reducer.js");
+
+
+var uiReducer = Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"])({
+  category: _category_reducer__WEBPACK_IMPORTED_MODULE_1__["default"]
+});
+/* harmony default export */ __webpack_exports__["default"] = (uiReducer);
 
 /***/ }),
 
