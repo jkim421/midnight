@@ -305,9 +305,31 @@ var ListItem = function ListItem(_ref) {
   var show = _ref.show;
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
     className: "ListItem-li"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "ListItem-img-container"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
     href: show.url
-  }, show.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, show.type), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, show.score), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, show.genres));
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    className: "ListItem-img",
+    src: show.img_url
+  }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "ListItem-show"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    href: show.url
+  }, show.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "ListItem-details"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Score: ", show.score), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, show.type)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+    className: "ListItem-genres"
+  }, renderGenres(show.genres))));
+};
+
+var renderGenres = function renderGenres(genres) {
+  return genres.map(function (genre) {
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+      className: "ListItem-genre",
+      key: genre
+    }, genre);
+  });
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (ListItem);
@@ -1015,7 +1037,8 @@ var parseShow = function parseShow(raw) {
     score: tags.score,
     genres: tags.genres,
     watching_status: raw.watching_status,
-    url: raw.url
+    url: raw.url,
+    img_url: raw.image_url
   };
 };
 

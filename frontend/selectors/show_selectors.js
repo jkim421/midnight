@@ -42,5 +42,6 @@ const parseShow = (raw) => {
     genres: tags.genres,
     watching_status: raw.watching_status,
     url: raw.url,
+    img_url: raw.image_url,
   };
 };
