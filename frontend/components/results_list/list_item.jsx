@@ -4,11 +4,9 @@ const ListItem = ({ show }) => {
 
   return (
     <li className="ListItem-li">
+      <a href={ show.url }>{ show.title }</a>
       <div>
         { show.type }
-      </div>
-      <div>
-        { show.title }
       </div>
       <div>
         { show.score }

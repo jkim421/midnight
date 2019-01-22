@@ -305,7 +305,9 @@ var ListItem = function ListItem(_ref) {
   var show = _ref.show;
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
     className: "ListItem-li"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, show.type), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, show.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, show.score), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, show.genres));
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    href: show.url
+  }, show.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, show.type), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, show.score), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, show.genres));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (ListItem);
@@ -375,17 +377,41 @@ function (_React$Component) {
         });
       });
     }
+    /* DELETE FOR PRODUCTION */
+
   }, {
-    key: "render",
-    value: function render() {
+    key: "mostGenres",
+    value: function mostGenres() {
       var _this$props = this.props,
-          category = _this$props.category,
           completed = _this$props.completed,
           dropped = _this$props.dropped,
           onHold = _this$props.onHold,
           planToWatch = _this$props.planToWatch,
           watching = _this$props.watching;
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, this.showList(this.props[category]));
+      var list = completed.concat(dropped, onHold, planToWatch, watching);
+      var maxCount = 0;
+
+      for (var i = 0; i < list.length; i++) {
+        var currCount = list[i].genres.length;
+
+        if (currCount > maxCount) {
+          maxCount = currCount;
+        }
+      }
+
+      return maxCount;
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this$props2 = this.props,
+          category = _this$props2.category,
+          completed = _this$props2.completed,
+          dropped = _this$props2.dropped,
+          onHold = _this$props2.onHold,
+          planToWatch = _this$props2.planToWatch,
+          watching = _this$props2.watching;
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, this.mostGenres()), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, this.showList(this.props[category])));
     }
   }]);
 
@@ -988,7 +1014,8 @@ var parseShow = function parseShow(raw) {
     end_date: raw.end_date,
     score: tags.score,
     genres: tags.genres,
-    watching_status: raw.watching_status
+    watching_status: raw.watching_status,
+    url: raw.url
   };
 };
 

@@ -20,6 +20,31 @@ class ResultsList extends React.Component {
     )
   }
 
+  /* DELETE FOR PRODUCTION */
+  mostGenres() {
+    const {
+      completed,
+      dropped,
+      onHold,
+      planToWatch,
+      watching
+    } = this.props;
+
+    const list = completed.concat(dropped, onHold, planToWatch, watching);
+
+    let maxCount = 0;
+
+    for (let i = 0; i < list.length; i++) {
+      let currCount = list[i].genres.length;
+
+      if (currCount > maxCount) {
+        maxCount = currCount;
+      }
+    }
+
+    return maxCount;
+  }
+
   render() {
     const {
       category,
@@ -31,9 +56,14 @@ class ResultsList extends React.Component {
     } = this.props;
 
     return (
-      <ul>
-        { this.showList(this.props[category]) }
-      </ul>
+      <>
+        <div>
+          { this.mostGenres() }
+        </div>
+        <ul>
+          { this.showList(this.props[category]) }
+        </ul>
+      </>
     )
   }
 }
