@@ -394,7 +394,7 @@ var mdp = function mdp(dispatch) {
   };
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(null, mdp)(_results_list__WEBPACK_IMPORTED_MODULE_2__["default"]));
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(msp, mdp)(_results_list__WEBPACK_IMPORTED_MODULE_2__["default"]));
 
 /***/ }),
 
@@ -816,6 +816,77 @@ var selectionReducer = function selectionReducer() {
 
 /***/ }),
 
+/***/ "./frontend/selectors/defined_tags.js":
+/*!********************************************!*\
+  !*** ./frontend/selectors/defined_tags.js ***!
+  \********************************************/
+/*! exports provided: GENRES, TYPES, RATINGS */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GENRES", function() { return GENRES; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TYPES", function() { return TYPES; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RATINGS", function() { return RATINGS; });
+var GENRES = ["Adventure", "Cars", "Comedy", "Dementia", "Demons", "Mystery", "Drama", "Ecchi", "Fantasy", "Game", "Hentai", "Historical", "Horror", "Kids", "Magic", "Martial Arts", "Mecha", "Music", "Parody", "Samurai", "Romance", "School", "Sci Fi", "Shoujo", "Shoujo Ai", "Shounen", "Shounen Ai", "Space", "Sports", "Super Power", "Vampire", "Yaoi", "Yuri", "Harem", "Slice of Life", "Supernatural", "Military", "Police", "Psychological", "Thriller", "Seinen", "Josei", "Doujinshi", "Gender Bender"];
+var TYPES = ["TV", "OVA", "Movie", "Special", "ONA"];
+var RATINGS = ["G", "PG", "PG13", "R17", "R", "RX"];
+
+/***/ }),
+
+/***/ "./frontend/selectors/tag_selector.js":
+/*!********************************************!*\
+  !*** ./frontend/selectors/tag_selector.js ***!
+  \********************************************/
+/*! exports provided: parseYear, parseTags */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "parseYear", function() { return parseYear; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "parseTags", function() { return parseTags; });
+/* harmony import */ var _defined_tags_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./defined_tags.js */ "./frontend/selectors/defined_tags.js");
+
+var parseYear = function parseYear(string) {
+  return string.slice(0, 4);
+};
+var parseTags = function parseTags(string) {
+  var parsed;
+  var split = string.split(", ");
+  var score = parseScore(split);
+  var genres = parseGenres(split);
+  return {
+    score: score,
+    genres: genres
+  };
+};
+
+var parseScore = function parseScore(arr) {
+  var score = null;
+
+  for (var i = 0; i < arr.length; i++) {
+    if (arr[i].slice(0, 6) === "Score:") {
+      score = parseFloat(arr[i].slice(7));
+    }
+  }
+
+  return score;
+};
+
+var parseGenres = function parseGenres(arr) {
+  var genreTags = [];
+
+  for (var i = 0; i < arr.length; i++) {
+    if (_defined_tags_js__WEBPACK_IMPORTED_MODULE_0__["GENRES"].includes(arr[i])) {
+      genreTags.push(arr[i]);
+    }
+  }
+
+  return genreTags;
+};
+
+/***/ }),
+
 /***/ "./frontend/selectors/user_selectors.js":
 /*!**********************************************!*\
   !*** ./frontend/selectors/user_selectors.js ***!
@@ -826,6 +897,8 @@ var selectionReducer = function selectionReducer() {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "selectAnime", function() { return selectAnime; });
+/* harmony import */ var _tag_selector__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./tag_selector */ "./frontend/selectors/tag_selector.js");
+
 var selectAnime = function selectAnime(anime) {
   var sorted = {
     watching: [],
@@ -834,7 +907,9 @@ var selectAnime = function selectAnime(anime) {
     dropped: [],
     planToWatch: []
   };
-  anime.forEach(function (show) {
+  anime.forEach(function (raw) {
+    var show = parseShow(raw);
+
     if (show.watching_status === 1) {
       sorted.watching.push(show);
     } else if (show.watching_status === 2) {
@@ -848,6 +923,21 @@ var selectAnime = function selectAnime(anime) {
     }
   });
   return sorted;
+};
+
+var parseShow = function parseShow(raw) {
+  var tags = Object(_tag_selector__WEBPACK_IMPORTED_MODULE_0__["parseTags"])(raw.tags);
+  return {
+    id: raw.mal_id,
+    title: raw.title,
+    type: raw.type,
+    rating: raw.rating,
+    start_date: raw.start_date,
+    end_date: raw.end_date,
+    score: tags.score,
+    genres: tags.genres,
+    watching_status: raw.watching_status
+  };
 };
 
 /***/ }),

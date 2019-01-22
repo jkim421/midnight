@@ -24,4 +24,4 @@ const mdp = dispatch => {
   };
 };
 
-export default connect(null, mdp)(ResultsList);
+export default connect(msp, mdp)(ResultsList);

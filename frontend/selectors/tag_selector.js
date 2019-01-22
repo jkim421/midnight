@@ -1,5 +1,9 @@
 import { GENRES, TYPES } from './defined_tags.js';
 
+export const parseYear = (string) => {
+  return string.slice(0, 4);
+};
+
 export const parseTags = (string) => {
   let parsed;
   let split = string.split(", ");
@@ -35,8 +39,4 @@ const parseGenres = (arr) => {
   }
 
   return genreTags;
-};
-
-const parseYear = (string) => {
-  return string.slice(0, 4);
 };

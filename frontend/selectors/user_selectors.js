@@ -1,3 +1,5 @@
+import { parseTags, parseYear } from './tag_selector';
+
 export const selectAnime = (anime) => {
   let sorted = {
     watching: [],
@@ -7,7 +9,9 @@ export const selectAnime = (anime) => {
     planToWatch: [],
   };
 
-  anime.forEach( show => {
+  anime.forEach( raw => {
+    const show = parseShow(raw);
+
     if (show.watching_status === 1) {
       sorted.watching.push(show);
     } else if (show.watching_status === 2) {
@@ -22,4 +26,20 @@ export const selectAnime = (anime) => {
   });
 
   return sorted;
+};
+
+const parseShow = (raw) => {
+  let tags = parseTags(raw.tags);
+
+  return {
+    id: raw.mal_id,
+    title: raw.title,
+    type: raw.type,
+    rating: raw.rating,
+    start_date: raw.start_date,
+    end_date: raw.end_date,
+    score: tags.score,
+    genres: tags.genres,
+    watching_status: raw.watching_status,
+  };
 };
