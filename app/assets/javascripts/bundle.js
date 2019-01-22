@@ -315,6 +315,7 @@ var ListItem = function ListItem(_ref) {
   }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "ListItem-show"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    className: "ListItem-title",
     href: show.url
   }, show.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "ListItem-details"
@@ -1092,7 +1093,7 @@ var parseGenres = function parseGenres(arr) {
     }
   }
 
-  return genreTags;
+  return genreTags.sort();
 };
 
 /***/ }),

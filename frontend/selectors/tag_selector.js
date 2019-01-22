@@ -38,5 +38,5 @@ const parseGenres = (arr) => {
     }
   }
 
-  return genreTags;
+  return genreTags.sort();
 };

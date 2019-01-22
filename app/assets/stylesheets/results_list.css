@@ -1,14 +1,16 @@
 .ListItem-li {
   display: flex;
+  align-items: center;
+  height: 120px;
   width: 100%;
 }
 
 .ListItem-img-container {
-  height: 150px;
-  width: 150px;
   display: flex;
   justify-content: center;
   align-items: center;
+  height: 120px;
+  width: 120px;
   border: 1px solid black;
 }
 
@@ -19,12 +21,23 @@
 .ListItem-show {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  height: 100%;
   width: 70%;
   border: 1px solid red;
 }
 
+.ListItem-title {
+  font-size: 1.4em;
+  text-decoration: none;
+}
+
 .ListItem-details {
   display: flex;
+}
+
+.ListItem-title, .ListItem-details {
+  margin-bottom: 8px;
 }
 
 .ListItem-genres {
@@ -34,4 +47,5 @@
 
 .ListItem-genre {
   width: 20%;
+  margin-bottom: 4px;
 }

@@ -9,7 +9,9 @@ const ListItem = ({ show }) => {
         </a>
       </div>
       <div className="ListItem-show">
-        <a href={ show.url }>{ show.title }</a>
+        <a className="ListItem-title" href={ show.url }>
+          { show.title }
+        </a>
         <div className="ListItem-details">
           <div>
             Score: { show.score }
