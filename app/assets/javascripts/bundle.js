@@ -133,11 +133,11 @@ var removeSelected = function removeSelected(_ref2) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_ANIME", function() { return RECEIVE_ANIME; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "receiveUser", function() { return receiveUser; });
-/* harmony import */ var _selectors_user_selectors__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../selectors/user_selectors */ "./frontend/selectors/user_selectors.js");
+/* harmony import */ var _selectors_show_selectors__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../selectors/show_selectors */ "./frontend/selectors/show_selectors.js");
 
 var RECEIVE_ANIME = "RECEIVE_ANIME";
 var receiveUser = function receiveUser(anime) {
-  var sortedAnime = Object(_selectors_user_selectors__WEBPACK_IMPORTED_MODULE_0__["selectAnime"])(anime);
+  var sortedAnime = Object(_selectors_show_selectors__WEBPACK_IMPORTED_MODULE_0__["selectAnime"])(anime);
   return {
     type: RECEIVE_ANIME,
     sortedAnime: sortedAnime
@@ -288,6 +288,30 @@ var mdp = function mdp(dispatch) {
 
 /***/ }),
 
+/***/ "./frontend/components/results_list/list_item.jsx":
+/*!********************************************************!*\
+  !*** ./frontend/components/results_list/list_item.jsx ***!
+  \********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+
+var ListItem = function ListItem(_ref) {
+  var show = _ref.show;
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+    className: "ListItem-li"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, show.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, show.score), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, show.genres));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (ListItem);
+
+/***/ }),
+
 /***/ "./frontend/components/results_list/results_list.jsx":
 /*!***********************************************************!*\
   !*** ./frontend/components/results_list/results_list.jsx ***!
@@ -299,6 +323,7 @@ var mdp = function mdp(dispatch) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _list_item__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./list_item */ "./frontend/components/results_list/list_item.jsx");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -316,6 +341,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
 
 
 
@@ -340,9 +366,25 @@ function (_React$Component) {
   }
 
   _createClass(ResultsList, [{
+    key: "showList",
+    value: function showList(category) {
+      return category.map(function (show) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_list_item__WEBPACK_IMPORTED_MODULE_1__["default"], {
+          show: show,
+          key: show.id
+        });
+      });
+    }
+  }, {
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "test");
+      var _this$props = this.props,
+          completed = _this$props.completed,
+          dropped = _this$props.dropped,
+          onHold = _this$props.onHold,
+          planToWatch = _this$props.planToWatch,
+          watching = _this$props.watching;
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, this.showList(this.props['completed']));
     }
   }]);
 
@@ -834,6 +876,61 @@ var RATINGS = ["G", "PG", "PG13", "R17", "R", "RX"];
 
 /***/ }),
 
+/***/ "./frontend/selectors/show_selectors.js":
+/*!**********************************************!*\
+  !*** ./frontend/selectors/show_selectors.js ***!
+  \**********************************************/
+/*! exports provided: selectAnime */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "selectAnime", function() { return selectAnime; });
+/* harmony import */ var _tag_selector__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./tag_selector */ "./frontend/selectors/tag_selector.js");
+
+var selectAnime = function selectAnime(anime) {
+  var sorted = {
+    watching: [],
+    completed: [],
+    onHold: [],
+    dropped: [],
+    planToWatch: []
+  };
+  anime.forEach(function (raw) {
+    var show = parseShow(raw);
+
+    if (show.watching_status === 1) {
+      sorted.watching.push(show);
+    } else if (show.watching_status === 2) {
+      sorted.completed.push(show);
+    } else if (show.watching_status === 3) {
+      sorted.onHold.push(show);
+    } else if (show.watching_status === 4) {
+      sorted.dropped.push(show);
+    } else if (show.watching_status === 6) {
+      sorted.planToWatch.push(show);
+    }
+  });
+  return sorted;
+};
+
+var parseShow = function parseShow(raw) {
+  var tags = Object(_tag_selector__WEBPACK_IMPORTED_MODULE_0__["parseTags"])(raw.tags);
+  return {
+    id: raw.mal_id,
+    title: raw.title,
+    type: raw.type,
+    rating: raw.rating,
+    start_date: raw.start_date,
+    end_date: raw.end_date,
+    score: tags.score,
+    genres: tags.genres,
+    watching_status: raw.watching_status
+  };
+};
+
+/***/ }),
+
 /***/ "./frontend/selectors/tag_selector.js":
 /*!********************************************!*\
   !*** ./frontend/selectors/tag_selector.js ***!
@@ -883,61 +980,6 @@ var parseGenres = function parseGenres(arr) {
   }
 
   return genreTags;
-};
-
-/***/ }),
-
-/***/ "./frontend/selectors/user_selectors.js":
-/*!**********************************************!*\
-  !*** ./frontend/selectors/user_selectors.js ***!
-  \**********************************************/
-/*! exports provided: selectAnime */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "selectAnime", function() { return selectAnime; });
-/* harmony import */ var _tag_selector__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./tag_selector */ "./frontend/selectors/tag_selector.js");
-
-var selectAnime = function selectAnime(anime) {
-  var sorted = {
-    watching: [],
-    completed: [],
-    onHold: [],
-    dropped: [],
-    planToWatch: []
-  };
-  anime.forEach(function (raw) {
-    var show = parseShow(raw);
-
-    if (show.watching_status === 1) {
-      sorted.watching.push(show);
-    } else if (show.watching_status === 2) {
-      sorted.completed.push(show);
-    } else if (show.watching_status === 3) {
-      sorted.onHold.push(show);
-    } else if (show.watching_status === 4) {
-      sorted.dropped.push(show);
-    } else if (show.watching_status === 6) {
-      sorted.planToWatch.push(show);
-    }
-  });
-  return sorted;
-};
-
-var parseShow = function parseShow(raw) {
-  var tags = Object(_tag_selector__WEBPACK_IMPORTED_MODULE_0__["parseTags"])(raw.tags);
-  return {
-    id: raw.mal_id,
-    title: raw.title,
-    type: raw.type,
-    rating: raw.rating,
-    start_date: raw.start_date,
-    end_date: raw.end_date,
-    score: tags.score,
-    genres: tags.genres,
-    watching_status: raw.watching_status
-  };
 };
 
 /***/ }),

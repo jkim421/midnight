@@ -1,4 +1,4 @@
-import { selectAnime } from '../selectors/user_selectors';
+import { selectAnime } from '../selectors/show_selectors';
 
 export const RECEIVE_ANIME = "RECEIVE_ANIME";
 
