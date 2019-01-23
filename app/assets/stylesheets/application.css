@@ -23,7 +23,7 @@ html, body, div, p, span, h1, h2, h3, h4, a, ol, ul, li, form, label, article, a
    margin: 0;
    padding: 0;
    border: 0;
-   font-size: 1em;
+   font-size: 12px;
    vertical-align: baseline;
  }
 

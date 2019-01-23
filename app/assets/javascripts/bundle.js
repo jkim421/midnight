@@ -308,7 +308,8 @@ var ListItem = function ListItem(_ref) {
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "ListItem-img-container"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-    href: show.url
+    href: show.url,
+    target: "_blank"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
     className: "ListItem-img",
     src: show.img_url
@@ -316,10 +317,15 @@ var ListItem = function ListItem(_ref) {
     className: "ListItem-show"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
     className: "ListItem-title",
-    href: show.url
+    href: show.url,
+    target: "_blank"
   }, show.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "ListItem-details"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Score: ", show.score), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, show.type)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "ListItem-score"
+  }, "MAL: ", show.score), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "ListItem-type"
+  }, show.type)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
     className: "ListItem-genres"
   }, renderGenres(show.genres))));
 };
@@ -327,9 +333,11 @@ var ListItem = function ListItem(_ref) {
 var renderGenres = function renderGenres(genres) {
   return genres.map(function (genre) {
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-      className: "ListItem-genre",
+      className: "ListItem-genre-container",
       key: genre
-    }, genre);
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "ListItem-genre"
+    }, genre));
   });
 };
 
@@ -434,7 +442,9 @@ function (_React$Component) {
           onHold = _this$props2.onHold,
           planToWatch = _this$props2.planToWatch,
           watching = _this$props2.watching;
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, this.mostGenres()), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, this.showList(this.props[category])));
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, this.mostGenres()), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+        className: "ResultsList-ul"
+      }, this.showList(this.props[category])));
     }
   }]);
 

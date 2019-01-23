@@ -1,51 +1,68 @@
-.ListItem-li {
-  display: flex;
-  align-items: center;
-  height: 120px;
-  width: 100%;
-}
+  .ListItem-li {
+    display: flex;
+    align-items: center;
+    height: 124px;
+    border: 1px solid blue;
+  }
 
-.ListItem-img-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 120px;
-  width: 120px;
-  border: 1px solid black;
-}
+  .ListItem-img-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 124px;
+    width: 124px;
+    border: 1px solid black;
+  }
 
-.ListItem-img {
-  height: 100px;
-}
+  .ListItem-img {
+    height: 100px;
+  }
 
-.ListItem-show {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  height: 100%;
-  width: 70%;
-  border: 1px solid red;
-}
+  .ListItem-show {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    width: 676px;
+    border: 1px solid red;
+  }
 
-.ListItem-title {
-  font-size: 1.4em;
-  text-decoration: none;
-}
+  .ListItem-title {
+    font-size: 1.8em;
+    font-weight: 700;
+    text-decoration: none;
+  }
 
-.ListItem-details {
-  display: flex;
-}
+  .ListItem-details {
+    display: flex;
+  }
 
-.ListItem-title, .ListItem-details {
-  margin-bottom: 8px;
-}
+  .ListItem-title, .ListItem-details {
+    margin-bottom: 0.8em;
+  }
 
-.ListItem-genres {
-  display: flex;
-  flex-wrap: wrap;
-}
+  .ListItem-details div {
+    margin-right: 2em;
+  }
 
-.ListItem-genre {
-  width: 20%;
-  margin-bottom: 4px;
-}
+  .ListItem-genres {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .ListItem-score, .ListItem-type, .ListItem-genre {
+    font-size: 1.4em;
+  }
+
+  .ListItem-genre-container {
+    width: 20%;
+    margin-bottom: 0.4em;
+    text-align: center;
+  }
+
+  .ListItem-genre {
+    width: 90%;
+    box-sizing: border-box;
+    border: 1px solid black;
+    border-radius: 8px;
+  }

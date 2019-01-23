@@ -60,7 +60,7 @@ class ResultsList extends React.Component {
         <div>
           { this.mostGenres() }
         </div>
-        <ul>
+        <ul className="ResultsList-ul">
           { this.showList(this.props[category]) }
         </ul>
       </>
