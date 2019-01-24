@@ -4,7 +4,8 @@ const ListItem = ({ show }) => {
   return (
     <li className="ListItem-li">
       <div className="ListItem-img-container">
-        <a href={ show.url } target="_blank">
+        <a className="ListItem-img-link" href={ show.url } target="_blank">
+          <span className="ListItem-img-mal">MAL</span>
           <img className="ListItem-img" src={ show.img_url }/>
         </a>
       </div>

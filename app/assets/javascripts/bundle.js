@@ -308,9 +308,12 @@ var ListItem = function ListItem(_ref) {
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "ListItem-img-container"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    className: "ListItem-img-link",
     href: show.url,
     target: "_blank"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: "ListItem-img-mal"
+  }, "MAL"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
     className: "ListItem-img",
     src: show.img_url
   }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
