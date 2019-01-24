@@ -315,11 +315,13 @@ var ListItem = function ListItem(_ref) {
     src: show.img_url
   }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "ListItem-show"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "ListItem-title-container"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
     className: "ListItem-title",
     href: show.url,
     target: "_blank"
-  }, show.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, show.title)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "ListItem-details"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "ListItem-score"

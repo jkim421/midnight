@@ -9,13 +9,15 @@ const ListItem = ({ show }) => {
         </a>
       </div>
       <div className="ListItem-show">
-        <a
-          className="ListItem-title"
-          href={ show.url }
-          target="_blank"
-        >
-          { show.title }
-        </a>
+        <div className="ListItem-title-container">
+          <a
+            className="ListItem-title"
+            href={ show.url }
+            target="_blank"
+          >
+            { show.title }
+          </a>
+        </div>
         <div className="ListItem-details">
           <div className="ListItem-score">
             MAL: { show.score ? show.score : "n/a" }
