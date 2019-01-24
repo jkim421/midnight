@@ -323,22 +323,35 @@ var ListItem = function ListItem(_ref) {
     className: "ListItem-details"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "ListItem-score"
-  }, "MAL: ", show.score), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, "MAL: ", show.score ? show.score : "n/a"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "ListItem-type"
-  }, show.type)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+  }, show.type), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "ListItem-years"
+  }, renderDate(show.start_date, show.end_date))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
     className: "ListItem-genres"
   }, renderGenres(show.genres))));
 };
 
 var renderGenres = function renderGenres(genres) {
-  return genres.map(function (genre) {
-    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-      className: "ListItem-genre-container",
-      key: genre
-    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-      className: "ListItem-genre"
-    }, genre));
-  });
+  if (genres) {
+    return genres.map(function (genre) {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        className: "ListItem-genre-container",
+        key: genre
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "ListItem-genre"
+      }, genre));
+    });
+  } else {
+    return null;
+  }
+};
+
+var renderDate = function renderDate(startStr, endStr) {
+  var start = startStr ? startStr.slice(0, 4) : "?";
+  var end = endStr ? endStr.slice(0, 4) : "?";
+  var dates = start === end ? start : start + " - " + end;
+  return dates;
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (ListItem);
@@ -423,7 +436,7 @@ function (_React$Component) {
       var maxCount = 0;
 
       for (var i = 0; i < list.length; i++) {
-        var currCount = list[i].genres.length;
+        var currCount = list[i].genres ? list[i].genres.length : 0;
 
         if (currCount > maxCount) {
           maxCount = currCount;
@@ -707,7 +720,7 @@ function (_React$Component) {
           page: page + 1,
           list: list.concat(pageData.anime)
         });
-        setTimeout(500, this.sendSearch());
+        setTimeout(600, this.sendSearch());
       }
     }
   }, {
@@ -1045,11 +1058,11 @@ var parseShow = function parseShow(raw) {
     rating: raw.rating,
     start_date: raw.start_date,
     end_date: raw.end_date,
-    score: tags.score,
-    genres: tags.genres,
     watching_status: raw.watching_status,
     url: raw.url,
-    img_url: raw.image_url
+    img_url: raw.image_url,
+    score: tags ? tags.score : null,
+    genres: tags ? tags.genres : null
   };
 };
 
@@ -1071,9 +1084,13 @@ __webpack_require__.r(__webpack_exports__);
 var parseYear = function parseYear(string) {
   return string.slice(0, 4);
 };
-var parseTags = function parseTags(string) {
+var parseTags = function parseTags(tags) {
+  if (!tags) {
+    return null;
+  }
+
   var parsed;
-  var split = string.split(", ");
+  var split = tags.split(", ");
   var score = parseScore(split);
   var genres = parseGenres(split);
   return {

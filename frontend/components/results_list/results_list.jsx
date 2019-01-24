@@ -35,7 +35,7 @@ class ResultsList extends React.Component {
     let maxCount = 0;
 
     for (let i = 0; i < list.length; i++) {
-      let currCount = list[i].genres.length;
+      let currCount = list[i].genres ? list[i].genres.length : 0;
 
       if (currCount > maxCount) {
         maxCount = currCount;

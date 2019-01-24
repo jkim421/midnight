@@ -38,10 +38,10 @@ const parseShow = (raw) => {
     rating: raw.rating,
     start_date: raw.start_date,
     end_date: raw.end_date,
-    score: tags.score,
-    genres: tags.genres,
     watching_status: raw.watching_status,
     url: raw.url,
     img_url: raw.image_url,
+    score: tags ? tags.score : null,
+    genres: tags ? tags.genres : null,
   };
 };

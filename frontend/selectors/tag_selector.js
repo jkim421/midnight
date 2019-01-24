@@ -4,9 +4,14 @@ export const parseYear = (string) => {
   return string.slice(0, 4);
 };
 
-export const parseTags = (string) => {
+export const parseTags = (tags) => {
+
+  if (!tags) {
+    return null;
+  }
+
   let parsed;
-  let split = string.split(", ");
+  let split = tags.split(", ");
 
   const score = parseScore(split);
   const genres = parseGenres(split);
