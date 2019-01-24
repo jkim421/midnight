@@ -17,27 +17,36 @@
     position: relative;
   }
 
-  .ListItem-img-mal {
-    position: absolute;
-    top: 40%;
-    left: 30%;
-    font-size: 1.2em;
-    visibility: hidden;
-    text-align: center;
-  }
-
   .ListItem-img {
     height: 100px;
-    transition: opacity 0.2s linear;
   }
 
-  .ListItem-img:hover {
-    opacity: 0.5;
+  .ListItem-img-link:visited {
+    color: black;
   }
 
   .ListItem-img-link:hover .ListItem-img-mal {
     visibility: visible;
     opacity: 1;
+  }
+
+  .ListItem-img-mal {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(255,255,255,0.5);
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.2s, visibility 0.2s;
+  }
+
+  .ListItem-img-text {
+    position: absolute;
+    width: 100%;
+    top: 40%;
+    font-size: 1.2em;
+    color: black;
+    text-align: center;
   }
 
   .ListItem-show {
@@ -46,13 +55,17 @@
     justify-content: center;
     height: 100%;
     width: 676px;
-    /* border: 1px solid red; */
   }
 
   .ListItem-title {
     font-size: 1.8em;
     font-weight: 700;
+    color: black;
     text-decoration: none;
+  }
+
+  .ListItem-title:visited {
+    color: black;
   }
 
   .ListItem-details {

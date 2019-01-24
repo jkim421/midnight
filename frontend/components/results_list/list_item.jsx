@@ -5,7 +5,11 @@ const ListItem = ({ show }) => {
     <li className="ListItem-li">
       <div className="ListItem-img-container">
         <a className="ListItem-img-link" href={ show.url } target="_blank">
-          <span className="ListItem-img-mal">MAL</span>
+          <div className="ListItem-img-mal">
+            <div className="ListItem-img-text">
+              MAL
+            </div>
+          </div>
           <img className="ListItem-img" src={ show.img_url }/>
         </a>
       </div>
