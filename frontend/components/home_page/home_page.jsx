@@ -6,7 +6,7 @@ class HomePage extends React.Component {
   render() {
     return (
       <div>
-        <h1>midnight</h1>
+        <h1 className="HomePage-title">midnight</h1>
         <SearchBarContainer />
       </div>
     )

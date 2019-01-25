@@ -56,7 +56,7 @@ class SearchBar extends React.Component {
         page: page + 1,
         list: list.concat(pageData.anime),
       });
-      setTimeout(600, this.sendSearch());
+      setTimeout(1000, this.sendSearch());
     }
   }
 
