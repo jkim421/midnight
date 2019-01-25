@@ -25,7 +25,7 @@ const ListItem = ({ show }) => {
         </div>
         <div className="ListItem-details">
           <div className="ListItem-score">
-            MAL: { show.score ? show.score : "n/a" }
+            MAL: { renderScore(show.score) }
           </div>
           <div className="ListItem-type">
             { show.type }
@@ -42,7 +42,29 @@ const ListItem = ({ show }) => {
   )
 };
 
-const renderGenres = (genres) => {
+const renderDate = (startStr, endStr) => {
+  const start = startStr ? startStr.slice(0, 4) : "?";
+  const end = endStr ? endStr.slice(0, 4) : "?";
+  const dates = start === end ? start : (start + " - " + end);
+
+  return dates;
+};
+
+const renderScore = score => {
+  const scoreStr = String(score);
+
+  if (!score) {
+    return "n/a";
+  } else if (scoreStr.length === 1) {
+    return scoreStr + ".00";
+  } else if (scoreStr.length === 3) {
+    return scoreStr + "0";
+  } else {
+    return scoreStr;
+  }
+}
+
+const renderGenres = genres => {
   if (genres) {
     return (
       genres.map(genre => {
@@ -58,14 +80,6 @@ const renderGenres = (genres) => {
   } else {
     return null;
   }
-};
-
-const renderDate = (startStr, endStr) => {
-  const start = startStr ? startStr.slice(0, 4) : "?";
-  const end = endStr ? endStr.slice(0, 4) : "?";
-  const dates = start === end ? start : (start + " - " + end);
-
-  return dates;
 };
 
 export default ListItem;

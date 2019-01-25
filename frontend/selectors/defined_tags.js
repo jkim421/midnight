@@ -61,3 +61,11 @@ export const RATINGS = [
   "R",
   "RX",
 ];
+
+export const CATEGORIES = {
+  watching: "Watching",
+  completed: "Completed",
+  onHold:"onHold",
+  dropped: "Dropped",
+  planToWatch: "Plan to Watch",
+};

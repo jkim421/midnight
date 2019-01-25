@@ -1,5 +1,6 @@
 import React from 'react';
 import ListItem from './list_item';
+import { CATEGORIES } from '../../selectors/defined_tags';
 
 class ResultsList extends React.Component {
   constructor(props) {
@@ -58,7 +59,10 @@ class ResultsList extends React.Component {
     return (
       <>
         <div>
-          { this.mostGenres() }
+          Max genres: { this.mostGenres() }
+        </div>
+        <div>
+          { CATEGORIES[this.props.category] }
         </div>
         <ul className="ResultsList-ul">
           { this.showList(this.props[category]) }

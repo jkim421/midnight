@@ -332,13 +332,34 @@ var ListItem = function ListItem(_ref) {
     className: "ListItem-details"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "ListItem-score"
-  }, "MAL: ", show.score ? show.score : "n/a"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, "MAL: ", renderScore(show.score)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "ListItem-type"
   }, show.type), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "ListItem-years"
   }, renderDate(show.start_date, show.end_date))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
     className: "ListItem-genres"
   }, renderGenres(show.genres))));
+};
+
+var renderDate = function renderDate(startStr, endStr) {
+  var start = startStr ? startStr.slice(0, 4) : "?";
+  var end = endStr ? endStr.slice(0, 4) : "?";
+  var dates = start === end ? start : start + " - " + end;
+  return dates;
+};
+
+var renderScore = function renderScore(score) {
+  var scoreStr = String(score);
+
+  if (!score) {
+    return "n/a";
+  } else if (scoreStr.length === 1) {
+    return scoreStr + ".00";
+  } else if (scoreStr.length === 3) {
+    return scoreStr + "0";
+  } else {
+    return scoreStr;
+  }
 };
 
 var renderGenres = function renderGenres(genres) {
@@ -354,13 +375,6 @@ var renderGenres = function renderGenres(genres) {
   } else {
     return null;
   }
-};
-
-var renderDate = function renderDate(startStr, endStr) {
-  var start = startStr ? startStr.slice(0, 4) : "?";
-  var end = endStr ? endStr.slice(0, 4) : "?";
-  var dates = start === end ? start : start + " - " + end;
-  return dates;
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (ListItem);
@@ -379,6 +393,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _list_item__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./list_item */ "./frontend/components/results_list/list_item.jsx");
+/* harmony import */ var _selectors_defined_tags__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../selectors/defined_tags */ "./frontend/selectors/defined_tags.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -396,6 +411,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
 
 
 
@@ -464,7 +480,7 @@ function (_React$Component) {
           onHold = _this$props2.onHold,
           planToWatch = _this$props2.planToWatch,
           watching = _this$props2.watching;
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, this.mostGenres()), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Max genres: ", this.mostGenres()), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, _selectors_defined_tags__WEBPACK_IMPORTED_MODULE_2__["CATEGORIES"][this.props.category]), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
         className: "ResultsList-ul"
       }, this.showList(this.props[category])));
     }
@@ -1012,7 +1028,7 @@ var uiReducer = Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"])({
 /*!********************************************!*\
   !*** ./frontend/selectors/defined_tags.js ***!
   \********************************************/
-/*! exports provided: GENRES, TYPES, RATINGS */
+/*! exports provided: GENRES, TYPES, RATINGS, CATEGORIES */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1020,9 +1036,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GENRES", function() { return GENRES; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TYPES", function() { return TYPES; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RATINGS", function() { return RATINGS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CATEGORIES", function() { return CATEGORIES; });
 var GENRES = ["Adventure", "Cars", "Comedy", "Dementia", "Demons", "Mystery", "Drama", "Ecchi", "Fantasy", "Game", "Hentai", "Historical", "Horror", "Kids", "Magic", "Martial Arts", "Mecha", "Music", "Parody", "Samurai", "Romance", "School", "Sci Fi", "Shoujo", "Shoujo Ai", "Shounen", "Shounen Ai", "Space", "Sports", "Super Power", "Vampire", "Yaoi", "Yuri", "Harem", "Slice of Life", "Supernatural", "Military", "Police", "Psychological", "Thriller", "Seinen", "Josei", "Doujinshi", "Gender Bender"];
 var TYPES = ["TV", "OVA", "Movie", "Special", "ONA"];
 var RATINGS = ["G", "PG", "PG13", "R17", "R", "RX"];
+var CATEGORIES = {
+  watching: "Watching",
+  completed: "Completed",
+  onHold: "onHold",
+  dropped: "Dropped",
+  planToWatch: "Plan to Watch"
+};
 
 /***/ }),
 
@@ -1100,10 +1124,7 @@ var parseYear = function parseYear(string) {
   return string.slice(0, 4);
 };
 var parseTags = function parseTags(tags) {
-  if (!tags) {
-    return null;
-  }
-
+  if (!tags) return null;
   var parsed;
   var split = tags.split(", ");
   var score = parseScore(split);

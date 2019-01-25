@@ -6,9 +6,7 @@ export const parseYear = (string) => {
 
 export const parseTags = (tags) => {
 
-  if (!tags) {
-    return null;
-  }
+  if (!tags) return null;
 
   let parsed;
   let split = tags.split(", ");

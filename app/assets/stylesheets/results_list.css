@@ -1,16 +1,17 @@
   .ListItem-li {
     display: flex;
     align-items: center;
-    height: 124px;
+    height: 140px;
     border: 1px solid blue;
+    margin-top: 0.4em;
   }
 
   .ListItem-img-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 124px;
-    width: 124px;
+    height: 140px;
+    width: 140px;
   }
 
   .ListItem-img-link {
@@ -18,7 +19,7 @@
   }
 
   .ListItem-img {
-    height: 100px;
+    height: 130px;
   }
 
   .ListItem-img-link:visited {
@@ -54,7 +55,7 @@
     flex-direction: column;
     justify-content: center;
     height: 100%;
-    width: 676px;
+    width: 660px;
   }
 
   .ListItem-title {
@@ -72,7 +73,7 @@
     display: flex;
   }
 
-  .ListItem-title, .ListItem-details {
+  .ListItem-title-container, .ListItem-details {
     margin-bottom: 0.8em;
   }
 
@@ -91,6 +92,7 @@
 
   .ListItem-genre {
     font-size: 1.2em;
+    padding: 0.1em 0;
   }
 
   .ListItem-genre-container {
