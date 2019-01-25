@@ -717,6 +717,8 @@ function (_React$Component) {
   }, {
     key: "handleSuccess",
     value: function handleSuccess(pageData) {
+      var _this3 = this;
+
       var page = this.state.page;
       var list = this.state.list;
 
@@ -728,8 +730,9 @@ function (_React$Component) {
         this.setState({
           page: page + 1,
           list: list.concat(pageData.anime)
+        }, function () {
+          return setTimeout(1000, _this3.sendSearch());
         });
-        setTimeout(1000, this.sendSearch());
       }
     }
   }, {
