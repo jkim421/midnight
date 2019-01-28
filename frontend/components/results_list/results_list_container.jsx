@@ -8,9 +8,10 @@ import {
 
 const msp = state => {
   const anime = state.entities.animes;
-  
+
   return {
-    categories: state.ui.categories,
+    categories: state.filters.categories,
+    genres: state.filters.genres,
     shows: {
       1: anime.watching,
       2: anime.completed,
