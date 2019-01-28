@@ -1,5 +1,5 @@
 import React from 'react';
-import { CATEGORIES } from '../../selectors/defined_tags'
+import { LIST_CATEGORIES } from '../../selectors/defined_tags'
 
 const ListItem = ({ show }) => {
   return (
@@ -34,8 +34,8 @@ const ListItem = ({ show }) => {
           <div className="ListItem-score">
             MAL: { renderScore(show.score) }
           </div>
-          <div className="ListItem-list">
-            { CATEGORIES[show.watching_status] }
+          <div className="ListItem-userlist">
+            { LIST_CATEGORIES[show.watching_status] }
           </div>
         </div>
         <ul className="ListItem-genres">
@@ -49,7 +49,7 @@ const ListItem = ({ show }) => {
 const renderDate = (startStr, endStr) => {
   const start = startStr ? startStr.slice(0, 4) : "?";
   const end = endStr ? endStr.slice(0, 4) : "?";
-  const dates = start === end ? start : (start + " - " + end);
+  const dates = start === end ? start : (start + "-" + end);
 
   return dates;
 };

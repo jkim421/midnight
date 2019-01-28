@@ -8,13 +8,16 @@ import {
 
 const msp = state => {
   const anime = state.entities.animes;
+  
   return {
     categories: state.ui.categories,
-    completed: anime.completed,
-    dropped: anime.dropped,
-    onHold: anime.onHold,
-    planToWatch: anime.planToWatch,
-    watching: anime.watching,
+    shows: {
+      1: anime.watching,
+      2: anime.completed,
+      3: anime.onHold,
+      4: anime.dropped,
+      6: anime.planToWatch,
+    }
   };
 };
 
