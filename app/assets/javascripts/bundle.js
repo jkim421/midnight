@@ -1024,11 +1024,11 @@ var selectionReducer = function selectionReducer() {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
-/* harmony import */ var _categories_reducer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./categories_reducer */ "./frontend/reducers/categories_reducer.js");
+/* harmony import */ var _categories_reducer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./categories_reducer */ "./frontend/reducers/categories_reducer.js");
 
 
 var uiReducer = Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"])({
-  categories: _categories_reducer__WEBPACK_IMPORTED_MODULE_2__["default"]
+  categories: _categories_reducer__WEBPACK_IMPORTED_MODULE_1__["default"]
 });
 /* harmony default export */ __webpack_exports__["default"] = (uiReducer);
 
