@@ -1,5 +1,5 @@
 import React from 'react';
-import { CATEGORIES } from '../../selectors/defined_tags'
+import { LIST_CATEGORIES } from '../../selectors/defined_tags'
 
 const ListItem = ({ show }) => {
   return (
@@ -35,7 +35,7 @@ const ListItem = ({ show }) => {
             MAL: { renderScore(show.score) }
           </div>
           <div className="ListItem-list">
-            { CATEGORIES[show.watching_status] }
+            { LIST_CATEGORIES[show.watching_status] }
           </div>
         </div>
         <ul className="ListItem-genres">

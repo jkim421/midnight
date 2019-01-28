@@ -45,3 +45,11 @@ const parseShow = (raw) => {
     genres: tags ? tags.genres : null,
   };
 };
+
+const CATEGORY_NAME = {
+  1: "watching",
+  2: "completed",
+  3: "onHold",
+  4: "dropped",
+  6: "planToWatch",
+};

@@ -62,7 +62,7 @@ export const RATINGS = [
   "RX",
 ];
 
-export const CATEGORIES = {
+export const LIST_CATEGORIES = {
   1: "Watching",
   2: "Completed",
   3: "On Hold",

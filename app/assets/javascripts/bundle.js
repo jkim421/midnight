@@ -340,7 +340,7 @@ var ListItem = function ListItem(_ref) {
     className: "ListItem-score"
   }, "MAL: ", renderScore(show.score)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "ListItem-list"
-  }, _selectors_defined_tags__WEBPACK_IMPORTED_MODULE_1__["CATEGORIES"][show.watching_status])), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+  }, _selectors_defined_tags__WEBPACK_IMPORTED_MODULE_1__["LIST_CATEGORIES"][show.watching_status])), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
     className: "ListItem-genres"
   }, renderGenres(show.genres))));
 };
@@ -436,6 +436,7 @@ function (_React$Component) {
       page: 1,
       searching: false
     };
+    _this.lists = _selectors_defined_tags__WEBPACK_IMPORTED_MODULE_2__["LIST_CATEGORIES"];
     _this.showList = _this.showList.bind(_assertThisInitialized(_assertThisInitialized(_this)));
     return _this;
   }
@@ -447,7 +448,7 @@ function (_React$Component) {
 
       var shows = [];
       categories.forEach(function (list) {
-        return shows = shows.concat(_this2.props[list]);
+        return shows = shows.concat(_this2.props.shows[list]);
       });
       return shows.map(function (show) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_list_item__WEBPACK_IMPORTED_MODULE_1__["default"], {
@@ -456,41 +457,19 @@ function (_React$Component) {
         });
       });
     }
-    /* DELETE FOR PRODUCTION */
-
   }, {
-    key: "mostGenres",
-    value: function mostGenres() {
+    key: "render",
+    value: function render() {
       var _this$props = this.props,
+          categories = _this$props.categories,
           completed = _this$props.completed,
           dropped = _this$props.dropped,
           onHold = _this$props.onHold,
           planToWatch = _this$props.planToWatch,
           watching = _this$props.watching;
-      var list = completed.concat(dropped, onHold, planToWatch, watching);
-      var maxCount = 0;
-
-      for (var i = 0; i < list.length; i++) {
-        var currCount = list[i].genres ? list[i].genres.length : 0;
-
-        if (currCount > maxCount) {
-          maxCount = currCount;
-        }
-      }
-
-      return maxCount;
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      var _this$props2 = this.props,
-          categories = _this$props2.categories,
-          completed = _this$props2.completed,
-          dropped = _this$props2.dropped,
-          onHold = _this$props2.onHold,
-          planToWatch = _this$props2.planToWatch,
-          watching = _this$props2.watching;
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Max genres: ", this.mostGenres()), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, _selectors_defined_tags__WEBPACK_IMPORTED_MODULE_2__["CATEGORIES"][this.props.categories]), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, this.props.categories.map(function (cat) {
+        return _selectors_defined_tags__WEBPACK_IMPORTED_MODULE_2__["LIST_CATEGORIES"][cat];
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
         className: "ResultsList-ul"
       }, this.showList(this.props.categories)));
     }
@@ -526,11 +505,13 @@ var msp = function msp(state) {
   var anime = state.entities.animes;
   return {
     categories: state.ui.categories,
-    completed: anime.completed,
-    dropped: anime.dropped,
-    onHold: anime.onHold,
-    planToWatch: anime.planToWatch,
-    watching: anime.watching
+    shows: {
+      1: anime.watching,
+      2: anime.completed,
+      3: anime.onHold,
+      4: anime.dropped,
+      6: anime.planToWatch
+    }
   };
 };
 
@@ -911,7 +892,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var categoriesReducer = function categoriesReducer() {
-  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : ["planToWatch"];
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [6];
   var action = arguments.length > 1 ? arguments[1] : undefined;
   Object.freeze(state);
 
@@ -1024,11 +1005,11 @@ var selectionReducer = function selectionReducer() {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
-/* harmony import */ var _categories_reducer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./categories_reducer */ "./frontend/reducers/categories_reducer.js");
+/* harmony import */ var _categories_reducer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./categories_reducer */ "./frontend/reducers/categories_reducer.js");
 
 
 var uiReducer = Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"])({
-  categories: _categories_reducer__WEBPACK_IMPORTED_MODULE_2__["default"]
+  categories: _categories_reducer__WEBPACK_IMPORTED_MODULE_1__["default"]
 });
 /* harmony default export */ __webpack_exports__["default"] = (uiReducer);
 
@@ -1038,7 +1019,7 @@ var uiReducer = Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"])({
 /*!********************************************!*\
   !*** ./frontend/selectors/defined_tags.js ***!
   \********************************************/
-/*! exports provided: GENRES, TYPES, RATINGS, CATEGORIES */
+/*! exports provided: GENRES, TYPES, RATINGS, LIST_CATEGORIES */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1046,11 +1027,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GENRES", function() { return GENRES; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TYPES", function() { return TYPES; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RATINGS", function() { return RATINGS; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CATEGORIES", function() { return CATEGORIES; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LIST_CATEGORIES", function() { return LIST_CATEGORIES; });
 var GENRES = ["Adventure", "Cars", "Comedy", "Dementia", "Demons", "Mystery", "Drama", "Ecchi", "Fantasy", "Game", "Hentai", "Historical", "Horror", "Kids", "Magic", "Martial Arts", "Mecha", "Music", "Parody", "Samurai", "Romance", "School", "Sci Fi", "Shoujo", "Shoujo Ai", "Shounen", "Shounen Ai", "Space", "Sports", "Super Power", "Vampire", "Yaoi", "Yuri", "Harem", "Slice of Life", "Supernatural", "Military", "Police", "Psychological", "Thriller", "Seinen", "Josei", "Doujinshi", "Gender Bender"];
 var TYPES = ["TV", "OVA", "Movie", "Special", "ONA"];
 var RATINGS = ["G", "PG", "PG13", "R17", "R", "RX"];
-var CATEGORIES = {
+var LIST_CATEGORIES = {
   1: "Watching",
   2: "Completed",
   3: "On Hold",
@@ -1113,6 +1094,14 @@ var parseShow = function parseShow(raw) {
     score: tags ? tags.score : null,
     genres: tags ? tags.genres : null
   };
+};
+
+var CATEGORY_NAME = {
+  1: "watching",
+  2: "completed",
+  3: "onHold",
+  4: "dropped",
+  6: "planToWatch"
 };
 
 /***/ }),
