@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
-import categoryReducer from './category_reducer';
+import categoriesReducer from './categories_reducer';
 
 const uiReducer = combineReducers({
-  category: categoryReducer,
+  categories: categoriesReducer,
 });
 
 export default uiReducer;

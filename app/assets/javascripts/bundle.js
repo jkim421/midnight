@@ -301,6 +301,8 @@ var mdp = function mdp(dispatch) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _selectors_defined_tags__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../selectors/defined_tags */ "./frontend/selectors/defined_tags.js");
+
 
 
 var ListItem = function ListItem(_ref) {
@@ -331,12 +333,14 @@ var ListItem = function ListItem(_ref) {
   }, show.title)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "ListItem-details"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "ListItem-score"
-  }, "MAL: ", renderScore(show.score)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "ListItem-type"
   }, show.type), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "ListItem-years"
-  }, renderDate(show.start_date, show.end_date))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+  }, renderDate(show.start_date, show.end_date)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "ListItem-score"
+  }, "MAL: ", renderScore(show.score)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "ListItem-list"
+  }, _selectors_defined_tags__WEBPACK_IMPORTED_MODULE_1__["CATEGORIES"][show.watching_status])), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
     className: "ListItem-genres"
   }, renderGenres(show.genres))));
 };
@@ -404,13 +408,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 
 
@@ -430,16 +434,22 @@ function (_React$Component) {
     _this.state = {
       username: "",
       page: 1,
-      list: [],
       searching: false
     };
+    _this.showList = _this.showList.bind(_assertThisInitialized(_assertThisInitialized(_this)));
     return _this;
   }
 
   _createClass(ResultsList, [{
     key: "showList",
-    value: function showList(category) {
-      return category.map(function (show) {
+    value: function showList(categories) {
+      var _this2 = this;
+
+      var shows = [];
+      categories.forEach(function (list) {
+        return shows = shows.concat(_this2.props[list]);
+      });
+      return shows.map(function (show) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_list_item__WEBPACK_IMPORTED_MODULE_1__["default"], {
           show: show,
           key: show.id
@@ -474,15 +484,15 @@ function (_React$Component) {
     key: "render",
     value: function render() {
       var _this$props2 = this.props,
-          category = _this$props2.category,
+          categories = _this$props2.categories,
           completed = _this$props2.completed,
           dropped = _this$props2.dropped,
           onHold = _this$props2.onHold,
           planToWatch = _this$props2.planToWatch,
           watching = _this$props2.watching;
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Max genres: ", this.mostGenres()), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, _selectors_defined_tags__WEBPACK_IMPORTED_MODULE_2__["CATEGORIES"][this.props.category]), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Max genres: ", this.mostGenres()), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, _selectors_defined_tags__WEBPACK_IMPORTED_MODULE_2__["CATEGORIES"][this.props.categories]), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
         className: "ResultsList-ul"
-      }, this.showList(this.props[category])));
+      }, this.showList(this.props.categories)));
     }
   }]);
 
@@ -515,7 +525,7 @@ __webpack_require__.r(__webpack_exports__);
 var msp = function msp(state) {
   var anime = state.entities.animes;
   return {
-    category: state.ui.category,
+    categories: state.ui.categories,
     completed: anime.completed,
     dropped: anime.dropped,
     onHold: anime.onHold,
@@ -885,10 +895,10 @@ var animesReducer = function animesReducer() {
 
 /***/ }),
 
-/***/ "./frontend/reducers/category_reducer.js":
-/*!***********************************************!*\
-  !*** ./frontend/reducers/category_reducer.js ***!
-  \***********************************************/
+/***/ "./frontend/reducers/categories_reducer.js":
+/*!*************************************************!*\
+  !*** ./frontend/reducers/categories_reducer.js ***!
+  \*************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -900,8 +910,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var categoryReducer = function categoryReducer() {
-  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "planToWatch";
+var categoriesReducer = function categoriesReducer() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : ["planToWatch"];
   var action = arguments.length > 1 ? arguments[1] : undefined;
   Object.freeze(state);
 
@@ -911,7 +921,7 @@ var categoryReducer = function categoryReducer() {
   }
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (categoryReducer);
+/* harmony default export */ __webpack_exports__["default"] = (categoriesReducer);
 
 /***/ }),
 
@@ -1014,11 +1024,11 @@ var selectionReducer = function selectionReducer() {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
-/* harmony import */ var _category_reducer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./category_reducer */ "./frontend/reducers/category_reducer.js");
+/* harmony import */ var _categories_reducer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./categories_reducer */ "./frontend/reducers/categories_reducer.js");
 
 
 var uiReducer = Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"])({
-  category: _category_reducer__WEBPACK_IMPORTED_MODULE_1__["default"]
+  categories: _categories_reducer__WEBPACK_IMPORTED_MODULE_2__["default"]
 });
 /* harmony default export */ __webpack_exports__["default"] = (uiReducer);
 
@@ -1041,11 +1051,11 @@ var GENRES = ["Adventure", "Cars", "Comedy", "Dementia", "Demons", "Mystery", "D
 var TYPES = ["TV", "OVA", "Movie", "Special", "ONA"];
 var RATINGS = ["G", "PG", "PG13", "R17", "R", "RX"];
 var CATEGORIES = {
-  watching: "Watching",
-  completed: "Completed",
-  onHold: "onHold",
-  dropped: "Dropped",
-  planToWatch: "Plan to Watch"
+  1: "Watching",
+  2: "Completed",
+  3: "On Hold",
+  4: "Dropped",
+  6: "Plan to Watch"
 };
 
 /***/ }),

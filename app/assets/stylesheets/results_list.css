@@ -86,7 +86,11 @@
     flex-wrap: wrap;
   }
 
-  .ListItem-score, .ListItem-type, .ListItem-years, .ListItem-genre {
+  .ListItem-score,
+  .ListItem-type,
+  .ListItem-years,
+  .ListItem-list,
+  .ListItem-genre {
     font-size: 1.4em;
   }
 

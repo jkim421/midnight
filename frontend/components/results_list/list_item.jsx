@@ -1,4 +1,5 @@
 import React from 'react';
+import { CATEGORIES } from '../../selectors/defined_tags'
 
 const ListItem = ({ show }) => {
   return (
@@ -24,14 +25,17 @@ const ListItem = ({ show }) => {
           </a>
         </div>
         <div className="ListItem-details">
-          <div className="ListItem-score">
-            MAL: { renderScore(show.score) }
-          </div>
           <div className="ListItem-type">
             { show.type }
           </div>
           <div className="ListItem-years">
             { renderDate(show.start_date, show.end_date) }
+          </div>
+          <div className="ListItem-score">
+            MAL: { renderScore(show.score) }
+          </div>
+          <div className="ListItem-list">
+            { CATEGORIES[show.watching_status] }
           </div>
         </div>
         <ul className="ListItem-genres">

@@ -63,9 +63,9 @@ export const RATINGS = [
 ];
 
 export const CATEGORIES = {
-  watching: "Watching",
-  completed: "Completed",
-  onHold:"onHold",
-  dropped: "Dropped",
-  planToWatch: "Plan to Watch",
+  1: "Watching",
+  2: "Completed",
+  3: "On Hold",
+  4: "Dropped",
+  6: "Plan to Watch",
 };

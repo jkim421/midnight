@@ -8,14 +8,16 @@ class ResultsList extends React.Component {
     this.state = {
       username: "",
       page: 1,
-      list: [],
       searching: false,
     };
+    this.showList = this.showList.bind(this);
   }
 
-  showList(category) {
+  showList(categories) {
+    let shows = [];
+    categories.forEach(list => shows = shows.concat(this.props[list]));
     return (
-      category.map( show => {
+      shows.map(show => {
         return <ListItem show={ show } key={ show.id }/>
       })
     )
@@ -48,7 +50,7 @@ class ResultsList extends React.Component {
 
   render() {
     const {
-      category,
+      categories,
       completed,
       dropped,
       onHold,
@@ -62,10 +64,10 @@ class ResultsList extends React.Component {
           Max genres: { this.mostGenres() }
         </div>
         <div>
-          { CATEGORIES[this.props.category] }
+          { CATEGORIES[this.props.categories] }
         </div>
         <ul className="ResultsList-ul">
-          { this.showList(this.props[category]) }
+          { this.showList(this.props.categories) }
         </ul>
       </>
     )
