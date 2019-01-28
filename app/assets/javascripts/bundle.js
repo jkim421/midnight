@@ -339,7 +339,7 @@ var ListItem = function ListItem(_ref) {
   }, renderDate(show.start_date, show.end_date)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "ListItem-score"
   }, "MAL: ", renderScore(show.score)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "ListItem-list"
+    className: "ListItem-userlist"
   }, _selectors_defined_tags__WEBPACK_IMPORTED_MODULE_1__["LIST_CATEGORIES"][show.watching_status])), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
     className: "ListItem-genres"
   }, renderGenres(show.genres))));

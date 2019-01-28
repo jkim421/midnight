@@ -71,10 +71,11 @@
 
   .ListItem-details {
     display: flex;
+    align-items: center;
   }
 
   .ListItem-title-container, .ListItem-details {
-    margin-bottom: 0.8em;
+    margin-bottom: 0.4em;
   }
 
   .ListItem-details div {
@@ -88,14 +89,16 @@
 
   .ListItem-score,
   .ListItem-type,
-  .ListItem-years,
-  .ListItem-list,
-  .ListItem-genre {
+  .ListItem-years {
     font-size: 1.4em;
   }
 
+  .ListItem-userlist {
+    font-size: 1em;
+  }
+
   .ListItem-genre {
-    font-size: 1.2em;
+    font-size: 1em;
     padding: 0.1em 0;
   }
 

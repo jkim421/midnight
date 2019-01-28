@@ -34,7 +34,7 @@ const ListItem = ({ show }) => {
           <div className="ListItem-score">
             MAL: { renderScore(show.score) }
           </div>
-          <div className="ListItem-list">
+          <div className="ListItem-userlist">
             { LIST_CATEGORIES[show.watching_status] }
           </div>
         </div>
