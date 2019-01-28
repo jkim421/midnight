@@ -5,19 +5,30 @@ export const REMOVE_GENRE = "REMOVE_GENRE";
 export const ADD_YEAR = "ADD_YEAR";
 export const REMOVE_YEAR = "REMOVE_YEAR";
 
-
-export const addCategory = ({ animeId, category }) => {
+export const addCategory = (categoryId) => {
   return {
-    type: ADD_SELECTED,
-    animeId,
-    category,
+    type: ADD_CATEGORY,
+    categoryId,
   };
 };
 
-export const removeCategory = ({ animeId, category }) => {
+export const removeCategory = (categoryId) => {
   return {
-    type: REMOVE_SELECTED,
-    animeId,
-    category,
+    type: REMOVE_CATEGORY,
+    categoryId,
+  };
+};
+
+export const addGenre = (genreId) => {
+  return {
+    type: ADD_GENRE,
+    genreId,
+  };
+};
+
+export const removeGenre = (genreId) => {
+  return {
+    type: REMOVE_GENRE,
+    genreId,
   };
 };

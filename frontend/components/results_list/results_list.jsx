@@ -10,7 +10,7 @@ class ResultsList extends React.Component {
       page: 1,
       searching: false,
     };
-    
+
     this.lists = LIST_CATEGORIES;
     this.showList = this.showList.bind(this);
   }
@@ -27,15 +27,6 @@ class ResultsList extends React.Component {
   }
 
   render() {
-    const {
-      categories,
-      completed,
-      dropped,
-      onHold,
-      planToWatch,
-      watching
-    } = this.props;
-
     return (
       <>
         <div>

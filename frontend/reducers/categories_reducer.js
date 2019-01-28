@@ -1,5 +1,7 @@
 import merge from 'lodash/merge';
-import { RECEIVE_ANIME } from '../actions/user_actions';
+import {
+  ADD_CATEGORY,
+  REMOVE_CATEGORY } from '../actions/filter_actions';
 
 const categoriesReducer = (state = [6], action) => {
   Object.freeze(state);
