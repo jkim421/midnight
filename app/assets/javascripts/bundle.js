@@ -348,7 +348,7 @@ var ListItem = function ListItem(_ref) {
 var renderDate = function renderDate(startStr, endStr) {
   var start = startStr ? startStr.slice(0, 4) : "?";
   var end = endStr ? endStr.slice(0, 4) : "?";
-  var dates = start === end ? start : start + " - " + end;
+  var dates = start === end ? start : start + "-" + end;
   return dates;
 };
 

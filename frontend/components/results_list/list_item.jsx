@@ -49,7 +49,7 @@ const ListItem = ({ show }) => {
 const renderDate = (startStr, endStr) => {
   const start = startStr ? startStr.slice(0, 4) : "?";
   const end = endStr ? endStr.slice(0, 4) : "?";
-  const dates = start === end ? start : (start + " - " + end);
+  const dates = start === end ? start : (start + "-" + end);
 
   return dates;
 };
