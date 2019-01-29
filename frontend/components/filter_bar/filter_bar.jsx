@@ -17,9 +17,13 @@ class FilterBar extends React.Component {
     return this.props.categories.includes(parseInt(num));
   }
 
-  handleCheck(e) {
+  handleCheck(id) {
     debugger
-    return true;
+    if (this.props.categories.includes(id)) {
+      this.props.removeCategory(id);
+    } else {
+      this.props.addCategory(id);
+    }
   }
 
   renderListCheckboxes() {

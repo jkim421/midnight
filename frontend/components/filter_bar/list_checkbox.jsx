@@ -7,13 +7,13 @@ const ListCheckbox = ({ listId, listName, checkedBox, handleCheck }) => {
       <input
         className="FilterBar-list-box"
         type="checkbox"
-        id="ptw-checkbox-6"
+        id={`checkbox-${listId}`}
         defaultChecked={ checkedBox(listId) }
         onChange= { () => handleCheck(listId) }
       />
       <label
         className="FilterBar-list-label"
-        htmlFor="ptw-checkbox-6"
+        htmlFor={`checkbox-${listId}`}
       >
         { listName }
       </label>
