@@ -38,7 +38,7 @@
   width: 2%;
 }
 
-.FilterBar-option-div, .FilterBar-option-six {
+.FilterBar-option-div {
   width: 15%;
   font-size: 1em;
   padding: 0.1em 0;
@@ -48,10 +48,6 @@
   background-color: white;
   color: #2e51a2;
   transition: background-color 0.2s linear, color 0.2s linear;
-}
-
-.FilterBar-option-six {
-  width: 13%;
 }
 
 .FilterBar-option-div:hover {

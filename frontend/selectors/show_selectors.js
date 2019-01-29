@@ -64,7 +64,7 @@ const parseShow = (raw) => {
     id: raw.mal_id,
     title: raw.title,
     type: raw.type,
-    rating: raw.rating,
+    rating: parseRating(raw.rating),
     start_date: raw.start_date,
     end_date: raw.end_date,
     watching_status: raw.watching_status,
@@ -73,4 +73,12 @@ const parseShow = (raw) => {
     score: tags ? tags.score : null,
     genres: tags ? tags.genres : null,
   };
+};
+
+const parseRating = (rating) => {
+  if (rating === "R" || rating === "R+") {
+    return "R";
+  } else {
+    return rating;
+  }
 };

@@ -23,7 +23,8 @@
   }
 
   .ListItem-img {
-    height: 130px;
+    max-height: 130px;
+    max-width: 130px;
     visibility: visible;
     transform: rotateY(0deg);
     transition: transform 0.3s linear, visibility 0s linear;

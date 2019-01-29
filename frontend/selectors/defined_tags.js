@@ -59,6 +59,14 @@ export const RATINGS = [
   "PG",
   "PG-13",
   "R",
+  "Rx",
+];
+
+export const MAL_RATINGS = [
+  "G",
+  "PG",
+  "PG-13",
+  "R",
   "R+",
   "Rx",
 ];
