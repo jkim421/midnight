@@ -9,7 +9,7 @@ class CategoryCheckbox extends React.Component {
 
   checkedBox(id) {
     if (this.props.categories.includes(parseInt(id))) {
-      return "FilterBar-category-selected";
+      return "FilterBar-option-selected";
     } else {
       return "";
     }
@@ -27,7 +27,7 @@ class CategoryCheckbox extends React.Component {
     const { categoryId } = this.props;
     return (
       <div
-        className={`FilterBar-categories-div ${this.checkedBox(categoryId)}`}
+        className={`FilterBar-option-div ${this.checkedBox(categoryId)}`}
         onClick= { () => this.handleCategory(categoryId) }
       >
         { this.props.categoryName }

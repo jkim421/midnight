@@ -29,7 +29,7 @@ class FilterBar extends React.Component {
     return TYPES.map( type => (
         <TypesCheckboxContainer
           key={ type }
-          categoryName={ type }/>
+          typeName={ type }/>
       )
     )
   }
@@ -45,7 +45,7 @@ class FilterBar extends React.Component {
             <div className="FilterBar-title">
               List
             </div>
-            <div className="FilterBar-categories-options">
+            <div className="FilterBar-options-row">
               { this.renderCategories() }
             </div>
           </div>
@@ -53,7 +53,8 @@ class FilterBar extends React.Component {
             <div className="FilterBar-title">
               Type
             </div>
-            <div className="FilterBar-type-options">
+            <div className="FilterBar-options-row">
+              { this.renderTypes() }
             </div>
           </div>
         </div>

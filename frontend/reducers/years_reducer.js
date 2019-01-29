@@ -8,9 +8,9 @@ import {
 const yearsReducer = (state = [6], action) => {
   Object.freeze(state);
   switch(action.type) {
-    case ADD_YEAR:
+    case ADD_HI_YEAR:
       return state.concat(action.categoryId);
-    case REMOVE_YEAR:
+    case REMOVE_HI_YEAR:
       return state.filter(id => id !== action.categoryId);
     default:
       return state;

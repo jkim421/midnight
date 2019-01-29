@@ -20,13 +20,13 @@
   text-align: left;
 }
 
-.FilterBar-categories-options {
+.FilterBar-options-row {
   display: flex;
   justify-content: space-around;
   width: 80%;
 }
 
-.FilterBar-categories-div {
+.FilterBar-option-div {
   width: 15%;
   font-size: 1em;
   padding: 0.1em 0;
@@ -38,11 +38,11 @@
   transition: background-color 0.2s linear, color 0.2s linear;
 }
 
-.FilterBar-categories-div:hover {
+.FilterBar-option-div:hover {
   cursor: pointer;
 }
 
-.FilterBar-category-selected {
+.FilterBar-option-selected {
   background-color: #2e51a2;
   color: white;
 }

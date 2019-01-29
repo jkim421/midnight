@@ -4,12 +4,12 @@ class TypesCheckbox extends React.Component {
   constructor(props) {
     super(props);
     this.checkedBox = this.checkedBox.bind(this);
-    this.handleType = this.handleCategory.bind(this);
+    this.handleType = this.handleType.bind(this);
   }
 
   checkedBox(type) {
     if (this.props.types.includes(type)) {
-      return "FilterBar-category-selected";
+      return "FilterBar-option-selected";
     } else {
       return "";
     }
@@ -17,21 +17,20 @@ class TypesCheckbox extends React.Component {
 
   handleType(type) {
     if (this.props.types.includes(type)) {
-      this.props.removeCategory(type);
+      this.props.removeType(type);
     } else {
-      this.props.addCategory(type);
+      this.props.addType(type);
     }
   }
 
   render() {
-    const { categoryId } = this.props;
+    const { typeName } = this.props;
     return (
       <div
-        className={`FilterBar-categories-div ${this.checkedBox(categoryId)}`}
-        type="checkbox"
-        onClick= { () => this.handleCategory(categoryId) }
+        className={`FilterBar-option-div ${this.checkedBox(typeName)}`}
+        onClick= { () => this.handleType(typeName) }
       >
-        { this.props.categoryName }
+        { this.props.typeName }
       </div>
     )
   }

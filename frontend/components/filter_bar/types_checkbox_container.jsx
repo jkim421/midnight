@@ -14,7 +14,8 @@ const msp = state => {
 
 const mdp = dispatch => {
   return {
-    
+    addType: (type) => dispatch(addType(type)),
+    removeType: (type) => dispatch(removeType(type)),
   };
 };
 
