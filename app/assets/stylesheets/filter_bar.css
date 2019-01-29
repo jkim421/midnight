@@ -21,27 +21,24 @@
   text-align: left;
 }
 
-.FilterBar-options-row, .FilterBar-slider-row {
+.FilterBar-options-row {
   display: flex;
   width: 80%;
   margin-bottom: 0.6em;
+  justify-content: space-between;
 }
 
 .FilterBar-slider-row {
   display: block;
   width: 76%;
-  /* margin-left: 5px; */
-}
-
-.FilterBar-options-row {
-  justify-content: space-between;
+  margin-bottom: 0.6em;
 }
 
 .FilterBar-spacer {
   width: 2%;
 }
 
-.FilterBar-option-div {
+.FilterBar-option-div, .FilterBar-option-six {
   width: 15%;
   font-size: 1em;
   padding: 0.1em 0;
@@ -51,6 +48,10 @@
   background-color: white;
   color: #2e51a2;
   transition: background-color 0.2s linear, color 0.2s linear;
+}
+
+.FilterBar-option-six {
+  width: 13%;
 }
 
 .FilterBar-option-div:hover {

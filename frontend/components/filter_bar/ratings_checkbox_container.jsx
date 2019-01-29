@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import RatingsCheckbox from './ratings_checkbox';
+import FiltersCheckbox from './filters_checkbox';
 import {
   addRating,
   removeRating }
@@ -8,15 +8,15 @@ import {
 
 const msp = state => {
   return {
-    ratings: state.filters.ratings,
+    options: state.filters.ratings,
   };
 };
 
 const mdp = dispatch => {
   return {
-    addRating: (rating) => dispatch(addRating(rating)),
-    removeRating: (rating) => dispatch(removeRating(rating)),
+    addSelection: (rating) => dispatch(addRating(rating)),
+    removeSelection: (rating) => dispatch(removeRating(rating)),
   };
 };
 
-export default connect(msp, mdp)(RatingsCheckbox);
+export default connect(msp, mdp)(FiltersCheckbox);

@@ -32,7 +32,7 @@ class FilterBar extends React.Component {
     return TYPES.map( type => (
         <TypesCheckboxContainer
           key={ type }
-          typeName={ type }/>
+          optionName={ type }/>
       )
     )
   }
@@ -40,7 +40,7 @@ class FilterBar extends React.Component {
     return RATINGS.map( rating => (
         <RatingsCheckboxContainer
           key={ rating }
-          ratingName={ rating }/>
+          optionName={ rating }/>
       )
     )
   }

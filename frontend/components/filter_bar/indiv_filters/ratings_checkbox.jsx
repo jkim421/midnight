@@ -28,7 +28,11 @@ class RatingsCheckbox extends React.Component {
     const { ratingName } = this.props;
     return (
       <div
-        className={`FilterBar-option-div ${this.checkedBox(ratingName)}`}
+        className={`
+          FilterBar-option-div
+          FilterBar-option-six
+          ${this.checkedBox(ratingName)}`
+        }
         onClick= { () => this.handleRating(ratingName) }
       >
         { ratingName }

@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import TypesCheckbox from './types_checkbox';
+import FiltersCheckbox from './filters_checkbox';
 import {
   addType,
   removeType }
@@ -8,15 +8,15 @@ import {
 
 const msp = state => {
   return {
-    types: state.filters.types,
+    options: state.filters.types,
   };
 };
 
 const mdp = dispatch => {
   return {
-    addType: (type) => dispatch(addType(type)),
-    removeType: (type) => dispatch(removeType(type)),
+    addSelection: (type) => dispatch(addType(type)),
+    removeSelection: (type) => dispatch(removeType(type)),
   };
 };
 
-export default connect(msp, mdp)(TypesCheckbox);
+export default connect(msp, mdp)(FiltersCheckbox);
