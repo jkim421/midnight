@@ -1,7 +1,7 @@
 import { parseTags, parseYear } from './tag_selector';
 
 export const filterAnime = (animes, filters) => {
-  const { categories, types, scores } = filters;
+  const { categories, types, ratings, scores } = filters;
   let filtered = [];
 
   for (let i = 0; i < categories.length; i++) {
@@ -9,6 +9,7 @@ export const filterAnime = (animes, filters) => {
   }
 
   filtered = filterTypes(filtered, types);
+  filtered = filterRatings(filtered, ratings);
   filtered = filterScores(filtered, scores);
 
   return filtered;
@@ -18,8 +19,8 @@ const filterTypes = (animes, types) => {
   return animes.filter(show => types.includes(show.type));
 };
 
-const filterRatings = (animes, types) => {
-  return animes.filter(show => types.includes(show.type));
+const filterRatings = (animes, ratings) => {
+  return animes.filter(show => ratings.includes(show.rating));
 };
 
 const filterScores = (animes, scores) => {

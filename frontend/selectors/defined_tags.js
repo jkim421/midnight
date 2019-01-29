@@ -57,10 +57,10 @@ export const TYPES = [
 export const RATINGS = [
   "G",
   "PG",
-  "PG13",
-  "R17",
+  "PG-13",
   "R",
-  "RX",
+  "R+",
+  "Rx",
 ];
 
 export const LIST_CATEGORIES = {
