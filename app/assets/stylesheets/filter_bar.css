@@ -1,3 +1,33 @@
-.FilterBar-category-label {
-  margin-right: 1em;
+.FilterBar-filter {
+
+}
+
+.FilterBar-categories-title {
+
+}
+
+.FilterBar-categories-options {
+  display: flex;
+  justify-content: space-around;
+}
+
+.FilterBar-categories-div {
+  width: 15%;
+  font-size: 1em;
+  padding: 0.1em 0;
+  border: 1px solid black;
+  border-radius: 4px;
+  text-align: center;
+  background-color: white;
+  color: #2e51a2;
+  transition: background-color 0.2s linear, color 0.2s linear;
+}
+
+.FilterBar-categories-div:hover {
+  cursor: pointer;
+}
+
+.FilterBar-category-selected {
+  background-color: #2e51a2;
+  color: white;
 }

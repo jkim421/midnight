@@ -13,10 +13,14 @@ class FilterBar extends React.Component {
   }
 
   checkedBox(num) {
-    return this.props.categories.includes(parseInt(num));
+    if (this.props.categories.includes(parseInt(num))) {
+      return "FilterBar-category-selected";
+    } else {
+      return "";
+    }
   }
 
-  handleCheck(id) {
+  handleCategory(id) {
     if (this.props.categories.includes(id)) {
       this.props.removeCategory(id);
     } else {
@@ -32,8 +36,8 @@ class FilterBar extends React.Component {
           key={ categoryId }
           categoryId={ categoryId }
           categoryName={ LIST_CATEGORIES[categoryId] }
-          checkedBox={ this.checkedBox }
-          handleCheck={ () => this.handleCheck(categoryId) }/>
+          selected={ this.checkedBox(categoryId) }
+          handleCategory={ () => this.handleCategory(categoryId) }/>
       )
     )
   }
@@ -41,8 +45,18 @@ class FilterBar extends React.Component {
   render() {
     return (
       <div className="FilterBar-container">
-        <div className="FilterBar-categories">
-          { this.renderCategoryCheckboxes() }
+        <div className="FilterBar-filter">
+          <div className="FilterBar-categories-title">
+            List Type
+          </div>
+          <div className="FilterBar-categories-options">
+            { this.renderCategoryCheckboxes() }
+          </div>
+        </div>
+        <div className="FilterBar-filter">
+          <div className="FilterBar-score-title">
+            Score
+          </div>
         </div>
       </div>
     )

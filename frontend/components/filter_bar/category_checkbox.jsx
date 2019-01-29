@@ -1,21 +1,15 @@
 import React from 'react';
 
-const CategoryCheckbox = ({ categoryId, categoryName, checkedBox, handleCheck }) => {
+const CategoryCheckbox = ({ categoryId, categoryName, selected, handleCategory }) => {
   return (
     <>
-      <input
-        className="FilterBar-category-box"
+      <div
+        className={`FilterBar-categories-div ${selected}`}
         type="checkbox"
-        id={`checkbox-${categoryId}`}
-        defaultChecked={ checkedBox(categoryId) }
-        onChange= { () => handleCheck(categoryId) }
-      />
-      <label
-        className="FilterBar-category-label"
-        htmlFor={`checkbox-${categoryId}`}
+        onClick= { () => handleCategory(categoryId) }
       >
         { categoryName }
-      </label>
+      </div>
     </>
   )
 };
