@@ -1,6 +1,7 @@
 import React from 'react';
 import ListItem from './list_item';
 import { LIST_CATEGORIES } from '../../selectors/defined_tags';
+import FilterBarContainer from '../filter_bar/filter_bar_container';
 
 class ResultsList extends React.Component {
   constructor(props) {
@@ -10,8 +11,7 @@ class ResultsList extends React.Component {
       page: 1,
       searching: false,
     };
-    
-    this.lists = LIST_CATEGORIES;
+
     this.showList = this.showList.bind(this);
   }
 
