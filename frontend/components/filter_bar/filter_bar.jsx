@@ -1,7 +1,9 @@
 import React from 'react';
-import { LIST_CATEGORIES } from '../../selectors/defined_tags';
-import CategoryCheckbox from './category_checkbox';
+import {
+  LIST_CATEGORIES,
+  TYPES } from '../../selectors/defined_tags';
 import CategoryCheckboxContainer from './category_checkbox_container';
+import TypesCheckboxContainer from './types_checkbox_container';
 
 class FilterBar extends React.Component {
   constructor(props) {
@@ -9,24 +11,6 @@ class FilterBar extends React.Component {
     this.state = {
 
     };
-    this.checkedBox = this.checkedBox.bind(this);
-    this.renderCategories = this.renderCategories.bind(this);
-  }
-
-  checkedBox(num) {
-    if (this.props.categories.includes(parseInt(num))) {
-      return "FilterBar-category-selected";
-    } else {
-      return "";
-    }
-  }
-
-  handleCategory(id) {
-    if (this.props.categories.includes(id)) {
-      this.props.removeCategory(id);
-    } else {
-      this.props.addCategory(id);
-    }
   }
 
   renderCategories() {
@@ -36,21 +20,16 @@ class FilterBar extends React.Component {
         <CategoryCheckboxContainer
           key={ categoryId }
           categoryId={ categoryId }
-          categoryName={ LIST_CATEGORIES[categoryId] }
-          selected={ this.checkedBox(categoryId) }
-          handleCategory={ () => this.handleCategory(categoryId) }/>
+          categoryName={ LIST_CATEGORIES[categoryId] }/>
       )
     )
   }
 
   renderTypes() {
-    return listIds.map( categoryId => (
-        <CategoryCheckboxContainer
-          key={ categoryId }
-          categoryId={ categoryId }
-          categoryName={ LIST_CATEGORIES[categoryId] }
-          selected={ this.checkedBox(categoryId) }
-          handleCategory={ () => this.handleCategory(categoryId) }/>
+    return TYPES.map( type => (
+        <TypesCheckboxContainer
+          key={ type }
+          categoryName={ type }/>
       )
     )
   }

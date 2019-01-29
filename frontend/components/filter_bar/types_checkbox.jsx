@@ -1,25 +1,25 @@
 import React from 'react';
 
-class CategoryCheckbox extends React.Component {
+class TypesCheckbox extends React.Component {
   constructor(props) {
     super(props);
     this.checkedBox = this.checkedBox.bind(this);
-    this.handleCategory = this.handleCategory.bind(this);
+    this.handleType = this.handleCategory.bind(this);
   }
 
-  checkedBox(id) {
-    if (this.props.categories.includes(parseInt(id))) {
+  checkedBox(type) {
+    if (this.props.types.includes(type)) {
       return "FilterBar-category-selected";
     } else {
       return "";
     }
   }
 
-  handleCategory(id) {
-    if (this.props.categories.includes(id)) {
-      this.props.removeCategory(id);
+  handleType(type) {
+    if (this.props.types.includes(type)) {
+      this.props.removeCategory(type);
     } else {
-      this.props.addCategory(id);
+      this.props.addCategory(type);
     }
   }
 
@@ -28,6 +28,7 @@ class CategoryCheckbox extends React.Component {
     return (
       <div
         className={`FilterBar-categories-div ${this.checkedBox(categoryId)}`}
+        type="checkbox"
         onClick= { () => this.handleCategory(categoryId) }
       >
         { this.props.categoryName }
@@ -36,4 +37,4 @@ class CategoryCheckbox extends React.Component {
   }
 };
 
-export default CategoryCheckbox;
+export default TypesCheckbox;

@@ -7,7 +7,6 @@ import {
     from '../../actions/filter_actions';
 
 const msp = state => {
-  debugger
   return {
     categories: state.filters.categories,
   };
