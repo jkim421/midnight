@@ -4,6 +4,7 @@ import {
   TYPES } from '../../selectors/defined_tags';
 import CategoryCheckboxContainer from './category_checkbox_container';
 import TypesCheckboxContainer from './types_checkbox_container';
+import ScoresSliderContainer from './scores_slider_container';
 
 class FilterBar extends React.Component {
   constructor(props) {
@@ -57,8 +58,12 @@ class FilterBar extends React.Component {
               { this.renderTypes() }
             </div>
           </div>
+          <div>
+            <div className="FilterBar-slider-row" id="aweb">
+            </div>
+          </div>
         </div>
-        </div>
+      </div>
     )
   }
 }

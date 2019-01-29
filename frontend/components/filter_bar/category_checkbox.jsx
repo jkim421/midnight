@@ -16,7 +16,9 @@ class CategoryCheckbox extends React.Component {
   }
 
   handleCategory(id) {
-    if (this.props.categories.includes(id)) {
+    const categories = this.props.categories;
+    debugger
+    if (categories.includes(id)) {
       this.props.removeCategory(id);
     } else {
       this.props.addCategory(id);

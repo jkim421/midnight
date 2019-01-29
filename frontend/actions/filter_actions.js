@@ -12,10 +12,8 @@ export const REMOVE_LOW_YEAR = "REMOVE_LOW_YEAR";
 export const ADD_RATING = "ADD_RATING";
 export const REMOVE_RATING = "REMOVE_RATING";
 
-export const ADD_LOW_SCORE = "ADD_LOW_SCORE";
-export const REMOVE_LOW_SCORE = "REMOVE_LOW_SCORE";
-export const ADD_HI_SCORE = "ADD_HI_SCORE";
-export const REMOVE_HI_SCORE = "REMOVE_HI_SCORE";
+export const UPDATE_LOW_SCORE = "UPDATE_LOW_SCORE";
+export const UPDATE_HI_SCORE = "UPDATE_HI_SCORE";
 
 export const ADD_GENRE = "ADD_GENRE";
 export const REMOVE_GENRE = "REMOVE_GENRE";
@@ -90,30 +88,16 @@ export const removeRating = (rating) => {
   };
 };
 
-export const addHiScore = (score) => {
+export const updateLowScore = (score) => {
   return {
-    type: ADD_HI_SCORE,
+    type: UPDATE_LOW_SCORE,
     score,
   };
 };
 
-export const removeHiScore = (score) => {
+export const updateHiScore = (score) => {
   return {
-    type: REMOVE_HI_SCORE,
-    score,
-  };
-};
-
-export const addLowScore = (score) => {
-  return {
-    type: ADD_LOW_SCORE,
-    score,
-  };
-};
-
-export const removeLowScore = (score) => {
-  return {
-    type: REMOVE_LOW_SCORE,
+    type: UPDATE_HI_SCORE,
     score,
   };
 };

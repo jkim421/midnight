@@ -16,7 +16,8 @@ class TypesCheckbox extends React.Component {
   }
 
   handleType(type) {
-    if (this.props.types.includes(type)) {
+    const types = this.props.types;
+    if (types.includes(type)) {
       this.props.removeType(type);
     } else {
       this.props.addType(type);
