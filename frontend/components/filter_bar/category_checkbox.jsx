@@ -17,7 +17,7 @@ class CategoryCheckbox extends React.Component {
 
   handleCategory(id) {
     const categories = this.props.categories;
-    debugger
+
     if (categories.includes(id)) {
       this.props.removeCategory(id);
     } else {
@@ -26,13 +26,13 @@ class CategoryCheckbox extends React.Component {
   }
 
   render() {
-    const { categoryId } = this.props;
+    const { categoryId, categoryName } = this.props;
     return (
       <div
         className={`FilterBar-option-div ${this.checkedBox(categoryId)}`}
         onClick= { () => this.handleCategory(categoryId) }
       >
-        { this.props.categoryName }
+        { categoryName }
       </div>
     )
   }

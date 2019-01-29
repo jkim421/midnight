@@ -6,7 +6,6 @@ import {
 
 const typesReducer = (state = TYPES, action) => {
   Object.freeze(state);
-  
   switch(action.type) {
     case ADD_TYPE:
       return state.concat(action.showType);

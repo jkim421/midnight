@@ -18,13 +18,14 @@ const filterTypes = (animes, types) => {
   return animes.filter(show => types.includes(show.type));
 };
 
+const filterRatings = (animes, types) => {
+  return animes.filter(show => types.includes(show.type));
+};
+
 const filterScores = (animes, scores) => {
   const low = parseFloat(scores[0]);
   const high = parseFloat(scores[1]);
-  debugger
-  return (
-    animes.filter(show => show.score >= low && show.score <= high)
-  );
+  return animes.filter(show => show.score >= low && show.score <= high);
 };
 
 export const sortAnime = (anime) => {

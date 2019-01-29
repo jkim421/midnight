@@ -31,7 +31,7 @@ class TypesCheckbox extends React.Component {
         className={`FilterBar-option-div ${this.checkedBox(typeName)}`}
         onClick= { () => this.handleType(typeName) }
       >
-        { this.props.typeName }
+        { typeName }
       </div>
     )
   }

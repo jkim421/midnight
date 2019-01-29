@@ -1,9 +1,11 @@
 import React from 'react';
 import {
   LIST_CATEGORIES,
-  TYPES } from '../../selectors/defined_tags';
+  TYPES,
+  RATINGS } from '../../selectors/defined_tags';
 import CategoryCheckboxContainer from './category_checkbox_container';
 import TypesCheckboxContainer from './types_checkbox_container';
+import RatingsCheckboxContainer from './ratings_checkbox_container';
 import ScoresSliderContainer from './scores_slider_container';
 
 class FilterBar extends React.Component {
@@ -34,6 +36,14 @@ class FilterBar extends React.Component {
       )
     )
   }
+  renderRatings() {
+    return RATINGS.map( rating => (
+        <RatingsCheckboxContainer
+          key={ rating }
+          ratingName={ rating }/>
+      )
+    )
+  }
 
   render() {
     return (
@@ -56,6 +66,14 @@ class FilterBar extends React.Component {
             </div>
             <div className="FilterBar-options-row">
               { this.renderTypes() }
+            </div>
+          </div>
+          <div className="FilterBar-filter">
+            <div className="FilterBar-title">
+              Rating
+            </div>
+            <div className="FilterBar-options-row">
+              { this.renderRatings() }
             </div>
           </div>
           <div className="FilterBar-filter">
