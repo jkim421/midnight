@@ -62,7 +62,7 @@ class FilterBar extends React.Component {
             <div className="FilterBar-title">
               Score
             </div>
-            <div className="FilterBar-slider" id="aweb">
+            <div className="FilterBar-slider-row">
               <ScoresSliderContainer />
             </div>
           </div>

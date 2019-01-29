@@ -85,7 +85,7 @@ html:not([dir="rtl"]) .noUi-horizontal .noUi-handle {
   left: auto;
 }
 html:not([dir="rtl"]) .noUi-horizontal .noUi-handle-lower {
-  right: -14px;
+  right: -22px;
 }
 html:not([dir="rtl"]) .noUi-horizontal .noUi-handle-upper {
   right: -6px;
@@ -220,7 +220,7 @@ html:not([dir="rtl"]) .noUi-horizontal .noUi-handle-upper {
   /* border: 1px solid #D9D9D9; */
   /* border-radius: 3px; */
   /* background: #fff; */
-  font-size: 1em;
+  font-size: 0.9em;
   background: none;
   border: none;
   color: #000;
