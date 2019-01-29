@@ -22,7 +22,6 @@ class ScoresSlider extends React.Component {
       this.lowerHandle.attributes[7].textContent,
       this.upperHandle.attributes[7].textContent
     ];
-
     this.props.updateScores(scores);
   }
 

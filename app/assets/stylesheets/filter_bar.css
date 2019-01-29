@@ -29,12 +29,16 @@
 
 .FilterBar-slider-row {
   display: block;
-  width: 70%;
-  margin-left: 5px;
+  width: 76%;
+  /* margin-left: 5px; */
 }
 
 .FilterBar-options-row {
   justify-content: space-between;
+}
+
+.FilterBar-spacer {
+  width: 2%;
 }
 
 .FilterBar-option-div {
