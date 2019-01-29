@@ -8,6 +8,7 @@ const ListItem = ({ show }) => {
         <a className="ListItem-img-link" href={ show.url } target="_blank">
           <div className="ListItem-img-mal">
             <div className="ListItem-img-text">
+              Open <br/>
               MAL
             </div>
           </div>

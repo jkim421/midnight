@@ -18,35 +18,47 @@
     position: relative;
   }
 
-  .ListItem-img {
-    height: 130px;
-  }
-
   .ListItem-img-link:visited {
     color: black;
   }
 
-  .ListItem-img-link:hover .ListItem-img-mal {
-    visibility: visible;
-    opacity: 1;
+  .ListItem-img {
+    height: 130px;
+    transform: rotateY(0deg);
+    transition: transform 0.3s linear, visibility 0s linear;
+    transition-delay: 0s, 0.15s;
+    transition-property: transform, visibility;
+  }
+
+  .ListItem-img-link:hover .ListItem-img {
+    transform: rotateY(180deg);
+    visibility: hidden;
   }
 
   .ListItem-img-mal {
     position: absolute;
     height: 100%;
     width: 100%;
-    background-color: rgba(255,255,255,0.5);
+    background-color: #2e51a2;
+    transform: rotateY(-180deg);
     visibility: hidden;
-    opacity: 0;
-    transition: opacity 0.2s, visibility 0.2s;
+    transition: transform 0.3s linear, visibility 0s linear;
+    transition-delay: 0s, 0.15s;
+    transition-property: transform, visibility;
+  }
+
+  .ListItem-img-link:hover .ListItem-img-mal {
+    transform: rotateY(0deg);
+    visibility: visible;
   }
 
   .ListItem-img-text {
     position: absolute;
     width: 100%;
-    top: 40%;
+    top: 35%;
     font-size: 1.2em;
-    color: black;
+    font-weight: 700;
+    color: white;
     text-align: center;
   }
 

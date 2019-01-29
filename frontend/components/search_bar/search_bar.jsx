@@ -5,13 +5,17 @@ class SearchBar extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      username: "",
+      username: "wisetail",
       page: 1,
       list: [],
       searching: false,
     };
     this.updateSearch = this.updateSearch.bind(this);
     this.sendSearch = this.sendSearch.bind(this);
+  }
+
+  componentDidMount() {
+    this.sendSearch();
   }
 
   resetSearch() {
