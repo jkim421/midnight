@@ -1,14 +1,29 @@
-.FilterBar-filter {
-
+.FilterBar-container {
+  display: flex;
 }
 
-.FilterBar-categories-title {
+.FilterBar-sizer {
+  width: 5%;
+}
 
+.FilterBar-filter-items {
+  width: 95%;
+}
+
+.FilterBar-filter {
+  display: flex;
+}
+
+.FilterBar-title {
+  width: 10%;
+  font-size: 1.2em;
+  text-align: left;
 }
 
 .FilterBar-categories-options {
   display: flex;
   justify-content: space-around;
+  width: 80%;
 }
 
 .FilterBar-categories-div {

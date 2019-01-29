@@ -1,6 +1,7 @@
 import React from 'react';
 import { LIST_CATEGORIES } from '../../selectors/defined_tags';
 import CategoryCheckbox from './category_checkbox';
+import CategoryCheckboxContainer from './category_checkbox_container';
 
 class FilterBar extends React.Component {
   constructor(props) {
@@ -9,7 +10,7 @@ class FilterBar extends React.Component {
 
     };
     this.checkedBox = this.checkedBox.bind(this);
-    this.renderCategoryCheckboxes = this.renderCategoryCheckboxes.bind(this);
+    this.renderCategories = this.renderCategories.bind(this);
   }
 
   checkedBox(num) {
@@ -28,11 +29,23 @@ class FilterBar extends React.Component {
     }
   }
 
-  renderCategoryCheckboxes() {
+  renderCategories() {
     const listIds = [6, 1, 2, 3, 4];
 
     return listIds.map( categoryId => (
-        <CategoryCheckbox
+        <CategoryCheckboxContainer
+          key={ categoryId }
+          categoryId={ categoryId }
+          categoryName={ LIST_CATEGORIES[categoryId] }
+          selected={ this.checkedBox(categoryId) }
+          handleCategory={ () => this.handleCategory(categoryId) }/>
+      )
+    )
+  }
+
+  renderTypes() {
+    return listIds.map( categoryId => (
+        <CategoryCheckboxContainer
           key={ categoryId }
           categoryId={ categoryId }
           categoryName={ LIST_CATEGORIES[categoryId] }
@@ -45,20 +58,27 @@ class FilterBar extends React.Component {
   render() {
     return (
       <div className="FilterBar-container">
-        <div className="FilterBar-filter">
-          <div className="FilterBar-categories-title">
-            List Type
+        <div className="FilterBar-sizer">
+          <i className="fas fa-minus"></i>
+        </div>
+        <div className="FilterBar-filter-items">
+          <div className="FilterBar-filter">
+            <div className="FilterBar-title">
+              List
+            </div>
+            <div className="FilterBar-categories-options">
+              { this.renderCategories() }
+            </div>
           </div>
-          <div className="FilterBar-categories-options">
-            { this.renderCategoryCheckboxes() }
+          <div className="FilterBar-filter">
+            <div className="FilterBar-title">
+              Type
+            </div>
+            <div className="FilterBar-type-options">
+            </div>
           </div>
         </div>
-        <div className="FilterBar-filter">
-          <div className="FilterBar-score-title">
-            Score
-          </div>
         </div>
-      </div>
     )
   }
 }
