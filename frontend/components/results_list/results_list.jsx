@@ -24,13 +24,10 @@ class ResultsList extends React.Component {
   }
 
   render() {
-    const { categories, genres, shows } = this.props;
+    const { shows } = this.props;
     return (
       <>
         <FilterBarContainer />
-        <div>
-          { this.props.categories.map(cat => LIST_CATEGORIES[cat]) }
-        </div>
         <div className="ResultsList-container">
           <ul className="ResultsList-ul">
             { this.showList(shows) }

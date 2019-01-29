@@ -1,13 +1,20 @@
 import { parseTags, parseYear } from './tag_selector';
 
-export const filterAnime = (animes, categories, genres) => {
+export const filterAnime = (animes, filters) => {
+  const { categories, types } = filters;
   let filtered = [];
 
   for (let i = 0; i < categories.length; i++) {
     filtered = filtered.concat(animes[categories[i]]);
   }
 
+  filtered = filterTypes(filtered, types);
+
   return filtered;
+};
+
+const filterTypes = (animes, types) => {
+  return animes.filter(show => types.includes(show.type));
 };
 
 export const sortAnime = (anime) => {

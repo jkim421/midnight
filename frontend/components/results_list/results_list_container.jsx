@@ -8,13 +8,11 @@ import {
 import { filterAnime } from '../../selectors/show_selectors';
 
 const msp = state => {
-  const { categories, genres } = state.filters;
+  const filters = state.filters;
   const anime = state.entities.animes;
 
   return {
-    categories,
-    genres,
-    shows: filterAnime(anime, categories, genres),
+    shows: filterAnime(anime, filters),
   };
 };
 
