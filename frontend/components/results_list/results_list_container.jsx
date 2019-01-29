@@ -5,20 +5,16 @@ import {
   addSelected,
   removeSelected, }
     from '../../actions/selection_actions';
+import { filterAnime } from '../../selectors/show_selectors';
 
 const msp = state => {
+  const { categories, genres } = state.filters;
   const anime = state.entities.animes;
 
   return {
-    categories: state.filters.categories,
-    genres: state.filters.genres,
-    shows: {
-      1: anime.watching,
-      2: anime.completed,
-      3: anime.onHold,
-      4: anime.dropped,
-      6: anime.planToWatch,
-    }
+    categories,
+    genres,
+    shows: filterAnime(anime, categories, genres),
   };
 };
 

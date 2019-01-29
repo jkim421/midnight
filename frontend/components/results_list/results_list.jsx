@@ -10,15 +10,12 @@ class ResultsList extends React.Component {
       page: 1,
       searching: false,
     };
-
+    
     this.lists = LIST_CATEGORIES;
     this.showList = this.showList.bind(this);
   }
 
-  showList(categories, genres) {
-    let shows = [];
-    categories.forEach(list => shows = shows.concat(this.props.shows[list]));
-
+  showList(shows) {
     return (
       shows.map(show => {
         return <ListItem show={ show } key={ show.id }/>
@@ -27,14 +24,14 @@ class ResultsList extends React.Component {
   }
 
   render() {
-    const { categories, genres } = this.props;
+    const { categories, genres, shows } = this.props;
     return (
       <>
         <div>
           { this.props.categories.map(cat => LIST_CATEGORIES[cat]) }
         </div>
         <ul className="ResultsList-ul">
-          { this.showList(categories, genres) }
+          { this.showList(shows) }
         </ul>
       </>
     )

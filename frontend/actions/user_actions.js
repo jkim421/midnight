@@ -1,9 +1,9 @@
-import { selectAnime } from '../selectors/show_selectors';
+import { sortAnime } from '../selectors/show_selectors';
 
 export const RECEIVE_ANIME = "RECEIVE_ANIME";
 
 export const receiveUser = (anime) => {
-  const sortedAnime = selectAnime(anime);
+  const sortedAnime = sortAnime(anime);
   return {
     type: RECEIVE_ANIME,
     sortedAnime,

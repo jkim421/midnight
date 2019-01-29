@@ -1,27 +1,37 @@
 import { parseTags, parseYear } from './tag_selector';
 
-export const selectAnime = (anime) => {
+export const filterAnime = (animes, categories, genres) => {
+  let filtered = [];
+
+  for (let i = 0; i < categories.length; i++) {
+    filtered = filtered.concat(animes[categories[i]]);
+  }
+
+  return filtered;
+};
+
+export const sortAnime = (anime) => {
   let sorted = {
-    watching: [],
-    completed: [],
-    onHold: [],
-    dropped: [],
-    planToWatch: [],
+    1: [],
+    2: [],
+    3: [],
+    4: [],
+    6: [],
   };
 
   anime.forEach( raw => {
     const show = parseShow(raw);
 
     if (show.watching_status === 1) {
-      sorted.watching.push(show);
+      sorted[1].push(show);
     } else if (show.watching_status === 2) {
-      sorted.completed.push(show);
+      sorted[2].push(show);
     } else if (show.watching_status === 3) {
-      sorted.onHold.push(show);
+      sorted[3].push(show);
     } else if (show.watching_status === 4) {
-      sorted.dropped.push(show);
+      sorted[4].push(show);
     } else if (show.watching_status === 6) {
-      sorted.planToWatch.push(show);
+      sorted[6].push(show);
     }
   });
 
@@ -44,12 +54,4 @@ const parseShow = (raw) => {
     score: tags ? tags.score : null,
     genres: tags ? tags.genres : null,
   };
-};
-
-const CATEGORY_NAME = {
-  1: "watching",
-  2: "completed",
-  3: "onHold",
-  4: "dropped",
-  6: "planToWatch",
 };
