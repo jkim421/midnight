@@ -58,8 +58,17 @@ class FilterBar extends React.Component {
               { this.renderTypes() }
             </div>
           </div>
-          <div>
-            <div className="FilterBar-slider-row" id="aweb">
+          <div className="FilterBar-filter">
+            <div className="FilterBar-title">
+              Score
+            </div>
+            <div className="FilterBar-slider-container">
+              <div className="FilterBar-score-range">
+                { this.props.scores[0] }-{ this.props.scores[1] }
+              </div>
+              <div className="FilterBar-slider" id="aweb">
+                <ScoresSliderContainer />
+              </div>
             </div>
           </div>
         </div>

@@ -2,10 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import ScoresSlider from './scores_slider';
 
-import {
-  updateLowScore,
-  updateHiScore }
-    from '../../actions/filter_actions';
+import { updateScores } from '../../actions/filter_actions';
 
 const msp = state => {
   return {
@@ -15,8 +12,7 @@ const msp = state => {
 
 const mdp = dispatch => {
   return {
-    updateLowScore: (score) => dispatch(updateLowScore(score)),
-    updateHiScore: (score) => dispatch(updateHiScore(score)),
+    updateScores: (scores) => dispatch(updateScores(scores)),
   };
 };
 

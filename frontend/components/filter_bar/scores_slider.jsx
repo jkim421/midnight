@@ -1,19 +1,29 @@
 import React from 'react';
 import Nouislider from "nouislider-react";
-import "nouislider/distribute/nouislider.css";
+// import "nouislider/distribute/nouislider.css";
 
 class ScoresSlider extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+    }
+    this.lowerHandle = null;
+    this.upperHandle = null;
+    this.handleUpdate = this.handleUpdate.bind(this);
   }
 
-  handleUpdate(score) {
-    const types = this.props.types;
-    if (types.includes(type)) {
-      this.props.removeType(type);
-    } else {
-      this.props.addType(type);
-    }
+  componentDidMount() {
+    this.lowerHandle = document.getElementsByClassName("noUi-handle-lower")[0];
+    this.upperHandle = document.getElementsByClassName("noUi-handle-upper")[0];
+  }
+
+  handleUpdate() {
+    const scores = [
+      this.lowerHandle.attributes[7].textContent,
+      this.upperHandle.attributes[7].textContent
+    ];
+
+    this.props.updateScores(scores);
   }
 
   render() {
@@ -22,7 +32,8 @@ class ScoresSlider extends React.Component {
         range={{ min: 0.0, max: 10.0 }}
         start={[0.0, 10.0]}
         margin={1.0}
-        connect />
+        connect
+        onChange={this.handleUpdate}/>
     )
   }
 };

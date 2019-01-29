@@ -1,5 +1,5 @@
 import React from 'react';
-import SearchBarContainer from '../search_bar/search_bar_container.jsx';
+import SearchBarContainer from '../search_bar/search_bar_container';
 
 class HomePage extends React.Component {
 

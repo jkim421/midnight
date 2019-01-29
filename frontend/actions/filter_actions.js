@@ -4,16 +4,15 @@ export const REMOVE_CATEGORY = "REMOVE_CATEGORY";
 export const ADD_TYPE = "ADD_TYPE";
 export const REMOVE_TYPE = "REMOVE_TYPE";
 
-export const ADD_HI_YEAR = "ADD_HI_YEAR";
-export const REMOVE_HI_YEAR = "REMOVE_HI_YEAR";
+export const ADD_HIGH_YEAR = "ADD_HIGH_YEAR";
+export const REMOVE_HIGH_YEAR = "REMOVE_HIGH_YEAR";
 export const ADD_LOW_YEAR = "ADD_LOW_YEAR";
 export const REMOVE_LOW_YEAR = "REMOVE_LOW_YEAR";
 
 export const ADD_RATING = "ADD_RATING";
 export const REMOVE_RATING = "REMOVE_RATING";
 
-export const UPDATE_LOW_SCORE = "UPDATE_LOW_SCORE";
-export const UPDATE_HI_SCORE = "UPDATE_HI_SCORE";
+export const UPDATE_SCORES = "UPDATE_SCORES";
 
 export const ADD_GENRE = "ADD_GENRE";
 export const REMOVE_GENRE = "REMOVE_GENRE";
@@ -48,14 +47,14 @@ export const removeType = (showType) => {
 
 export const addHiYear = (year) => {
   return {
-    type: ADD_HI_YEAR,
+    type: ADD_HIGH_YEAR,
     year,
   };
 };
 
 export const removeHiYear = (year) => {
   return {
-    type: REMOVE_HI_YEAR,
+    type: REMOVE_HIGH_YEAR,
     year,
   };
 };
@@ -88,17 +87,10 @@ export const removeRating = (rating) => {
   };
 };
 
-export const updateLowScore = (score) => {
+export const updateScores = (scores) => {
   return {
-    type: UPDATE_LOW_SCORE,
-    score,
-  };
-};
-
-export const updateHiScore = (score) => {
-  return {
-    type: UPDATE_HI_SCORE,
-    score,
+    type: UPDATE_SCORES,
+    scores,
   };
 };
 
