@@ -6,7 +6,6 @@ export const ADD_YEAR = "ADD_YEAR";
 export const REMOVE_YEAR = "REMOVE_YEAR";
 
 export const addCategory = (categoryId) => {
-  debugger
   return {
     type: ADD_CATEGORY,
     categoryId,
@@ -14,7 +13,6 @@ export const addCategory = (categoryId) => {
 };
 
 export const removeCategory = (categoryId) => {
-  debugger
   return {
     type: REMOVE_CATEGORY,
     categoryId,

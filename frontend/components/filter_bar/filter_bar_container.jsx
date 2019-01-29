@@ -9,6 +9,7 @@ import {
     from '../../actions/filter_actions';
 
 const msp = state => {
+  debugger
   return {
     categories: state.filters.categories,
     genres: state.filters.genres,
@@ -17,10 +18,10 @@ const msp = state => {
 
 const mdp = dispatch => {
   return {
-    addCategory: (categoryId) => dispatch(addCategory),
-    removeCategory: (categoryId) => dispatch(removeCategory),
-    addGenre: (genreId) => dispatch(addGenre),
-    removeGenre: (genreId) => dispatch(removeGenre),
+    addCategory: (categoryId) => dispatch(addCategory(categoryId)),
+    removeCategory: (categoryId) => dispatch(removeCategory(categoryId)),
+    addGenre: (genreId) => dispatch(addGenre(genreId)),
+    removeGenre: (genreId) => dispatch(removeGenre(genreId)),
   };
 };
 

@@ -6,6 +6,10 @@ import {
 const categoriesReducer = (state = [6], action) => {
   Object.freeze(state);
   switch(action.type) {
+    case ADD_CATEGORY:
+      return state.concat(action.categoryId);
+    case REMOVE_CATEGORY:
+      return state.filter(id => id !== action.categoryId);
     default:
       return state;
   }
