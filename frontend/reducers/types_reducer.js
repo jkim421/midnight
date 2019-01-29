@@ -6,11 +6,12 @@ import {
 
 const typesReducer = (state = TYPES, action) => {
   Object.freeze(state);
+  
   switch(action.type) {
     case ADD_TYPE:
-      return state.concat(action.type);
+      return state.concat(action.showType);
     case REMOVE_TYPE:
-      return state.filter(type => type !== action.type);
+      return state.filter(type => type !== action.showType);
     default:
       return state;
   }
