@@ -62,13 +62,8 @@ class FilterBar extends React.Component {
             <div className="FilterBar-title">
               Score
             </div>
-            <div className="FilterBar-slider-container">
-              <div className="FilterBar-score-range">
-                { this.props.scores[0] }-{ this.props.scores[1] }
-              </div>
-              <div className="FilterBar-slider" id="aweb">
-                <ScoresSliderContainer />
-              </div>
+            <div className="FilterBar-slider" id="aweb">
+              <ScoresSliderContainer />
             </div>
           </div>
         </div>

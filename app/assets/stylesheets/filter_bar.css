@@ -12,6 +12,7 @@
 
 .FilterBar-filter {
   display: flex;
+  align-items: center;
 }
 
 .FilterBar-title {
@@ -49,10 +50,6 @@
 .FilterBar-option-selected {
   background-color: #2e51a2;
   color: white;
-}
-
-.FilterBar-slider-container {
-  align-items: center;
 }
 
 .FilterBar-slider {
