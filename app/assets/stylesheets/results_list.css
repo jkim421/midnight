@@ -24,6 +24,7 @@
 
   .ListItem-img {
     height: 130px;
+    visibility: visible;
     transform: rotateY(0deg);
     transition: transform 0.3s linear, visibility 0s linear;
     transition-delay: 0s, 0.15s;
@@ -40,8 +41,8 @@
     height: 100%;
     width: 100%;
     background-color: #2e51a2;
-    transform: rotateY(-180deg);
     visibility: hidden;
+    transform: rotateY(-180deg);
     transition: transform 0.3s linear, visibility 0s linear;
     transition-delay: 0s, 0.15s;
     transition-property: transform, visibility;

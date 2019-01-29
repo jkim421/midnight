@@ -15,7 +15,7 @@ class ResultsList extends React.Component {
     this.showList = this.showList.bind(this);
   }
 
-  showList(categories) {
+  showList(categories, genres) {
     let shows = [];
     categories.forEach(list => shows = shows.concat(this.props.shows[list]));
 
@@ -27,13 +27,14 @@ class ResultsList extends React.Component {
   }
 
   render() {
+    const { categories, genres } = this.props;
     return (
       <>
         <div>
           { this.props.categories.map(cat => LIST_CATEGORIES[cat]) }
         </div>
         <ul className="ResultsList-ul">
-          { this.showList(this.props.categories) }
+          { this.showList(categories, genres) }
         </ul>
       </>
     )
