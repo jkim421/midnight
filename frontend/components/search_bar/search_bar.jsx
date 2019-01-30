@@ -15,7 +15,7 @@ class SearchBar extends React.Component {
   }
 
   componentDidMount() {
-    this.sendSearch();
+    // this.sendSearch();
   }
 
   resetSearch() {
