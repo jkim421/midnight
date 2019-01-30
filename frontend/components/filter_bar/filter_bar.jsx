@@ -48,47 +48,45 @@ class FilterBar extends React.Component {
   render() {
     return (
       <div className="FilterBar-container">
-        <div className="FilterBar-sizer">
-          <i className="fas fa-minus"></i>
-        </div>
-        <div className="FilterBar-filter-main">
-          <div className="FilterBar-header">
+        <div className="FilterBar-header">
+          <div className="FilterBar-sizer">
+            <i className="fas fa-minus"></i>
+          </div>
+          <div className="FilterBar-header-title">
             Filter
           </div>
-          <div className="FilterBar-filter-items">
-            <div className="FilterBar-filter">
-              <div className="FilterBar-title">
-                List
-              </div>
-              <div className="FilterBar-options-row">
-                { this.renderCategories() }
-              </div>
+        </div>
+        <div className="FilterBar-body">
+          <div className="FilterBar-filter">
+            <div className="FilterBar-title">
+              List
             </div>
-            <div className="FilterBar-filter">
-              <div className="FilterBar-title">
-                Type
-              </div>
-              <div className="FilterBar-options-row">
-                { this.renderTypes() }
-              </div>
+            <div className="FilterBar-options-row">
+              { this.renderCategories() }
             </div>
-            <div className="FilterBar-filter">
-              <div className="FilterBar-title">
-                Rating
-              </div>
-              <div className="FilterBar-options-row">
-                { this.renderRatings() }
-              </div>
+          </div>
+          <div className="FilterBar-filter">
+            <div className="FilterBar-title">
+              Type
             </div>
-            <div className="FilterBar-filter">
-              <div className="FilterBar-title">
-                Score
-              </div>
-              <div className="FilterBar-spacer"/>
-              <div className="FilterBar-slider-row">
-                <ScoresSliderContainer />
-              </div>
-              <div className="FilterBar-spacer"/>
+            <div className="FilterBar-options-row">
+              { this.renderTypes() }
+            </div>
+          </div>
+          <div className="FilterBar-filter">
+            <div className="FilterBar-title">
+              Rating
+            </div>
+            <div className="FilterBar-options-row">
+              { this.renderRatings() }
+            </div>
+          </div>
+          <div className="FilterBar-filter">
+            <div className="FilterBar-title">
+              Score
+            </div>
+            <div className="FilterBar-slider-row">
+              <ScoresSliderContainer />
             </div>
           </div>
         </div>

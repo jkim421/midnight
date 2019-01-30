@@ -1,13 +1,28 @@
 .FilterBar-container {
   display: flex;
+  flex-direction: column;
 }
 
-.FilterBar-sizer {
+.FilterBar-header {
+  display: flex;
+  height: 2.4em;
+}
+
+.FilterBar-header-title {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 5%;
+  font-size: 1.4em;
+  width: 94%;
+}
+
+.FilterBar-sizer {
+  width: 6%;
   border: 1px solid green;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .fa-minus {
@@ -15,52 +30,42 @@
   font-size: 2em;
 }
 
-.FilterBar-filter-main {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-}
-
-.FilterBar-header {
-  font-size: 1.4em;
-  text-align: center;
-}
-
-.FilterBar-filter-items {
-  width: 95%;
+.FilterBar-body {
 }
 
 .FilterBar-filter {
   display: flex;
   align-items: center;
+  margin-bottom: 0.6em;
 }
 
 .FilterBar-title {
   width: 10%;
   font-size: 1.2em;
   text-align: left;
+  padding-left: 1em;
 }
 
 .FilterBar-options-row {
   display: flex;
-  width: 80%;
-  margin-bottom: 0.6em;
   justify-content: space-between;
+  width: 90%;
+  padding-right: 1.2em;
+  font-size: 1em;
 }
 
 .FilterBar-slider-row {
-  display: block;
-  width: 76%;
+  width: 90%;
   margin-bottom: 0.6em;
+  padding: 0 2em 0 1em;
 }
 
 .FilterBar-spacer {
-  width: 2%;
+  width: 1em;
 }
 
 .FilterBar-option-div {
   width: 15%;
-  font-size: 1em;
   padding: 0.1em 0;
   border: 1px solid black;
   border-radius: 4px;
