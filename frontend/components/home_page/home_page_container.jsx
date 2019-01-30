@@ -4,7 +4,7 @@ import HomePage from './home_page';
 
 const msp = state => {
   return {
-
+    loading: state.ui.loading,
   };
 };
 
@@ -14,4 +14,4 @@ const mdp = dispatch => {
   };
 };
 
-export default connect(null, null)(HomePage);
+export default connect(msp, null)(HomePage);

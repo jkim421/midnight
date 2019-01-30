@@ -1,5 +1,6 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
+import { PulseLoader } from 'react-spinners';
 
 class SearchBar extends React.Component {
   constructor(props) {
@@ -8,7 +9,7 @@ class SearchBar extends React.Component {
       username: "wisetail",
       page: 1,
       list: [],
-      searching: false,
+      loading: false,
     };
     this.updateSearch = this.updateSearch.bind(this);
     this.sendSearch = this.sendSearch.bind(this);
@@ -23,7 +24,6 @@ class SearchBar extends React.Component {
       username: "",
       page: 1,
       list: [],
-      searching: false,
     });
   }
 
@@ -38,13 +38,12 @@ class SearchBar extends React.Component {
 
     const { username, page, list } = this.state;
 
-    this.setState({ searching: true });
+    this.props.startLoad();
 
-    this.props.fetchUser(username, page)
-      .then(
-        pageData => this.handleSuccess(pageData),
-        error => this.handleError()
-      );
+    this.props.fetchUser(username, page).then(
+      pageData => this.handleSuccess(pageData),
+      error => this.handleError()
+    );
   }
 
   handleSuccess(pageData) {
@@ -68,6 +67,7 @@ class SearchBar extends React.Component {
   }
 
   render() {
+    if (this.props.loading) { return <PulseLoader /> };
     return (
         <form
           onSubmit={this.sendSearch}>
@@ -79,7 +79,7 @@ class SearchBar extends React.Component {
           />
           <button
             className=""
-            disabled={this.state.searching}>
+            disabled={this.state.loading}>
             Search
           </button>
         </form>
