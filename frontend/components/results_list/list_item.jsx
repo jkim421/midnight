@@ -1,90 +1,126 @@
 import React from 'react';
-import { LIST_CATEGORIES } from '../../selectors/defined_tags'
+import { LIST_CATEGORIES } from '../../selectors/defined_tags';
+import { ClipLoader } from 'react-spinners';
 
-const ListItem = ({ show }) => {
-  return (
-    <li className="ListItem-li">
-      <div className="ListItem-img-container">
-        <a className="ListItem-img-link" href={ show.url } target="_blank">
-          <div className="ListItem-img-mal">
-            <div className="ListItem-img-text">
-              Open <br/>
-              MAL
+class ListItem extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      imgLoaded: false,
+    }
+    this.handleImgLoad = this.handleImgLoad.bind(this);
+  }
+
+  handleImgLoad() {
+    this.setState({
+      imgLoaded: true,
+    });
+  }
+
+  renderImgLoader() {
+    if (this.state.imgLoaded) {
+      return null;
+    } else {
+      return (
+        <div className="ListItem-loader">
+          <ClipLoader />;
+        </div>
+      )
+    }
+  };
+
+  renderDate(startStr, endStr) {
+    const start = startStr ? startStr.slice(0, 4) : "?";
+    const end = endStr ? endStr.slice(0, 4) : "?";
+    const dates = start === end ? start : (start + "-" + end);
+
+    return dates;
+  };
+
+  renderScore(score) {
+    const scoreStr = String(score);
+
+    if (!score) {
+      return "n/a";
+    } else if (scoreStr.length === 1) {
+      return scoreStr + ".00";
+    } else if (scoreStr.length === 3) {
+      return scoreStr + "0";
+    } else {
+      return scoreStr;
+    }
+  }
+
+  renderGenres(genres) {
+    if (genres) {
+      return (
+        genres.map(genre => {
+          return (
+            <li className="ListItem-genre-container" key={ genre }>
+              <div className="ListItem-genre">
+                { genre }
+              </div>
+            </li>
+          )
+        })
+      )
+    } else {
+      return null;
+    }
+  };
+
+  render() {
+    const { show } = this.props;
+    const imgShow = this.state.imgShow;
+    return (
+      <li className="ListItem-li">
+        <div className="ListItem-img-container">
+          { this.renderImgLoader() }
+          <a className="ListItem-img-link" href={ show.url } target="_blank">
+            <div className="ListItem-img-mal">
+              <div className="ListItem-img-text">
+                Open <br/>
+                MAL
+              </div>
             </div>
-          </div>
-          <img className="ListItem-img" src={ show.img_url }/>
-        </a>
-      </div>
-      <div className="ListItem-show">
-        <div className="ListItem-title-container">
-          <a
-            className="ListItem-title"
-            href={ show.url }
-            target="_blank"
-          >
-            { show.title }
+            <img
+              className="ListItem-img"
+              src={ show.img_url }
+              onLoad={ this.handleImgLoad }
+              />
           </a>
         </div>
-        <div className="ListItem-details">
-          <div className="ListItem-type">
-            { show.type }
+        <div className="ListItem-show">
+          <div className="ListItem-title-container">
+            <a
+              className="ListItem-title"
+              href={ show.url }
+              target="_blank"
+            >
+              { show.title }
+            </a>
           </div>
-          <div className="ListItem-years">
-            { renderDate(show.start_date, show.end_date) }
+          <div className="ListItem-details">
+            <div className="ListItem-type">
+              { show.type }
+            </div>
+            <div className="ListItem-years">
+              { this.renderDate(show.start_date, show.end_date) }
+            </div>
+            <div className="ListItem-score">
+              MAL: { this.renderScore(show.score) }
+            </div>
+            <div className="ListItem-userlist">
+              { LIST_CATEGORIES[show.watching_status] }
+            </div>
           </div>
-          <div className="ListItem-score">
-            MAL: { renderScore(show.score) }
-          </div>
-          <div className="ListItem-userlist">
-            { LIST_CATEGORIES[show.watching_status] }
-          </div>
+          <ul className="ListItem-genres">
+            { this.renderGenres(show.genres) }
+          </ul>
         </div>
-        <ul className="ListItem-genres">
-          { renderGenres(show.genres) }
-        </ul>
-      </div>
-    </li>
-  )
-};
-
-const renderDate = (startStr, endStr) => {
-  const start = startStr ? startStr.slice(0, 4) : "?";
-  const end = endStr ? endStr.slice(0, 4) : "?";
-  const dates = start === end ? start : (start + "-" + end);
-
-  return dates;
-};
-
-const renderScore = score => {
-  const scoreStr = String(score);
-
-  if (!score) {
-    return "n/a";
-  } else if (scoreStr.length === 1) {
-    return scoreStr + ".00";
-  } else if (scoreStr.length === 3) {
-    return scoreStr + "0";
-  } else {
-    return scoreStr;
+      </li>
+    )
   }
 }
-
-const renderGenres = genres => {
-  if (genres) {
-    return (
-      genres.map(genre => {
-        return (
-          <li className="ListItem-genre-container" key={ genre }>
-            <div className="ListItem-genre">
-              { genre }
-            </div>
-          </li>
-        )
-      })
-    )
-  } else {
-    return null;
-  }
-};
 
 export default ListItem;

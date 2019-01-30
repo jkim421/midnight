@@ -67,7 +67,6 @@ class SearchBar extends React.Component {
 
   resetSearch(error) {
     this.setState({
-      username: "",
       page: 1,
       list: [],
       error,
