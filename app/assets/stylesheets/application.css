@@ -19,7 +19,7 @@
   margin: 0 auto;
 }
 
-html, body, div, p, span, h1, h2, h3, h4, a, ol, ul, li, form, label, article, aside, figure, figcaption, footer, header, main, nav, button {
+html, body, div, p, span, h1, h2, h3, h4, a, ol, ul, li, form, label, article, aside, figure, figcaption, footer, header, main, nav, button, input {
    margin: 0;
    padding: 0;
    border: 0;

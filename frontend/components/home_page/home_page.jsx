@@ -11,7 +11,7 @@ class HomePage extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="HomePage-container">
         <h1 className="HomePage-title">midnight</h1>
         <SearchBarContainer />
       </div>

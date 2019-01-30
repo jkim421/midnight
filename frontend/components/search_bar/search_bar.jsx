@@ -57,7 +57,7 @@ class SearchBar extends React.Component {
   handleError({ status }) {
     const errors = {
       400: `Username '${this.state.username}' not found`,
-      404: `404 not found`,
+      404: `Invalid username`,
       429: "The API is a bit too busy - please try again in a few seconds",
     };
 
@@ -79,14 +79,16 @@ class SearchBar extends React.Component {
     return (
       <div className="SearchBar-container">
         <form
-          onSubmit={this.sendSearch}>
+          className="SearchBar-search"
+          onSubmit={this.sendSearch}
+        >
           <input
-            className=""
+            className="SearchBar-input"
             onChange={this.updateSearch}
             value={this.state.username}
             placeholder="username"
-            />
-          <button className="">
+          />
+          <button className="SearchBar-button">
             Search
           </button>
         </form>
