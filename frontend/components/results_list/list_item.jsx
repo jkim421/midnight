@@ -101,13 +101,16 @@ class ListItem extends React.Component {
             </a>
           </div>
           <div className="ListItem-details">
-            <div className="ListItem-type">
+            <div className="ListItem-detail">
               { show.type }
             </div>
-            <div className="ListItem-years">
+            <div className="ListItem-detail">
               { this.renderDate(show.start_date, show.end_date) }
             </div>
-            <div className="ListItem-score">
+            <div className="ListItem-detail">
+              { show.rating }
+            </div>
+            <div className="ListItem-detail">
               MAL: { this.renderScore(show.score) }
             </div>
             <div className="ListItem-userlist">

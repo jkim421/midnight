@@ -99,19 +99,14 @@
     margin-bottom: 0.4em;
   }
 
-  .ListItem-details div {
-    margin-right: 2em;
-  }
-
   .ListItem-genres {
     display: flex;
     flex-wrap: wrap;
   }
 
-  .ListItem-score,
-  .ListItem-type,
-  .ListItem-years {
+  .ListItem-detail {
     font-size: 1.4em;
+    margin-right: 2em;
   }
 
   .ListItem-userlist {
