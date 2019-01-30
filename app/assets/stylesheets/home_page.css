@@ -7,11 +7,12 @@
 
 .HomePage-title {
   font-size: 2.4em;
+  margin-bottom: 0.6em;
 }
 
 .SearchBar-input {
   margin-right: 1em;
-  padding: 0.1em 0.4em;
+  padding: 0.2em 0.4em;
   border: 1px solid black;
   border-radius: 4px;
 }
