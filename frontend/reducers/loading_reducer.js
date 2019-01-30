@@ -1,5 +1,5 @@
 import merge from 'lodash/merge';
-import { START_LOAD } from '../actions/ui_actions';
+import { START_LOAD, END_LOAD } from '../actions/ui_actions';
 import { RECEIVE_ANIME } from '../actions/user_actions';
 
 const loadingReducer = (state = false, action) => {
@@ -7,7 +7,7 @@ const loadingReducer = (state = false, action) => {
   switch(action.type) {
     case START_LOAD:
       return true;
-    case RECEIVE_ANIME:
+    case END_LOAD:
       return false;
     default:
       return state;

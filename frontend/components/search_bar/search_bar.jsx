@@ -9,7 +9,7 @@ class SearchBar extends React.Component {
       username: "wisetail",
       page: 1,
       list: [],
-      loading: false,
+      error: null,
     };
     this.updateSearch = this.updateSearch.bind(this);
     this.sendSearch = this.sendSearch.bind(this);
@@ -17,14 +17,6 @@ class SearchBar extends React.Component {
 
   componentDidMount() {
     // this.sendSearch();
-  }
-
-  resetSearch() {
-    this.setState({
-      username: "",
-      page: 1,
-      list: [],
-    });
   }
 
   updateSearch(e) {
@@ -42,7 +34,7 @@ class SearchBar extends React.Component {
 
     this.props.fetchUser(username, page).then(
       pageData => this.handleSuccess(pageData),
-      error => this.handleError()
+      error => this.handleError(error)
     );
   }
 
@@ -62,13 +54,30 @@ class SearchBar extends React.Component {
     }
   }
 
-  handleError() {
-    this.resetSearch();
+  handleError({ status }) {
+    const errors = {
+      400: `Username '${this.state.username}' not found`,
+      404: `404 not found`,
+      429: "The API is a bit too busy - please try again in a few seconds",
+    };
+
+    this.props.endLoad();
+    this.resetSearch(errors[status]);
+  }
+
+  resetSearch(error) {
+    this.setState({
+      username: "",
+      page: 1,
+      list: [],
+      error,
+    });
   }
 
   render() {
     if (this.props.loading) { return <PulseLoader /> };
     return (
+      <div className="SearchBar-container">
         <form
           onSubmit={this.sendSearch}>
           <input
@@ -76,13 +85,15 @@ class SearchBar extends React.Component {
             onChange={this.updateSearch}
             value={this.state.username}
             placeholder="username"
-          />
-          <button
-            className=""
-            disabled={this.state.loading}>
+            />
+          <button className="">
             Search
           </button>
         </form>
+        <div className="SearchBar-errors">
+          { this.state.error }
+        </div>
+      </div>
     )
   }
 }
