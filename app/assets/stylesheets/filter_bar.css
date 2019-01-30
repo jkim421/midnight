@@ -30,13 +30,20 @@
   font-size: 2em;
 }
 
+.FilterBar-border {
+  width: 96%;
+  margin: 0 auto;
+  border-top: 1px solid black;
+}
+
 .FilterBar-body {
 }
 
 .FilterBar-filter {
   display: flex;
   align-items: center;
-  margin-bottom: 0.6em;
+  padding: 0.8em 0;
+  /* border-bottom: 1px solid black; */
 }
 
 .FilterBar-title {
@@ -56,7 +63,6 @@
 
 .FilterBar-slider-row {
   width: 90%;
-  margin-bottom: 0.6em;
   padding: 0 2em 0 1em;
 }
 

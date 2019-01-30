@@ -65,6 +65,7 @@ class FilterBar extends React.Component {
               { this.renderCategories() }
             </div>
           </div>
+          <div className="FilterBar-border"/>
           <div className="FilterBar-filter">
             <div className="FilterBar-title">
               Type
@@ -73,6 +74,7 @@ class FilterBar extends React.Component {
               { this.renderTypes() }
             </div>
           </div>
+          <div className="FilterBar-border"/>
           <div className="FilterBar-filter">
             <div className="FilterBar-title">
               Rating
@@ -81,6 +83,7 @@ class FilterBar extends React.Component {
               { this.renderRatings() }
             </div>
           </div>
+          <div className="FilterBar-border"/>
           <div className="FilterBar-filter">
             <div className="FilterBar-title">
               Score
