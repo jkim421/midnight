@@ -25,9 +25,9 @@
   align-items: center;
 }
 
-.fa-minus {
+.fa-minus, .fa-plus {
   color: black;
-  font-size: 2em;
+  font-size: 1.5em;
 }
 
 .FilterBar-border {

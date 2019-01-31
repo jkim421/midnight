@@ -12,8 +12,33 @@ class FilterBar extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-
+      open: true,
     };
+    this.sizeBar = this.sizeBar.bind(this);
+    this.filterBody = React.createRef();
+  }
+
+  sizeBar() {
+    this.setState({ open: !this.state.open},
+      () => {
+        if (this.state.open) {
+          this.filterBody.current.style.visibility = "hidden";
+          this.filterBody.current.style.height = "0";
+        } else {
+          this.filterBody.current.style.visibility = "visible";
+          this.filterBody.current.style.height = "";
+        }
+      }
+    )
+
+  }
+
+  renderIcon() {
+    if (this.state.open) {
+      return <i className="fas fa-minus"></i>;
+    } else {
+      return <i className="fas fa-plus"></i>;
+    }
   }
 
   renderCategories() {
@@ -49,14 +74,19 @@ class FilterBar extends React.Component {
     return (
       <div className="FilterBar-container">
         <div className="FilterBar-header">
-          <div className="FilterBar-sizer">
-            <i className="fas fa-minus"></i>
+          <div className="FilterBar-sizer"
+            onClick={ this.sizeBar }
+          >
+            { this.renderIcon() }
           </div>
           <div className="FilterBar-header-title">
             Filter
           </div>
         </div>
-        <div className="FilterBar-body">
+        <div
+          className="FilterBar-body"
+          ref={ this.filterBody }
+        >
           <div className="FilterBar-filter">
             <div className="FilterBar-title">
               List
