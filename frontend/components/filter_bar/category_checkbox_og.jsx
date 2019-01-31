@@ -30,7 +30,7 @@ class CategoryCheckbox extends React.Component {
 
   render() {
     const { categoryId, categoryName } = this.props;
-
+    if (this.props.loading) { return <PulseLoader /> };
     return (
       <div
         className={`FilterBar-option-div ${this.checkedBox(categoryId)}`}

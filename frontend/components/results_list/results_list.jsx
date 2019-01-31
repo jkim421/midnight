@@ -1,38 +1,19 @@
 import React from 'react';
-import ListItem from './list_item';
-import { LIST_CATEGORIES } from '../../selectors/defined_tags';
 import FilterBarContainer from '../filter_bar/filter_bar_container';
+import ListIndexContainer from './list_index_container';
 
 class ResultsList extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      username: "",
-      page: 1,
-      searching: false,
     };
-
-    this.showList = this.showList.bind(this);
-  }
-
-  showList(shows) {
-    return (
-      shows.map(show => {
-        return <ListItem show={ show } key={ show.id }/>
-      })
-    )
   }
 
   render() {
-    const { shows } = this.props;
     return (
       <>
         <FilterBarContainer />
-        <div className="ResultsList-container">
-          <ul className="ResultsList-ul">
-            { this.showList(shows) }
-          </ul>
-        </div>
+        <ListIndexContainer />
       </>
     )
   }
