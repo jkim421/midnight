@@ -14,6 +14,7 @@
   align-items: center;
   font-size: 1.4em;
   width: 94%;
+  border-bottom: 1px solid black;
 }
 
 .FilterBar-sizer {
@@ -36,7 +37,14 @@
   border-top: 1px solid black;
 }
 
-.FilterBar-body {
+.FilterBar-body-open, .FilterBar-body-closed {
+  max-height: 0;
+  overflow-y: hidden;
+  transition: max-height 0.5s ease-in-out;
+}
+
+.FilterBar-body-open {
+  max-height: 161px;
 }
 
 .FilterBar-filter {

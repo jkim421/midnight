@@ -19,18 +19,14 @@ class FilterBar extends React.Component {
   }
 
   sizeBar() {
-    this.setState({ open: !this.state.open},
-      () => {
-        if (this.state.open) {
-          this.filterBody.current.style.visibility = "hidden";
-          this.filterBody.current.style.height = "0";
-        } else {
-          this.filterBody.current.style.visibility = "visible";
-          this.filterBody.current.style.height = "";
-        }
-      }
-    )
+    this.setState({ open: !this.state.open }, () => {
+      this.filterBody.current.classList.toggle("FilterBar-body-open");
+      this.filterBody.current.classList.toggle("FilterBar-body-closed");
+    });
+  }
 
+  filterStyle() {
+    return this.state.open ? "FilterBar-body-open" : "FilterBar-body-closed";
   }
 
   renderIcon() {
@@ -84,7 +80,7 @@ class FilterBar extends React.Component {
           </div>
         </div>
         <div
-          className="FilterBar-body"
+          className={`FilterBar-body-open`}
           ref={ this.filterBody }
         >
           <div className="FilterBar-filter">
