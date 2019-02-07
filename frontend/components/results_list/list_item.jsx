@@ -113,9 +113,9 @@ class ListItem extends React.Component {
             <div className="ListItem-detail">
               MAL: { this.renderScore(show.score) }
             </div>
-            <div className="ListItem-userlist">
-              { LIST_CATEGORIES[show.watching_status] }
-            </div>
+          </div>
+          <div className="ListItem-userlist">
+            { LIST_CATEGORIES[show.watching_status] }
           </div>
           <ul className="ListItem-genres">
             { this.renderGenres(show.genres) }

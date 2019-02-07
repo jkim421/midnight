@@ -96,7 +96,11 @@
   }
 
   .ListItem-title-container, .ListItem-details {
-    margin-bottom: 0.4em;
+    margin-bottom: 0.1em;
+  }
+
+  .ListItem-userlist {
+    margin-bottom: 0.8em;
   }
 
   .ListItem-genres {
@@ -105,7 +109,7 @@
   }
 
   .ListItem-detail {
-    font-size: 1.4em;
+    font-size: 1.2em;
     margin-right: 2em;
   }
 
@@ -114,7 +118,7 @@
   }
 
   .ListItem-genre {
-    font-size: 1.2em;
+    font-size: 1em;
     padding: 0.1em 0;
     user-select: none;
   }
