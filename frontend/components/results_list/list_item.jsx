@@ -41,13 +41,13 @@ class ListItem extends React.Component {
     const scoreStr = String(score);
 
     if (!score) {
-      return "n/a";
+      return null;
     } else if (scoreStr.length === 1) {
-      return scoreStr + ".00";
+      return "MAL: " + scoreStr + ".00";
     } else if (scoreStr.length === 3) {
-      return scoreStr + "0";
+      return "MAL: " + scoreStr + "0";
     } else {
-      return scoreStr;
+      return "MAL: " + scoreStr;
     }
   }
 
@@ -65,7 +65,7 @@ class ListItem extends React.Component {
         })
       )
     } else {
-      return null;
+      return 'Untagged';
     }
   };
 
@@ -111,7 +111,7 @@ class ListItem extends React.Component {
               { show.rating }
             </div>
             <div className="ListItem-detail">
-              MAL: { this.renderScore(show.score) }
+              { this.renderScore(show.score) }
             </div>
           </div>
           <div className="ListItem-userlist">
