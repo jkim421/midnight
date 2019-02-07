@@ -67,6 +67,7 @@ class FilterBar extends React.Component {
   }
 
   render() {
+    debugger
     return (
       <div className="FilterBar-container">
         <div className="FilterBar-header">

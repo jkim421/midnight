@@ -10,7 +10,6 @@ import {
 
 const msp = state => {
   return {
-    categories: state.filters.categories,
     genres: state.filters.genres,
     scores: state.filters.scores,
   };

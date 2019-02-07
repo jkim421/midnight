@@ -86,7 +86,8 @@
   text-align: center;
   background-color: white;
   color: #2e51a2;
-  transition: background-color 0.2s linear, color 0.2s linear;
+  user-select: none;
+  /* transition: background-color 0.2s linear, color 0.2s linear; */
 }
 
 .FilterBar-option-div:hover {
