@@ -43,7 +43,62 @@ export const GENRES = [
   "Seinen",
   "Josei",
   "Doujinshi",
-  "Gender Bender",
+  "Gender Bender"
+];
+
+export const GENRES_MAIN = [
+  "Action",
+  "Adventure",
+  "Comedy",
+  "Drama",
+  "Fantasy",
+  "Horror",
+  "Mystery",
+  "Romance",
+  "Sci Fi",
+  "Slice of Life",
+  "Thriller"
+];
+
+export const GENRES_DEMO = [
+  "Kids",
+  "Shoujo",
+  "Shounen",
+  "Josei",
+  "Seinen",
+  "Shoujo Ai",
+  "Shounen Ai"
+];
+
+export const GENRES_THEME = [
+  "Cars",
+  "Dementia",
+  "Demons",
+  "Game",
+  "Harem",
+  "Historical",
+  "Magic",
+  "Martial Arts",
+  "Mecha",
+  "Music",
+  "Military",
+  "Parody",
+  "Samurai",
+  "School",
+  "Space",
+  "Sports",
+  "Super Power",
+  "Supernatural",
+  "Vampire",
+  "Police",
+  "Psychological"
+];
+
+export const GENRES_ADULT = [
+  "Ecchi",
+  "Hentai",
+  "Yaoi",
+  "Yuri",
 ];
 
 export const TYPES = [
