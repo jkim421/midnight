@@ -10,7 +10,6 @@ class ResultsList extends React.Component {
   }
 
   render() {
-    debugger
     return (
       <>
         <FilterBarContainer />

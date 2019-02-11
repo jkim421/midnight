@@ -20,7 +20,6 @@ class ListIndex extends React.Component {
 
   render() {
     const { shows } = this.props;
-    debugger
     return (
       <div className="ResultsList-container">
         <ul className="ResultsList-ul">

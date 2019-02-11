@@ -57,6 +57,7 @@ class FilterBar extends React.Component {
       )
     )
   }
+
   renderRatings() {
     return RATINGS.map( rating => (
         <RatingsCheckboxContainer
@@ -66,8 +67,16 @@ class FilterBar extends React.Component {
     )
   }
 
+  renderGenres() {
+    return RATINGS.map( rating => (
+        <RatingsCheckboxContainer
+          key={ rating }
+          optionName={ rating }/>
+      )
+    )
+  }
+
   render() {
-    debugger
     return (
       <div className="FilterBar-container">
         <div className="FilterBar-header">
@@ -117,6 +126,15 @@ class FilterBar extends React.Component {
             </div>
             <div className="FilterBar-slider-row">
               <ScoresSliderContainer />
+            </div>
+          </div>
+          <div className="FilterBar-border"/>
+          <div className="FilterBar-filter">
+            <div className="FilterBar-title">
+              Genres
+            </div>
+            <div className="FilterBar-options-row">
+              { this.renderGenres() }
             </div>
           </div>
         </div>

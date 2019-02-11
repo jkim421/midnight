@@ -1,7 +1,7 @@
 import React from 'react';
 import { PulseLoader } from 'react-spinners';
 
-class CategoryCheckbox extends React.Component {
+class GenresBox extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -35,7 +35,7 @@ class CategoryCheckbox extends React.Component {
 
   render() {
     const { categoryId, categoryName } = this.props;
-    
+
     return (
       <div
         className={`FilterBar-option-div ${this.checkedBox(categoryId)}`}
@@ -48,4 +48,4 @@ class CategoryCheckbox extends React.Component {
   }
 };
 
-export default CategoryCheckbox;
+export default GenresBox;
