@@ -94,16 +94,16 @@ export const updateScores = (scores) => {
   };
 };
 
-export const addGenre = (genreId) => {
+export const addGenre = (genreName) => {
   return {
     type: ADD_GENRE,
-    genreId,
+    genreName,
   };
 };
 
-export const removeGenre = (genreId) => {
+export const removeGenre = (genreName) => {
   return {
     type: REMOVE_GENRE,
-    genreId,
+    genreName,
   };
 };

@@ -44,7 +44,7 @@
 }
 
 .FilterBar-body-open {
-  max-height: 200px;
+  max-height: 500px;
 }
 
 .FilterBar-filter {
@@ -98,4 +98,26 @@
 .FilterBar-option-selected {
   background-color: #2e51a2;
   color: white;
+}
+
+.FilterBar-genre-header {
+  margin: 0 auto;
+}
+
+.FilterBar-genre-section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.FilterBar-genre-row {
+  flex-direction: column;
+}
+
+.FilterBar-genre-div {
+  width: 20%;
+}
+
+.FilterBar-genre-checkbox {
+
 }

@@ -7,6 +7,7 @@ import CategoryCheckboxContainer from './category_checkbox_container';
 import TypesCheckboxContainer from './types_checkbox_container';
 import RatingsCheckboxContainer from './ratings_checkbox_container';
 import ScoresSliderContainer from './scores_slider_container';
+import GenresRow from './genres_row';
 
 class FilterBar extends React.Component {
   constructor(props) {
@@ -59,15 +60,6 @@ class FilterBar extends React.Component {
   }
 
   renderRatings() {
-    return RATINGS.map( rating => (
-        <RatingsCheckboxContainer
-          key={ rating }
-          optionName={ rating }/>
-      )
-    )
-  }
-
-  renderGenres() {
     return RATINGS.map( rating => (
         <RatingsCheckboxContainer
           key={ rating }
@@ -133,8 +125,8 @@ class FilterBar extends React.Component {
             <div className="FilterBar-title">
               Genres
             </div>
-            <div className="FilterBar-options-row">
-              { this.renderGenres() }
+            <div className="FilterBar-options-row FilterBar-genre-row">
+              { <GenresRow /> }
             </div>
           </div>
         </div>
