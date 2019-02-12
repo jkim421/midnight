@@ -17,10 +17,8 @@ export const filterAnime = (animes, filters) => {
     .filter(show => ratings.includes(show.rating))
     .filter(show => show.score >= low && show.score <= high)
     .filter(show => filterGenres(show, genres));
-  debugger
-  result = sortResult(result, sort);
-  debugger
-  return result;
+    
+  return sortResult(result, sort);
 };
 
 const filterGenres = (show, genres) => {

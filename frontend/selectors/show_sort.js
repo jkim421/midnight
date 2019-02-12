@@ -65,9 +65,9 @@ export const sortResult = (shows, sort) => {
     });
   } else if (sort === 7) {
     return shows.sort((a, b) => {
-      if (Date.parse(a.end_date) > Date.parse(b.end_date)) {
+      if (!a.end_date || Date.parse(a.end_date) > Date.parse(b.end_date)) {
         return 1;
-      } else if (Date.parse(a.end_date) < Date.parse(b.end_date)) {
+      } else if (!b.end_date || Date.parse(a.end_date) < Date.parse(b.end_date)) {
         return -1;
       } else {
         return 0;
@@ -75,9 +75,9 @@ export const sortResult = (shows, sort) => {
     });
   } else if (sort === 8) {
     return shows.sort((a, b) => {
-      if (Date.parse(a.end_date) > Date.parse(b.end_date)) {
+      if (!a.end_date || Date.parse(a.end_date) > Date.parse(b.end_date)) {
         return -1;
-      } else if (Date.parse(a.end_date) < Date.parse(b.end_date)) {
+      } else if (!b.end_date || Date.parse(a.end_date) < Date.parse(b.end_date)) {
         return 1;
       } else {
         return 0;
