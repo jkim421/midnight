@@ -102,12 +102,13 @@
 
 .FilterBar-genre-header {
   margin: 0 auto;
+  margin-bottom: 0.4em;
+  font-weight: 700;
 }
 
 .FilterBar-genre-section {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
 }
 
 .FilterBar-genre-row {
@@ -116,8 +117,9 @@
 
 .FilterBar-genre-div {
   width: 20%;
+  margin-bottom: 0.4em;
 }
 
 .FilterBar-genre-checkbox {
-
+  margin-right: 0.3em;
 }

@@ -39,6 +39,7 @@ class GenreCheckbox extends React.Component {
           onChange= { () => this.handleClick(genreName) }
         />
         <label
+          className="FilterBar-genre-label"
           htmlFor={`${genreName}`}
         >
           {genreName}
