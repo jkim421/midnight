@@ -61,3 +61,18 @@ export const filterAnime = (animes, filters) => {
 
   return filtered;
 };
+
+
+const filterTypes = (animes, types) => {
+  return animes.filter(show => types.includes(show.type));
+};
+
+const filterRatings = (animes, ratings) => {
+  return animes.filter(show => ratings.includes(show.rating));
+};
+
+const filterScores = (animes, scores) => {
+  const low = parseFloat(scores[0]);
+  const high = parseFloat(scores[1]);
+  return animes.filter(show => show.score >= low && show.score <= high);
+};

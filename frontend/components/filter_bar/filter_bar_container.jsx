@@ -1,12 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import FilterBar from './filter_bar';
-import {
-  addCategory,
-  removeCategory,
-  addGenre,
-  removeGenre }
-    from '../../actions/filter_actions';
+import { resetGenre } from '../../actions/filter_actions';
 
 const msp = state => {
   return {
@@ -17,10 +12,7 @@ const msp = state => {
 
 const mdp = dispatch => {
   return {
-    addCategory: (categoryId) => dispatch(addCategory(categoryId)),
-    removeCategory: (categoryId) => dispatch(removeCategory(categoryId)),
-    addGenre: (genreId) => dispatch(addGenre(genreId)),
-    removeGenre: (genreId) => dispatch(removeGenre(genreId)),
+    resetGenre: () => dispatch(resetGenre()),
   };
 };
 

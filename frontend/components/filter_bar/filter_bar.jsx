@@ -122,8 +122,13 @@ class FilterBar extends React.Component {
           </div>
           <div className="FilterBar-border"/>
           <div className="FilterBar-filter">
-            <div className="FilterBar-title">
+            <div className="FilterBar-title FilterBar-title-genres">
               Genres
+              <span
+                className="FilterBar-genres-reset"
+                onClick={ () => this.props.resetGenre() }>
+                Reset
+              </span>
             </div>
             <div className="FilterBar-options-row FilterBar-genre-row">
               { <GenresRow /> }

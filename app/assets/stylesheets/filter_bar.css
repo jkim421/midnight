@@ -100,9 +100,20 @@
   color: white;
 }
 
+.FilterBar-title-genres {
+  display: flex;
+  flex-direction: column;
+}
+
+.FilterBar-genres-reset:hover{
+  cursor: pointer;
+  color: #2e51a2;
+}
+
 .FilterBar-genre-header {
   margin: 0 auto;
   margin-bottom: 0.4em;
+  margin-top: 0.8em;
   font-weight: 700;
 }
 
@@ -122,4 +133,8 @@
 
 .FilterBar-genre-checkbox {
   margin-right: 0.3em;
+}
+
+.FilterBar-genre-checkbox, .FilterBar-genre-label:hover {
+  cursor: pointer;
 }

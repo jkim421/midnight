@@ -15,32 +15,20 @@ export const filterAnime = (animes, filters) => {
     .filter(show => types.includes(show.type))
     .filter(show => ratings.includes(show.rating))
     .filter(show => show.score >= low && show.score <= high)
-    .filter(show => {
-      if (genres.length === 0) {
-        return true;
-      }
-      else if (show.genres === null) {
-        return false;
-      } else {
-        return genres.every( genre => show.genres.includes(genre));
-      }
-    });
-  debugger
+    .filter(show => filterGenres(show, genres));
+    
   return result;
 };
 
-const filterTypes = (animes, types) => {
-  return animes.filter(show => types.includes(show.type));
-};
-
-const filterRatings = (animes, ratings) => {
-  return animes.filter(show => ratings.includes(show.rating));
-};
-
-const filterScores = (animes, scores) => {
-  const low = parseFloat(scores[0]);
-  const high = parseFloat(scores[1]);
-  return animes.filter(show => show.score >= low && show.score <= high);
+const filterGenres = (show, genres) => {
+  if (genres.length === 0) {
+    return true;
+  }
+  else if (show.genres === null) {
+    return false;
+  } else {
+    return genres.every( genre => show.genres.includes(genre));
+  }
 };
 
 export const sortAnime = (anime) => {

@@ -7,6 +7,7 @@ import {
     from '../../actions/filter_actions';
 
 const msp = state => {
+  debugger
   return {
     genres: state.filters.genres,
   };

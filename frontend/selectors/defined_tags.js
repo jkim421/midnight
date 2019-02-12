@@ -66,16 +66,16 @@ export const GENRES_DEMO = [
   "Shounen",
   "Josei",
   "Seinen",
-  "Shoujo Ai",
-  "Shounen Ai"
 ];
 
 export const GENRES_THEME = [
   "Cars",
   "Dementia",
   "Demons",
+  "Ecchi",
   "Game",
   "Harem",
+  "Hentai",
   "Historical",
   "Magic",
   "Martial Arts",
@@ -85,28 +85,34 @@ export const GENRES_THEME = [
   "Parody",
   "Samurai",
   "School",
+  "Shoujo Ai",
+  "Shounen Ai",
   "Space",
   "Sports",
   "Super Power",
   "Supernatural",
   "Vampire",
   "Police",
-  "Psychological"
+  "Psychological",
+  "Yaoi",
+  "Yuri"
 ];
 
-export const GENRES_ADULT = [
+export const GENRES_OTHER = [
   "Ecchi",
+  "Shoujo Ai",
+  "Shounen Ai",
   "Hentai",
   "Yaoi",
-  "Yuri",
+  "Yuri"
 ];
 
 export const TYPES = [
   "TV",
-  "OVA",
   "Movie",
-  "Special",
-  "ONA"
+  "OVA",
+  "ONA",
+  "Special"
 ];
 
 export const RATINGS = [

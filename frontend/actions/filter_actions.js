@@ -16,6 +16,7 @@ export const UPDATE_SCORES = "UPDATE_SCORES";
 
 export const ADD_GENRE = "ADD_GENRE";
 export const REMOVE_GENRE = "REMOVE_GENRE";
+export const RESET_GENRE = "RESET_GENRE";
 
 export const addCategory = (categoryId) => {
   return {
@@ -105,5 +106,11 @@ export const removeGenre = (genreName) => {
   return {
     type: REMOVE_GENRE,
     genreName,
+  };
+};
+
+export const resetGenre = () => {
+  return {
+    type: RESET_GENRE,
   };
 };

@@ -5,7 +5,7 @@ import {
   GENRES_MAIN,
   GENRES_DEMO,
   GENRES_THEME,
-  GENRES_ADULT, } from '../../selectors/defined_tags';
+  GENRES_OTHER, } from '../../selectors/defined_tags';
 
 class GenresRow extends React.Component {
   constructor(props) {
@@ -42,8 +42,8 @@ class GenresRow extends React.Component {
     )
   }
 
-  renderAdult() {
-    return GENRES_ADULT.map( genreName => (
+  renderOther() {
+    return GENRES_OTHER.map( genreName => (
         <GenreCheckboxContainer
           key={ genreName }
           genreName={ genreName }
@@ -84,16 +84,6 @@ class GenresRow extends React.Component {
           className="FilterBar-genre-section"
         >
           { this.renderThemes() }
-        </div>
-        <div
-          className="FilterBar-genre-header"
-        >
-          Adult
-        </div>
-        <div
-          className="FilterBar-genre-section"
-        >
-          { this.renderAdult() }
         </div>
       </>
     )
