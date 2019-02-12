@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import GenreCheckbox from './genre_checkbox';
+import ListItem from './list_item';
 import {
   addGenre,
   removeGenre }
@@ -8,7 +8,7 @@ import {
 
 const msp = state => {
   return {
-    genres: state.filters.genres,
+    genres: state.filters.genres
   };
 };
 
@@ -19,4 +19,4 @@ const mdp = dispatch => {
   };
 };
 
-export default connect(msp, mdp)(GenreCheckbox);
+export default connect(msp, mdp)(ListItem);

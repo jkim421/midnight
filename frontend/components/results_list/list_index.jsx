@@ -1,5 +1,5 @@
 import React from 'react';
-import ListItem from './list_item';
+import ListItemContainer from './list_item_container';
 
 class ListIndex extends React.Component {
   constructor(props) {
@@ -13,7 +13,7 @@ class ListIndex extends React.Component {
   showList(shows) {
     return (
       shows.map(show => {
-        return <ListItem show={ show } key={ show.id }/>
+        return <ListItemContainer show={ show } key={ show.id }/>
       })
     )
   }

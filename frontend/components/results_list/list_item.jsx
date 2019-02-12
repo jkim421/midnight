@@ -56,8 +56,14 @@ class ListItem extends React.Component {
       return (
         genres.map(genre => {
           return (
-            <li className="ListItem-genre-container" key={ genre }>
-              <div className="ListItem-genre">
+            <li
+              className="ListItem-genre-container"
+              key={ genre }
+              onClick={ () => this.updateGenre(genre) }
+            >
+              <div
+                className={`ListItem-genre ${this.selectedGenre(genre)}`}
+              >
                 { genre }
               </div>
             </li>
@@ -68,6 +74,23 @@ class ListItem extends React.Component {
       return 'Untagged';
     }
   };
+
+  updateGenre(genre) {
+    debugger
+    if (this.props.genres.includes(genre)) {
+      this.props.removeGenre(genre);
+    } else {
+      this.props.addGenre(genre);
+    }
+  }
+
+  selectedGenre(genre) {
+    if (this.props.genres.includes(genre)) {
+      return "ListItem-genre-selected";
+    } else {
+      return null;
+    }
+  }
 
   render() {
     const { show } = this.props;

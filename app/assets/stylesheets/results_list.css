@@ -123,6 +123,10 @@
     user-select: none;
   }
 
+  .ListItem-genre-selected {
+    background-color: lightblue;
+  }
+
   .ListItem-genre-container {
     width: 20%;
     margin-bottom: 0.4em;
