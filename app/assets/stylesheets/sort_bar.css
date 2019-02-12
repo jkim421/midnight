@@ -7,12 +7,16 @@
 }
 
 .SortBar-option {
-  width: 12.5%;
+  width: 25%;
   height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   border: 1px solid black;
+}
+
+.SortBar-option-type {
+  margin-right: 1em;
 }
 
 .SortBar-option-selected {
