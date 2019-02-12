@@ -76,7 +76,6 @@ class ListItem extends React.Component {
   };
 
   updateGenre(genre) {
-    debugger
     if (this.props.genres.includes(genre)) {
       this.props.removeGenre(genre);
     } else {
