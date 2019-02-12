@@ -1,7 +1,8 @@
 import { parseTags, parseYear } from './tag_selector';
+import { sortResult } from './show_sort';
 
 export const filterAnime = (animes, filters) => {
-  const { categories, types, ratings, scores, genres } = filters;
+  const { categories, types, ratings, scores, genres, sort } = filters;
   const low = parseFloat(scores[0]);
   const high = parseFloat(scores[1]);
 
@@ -16,7 +17,9 @@ export const filterAnime = (animes, filters) => {
     .filter(show => ratings.includes(show.rating))
     .filter(show => show.score >= low && show.score <= high)
     .filter(show => filterGenres(show, genres));
-    
+  debugger
+  result = sortResult(result, sort);
+  debugger
   return result;
 };
 

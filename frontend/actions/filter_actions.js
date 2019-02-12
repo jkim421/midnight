@@ -18,6 +18,8 @@ export const ADD_GENRE = "ADD_GENRE";
 export const REMOVE_GENRE = "REMOVE_GENRE";
 export const RESET_GENRE = "RESET_GENRE";
 
+export const UPDATE_SORT = "UPDATE_SORT";
+
 export const addCategory = (categoryId) => {
   return {
     type: ADD_CATEGORY,
@@ -112,5 +114,12 @@ export const removeGenre = (genreName) => {
 export const resetGenre = () => {
   return {
     type: RESET_GENRE,
+  };
+};
+
+export const updateSort = (sort) => {
+  return {
+    type: UPDATE_SORT,
+    sort,
   };
 };

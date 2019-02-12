@@ -5,6 +5,7 @@ import yearsReducer from './years_reducer';
 import ratingsReducer from './ratings_reducer';
 import scoresReducer from './scores_reducer';
 import genresReducer from './genres_reducer';
+import sortReducer from './sort_reducer';
 import { combineReducers } from 'redux';
 
 const filtersReducer = combineReducers({
@@ -14,6 +15,7 @@ const filtersReducer = combineReducers({
   ratings: ratingsReducer,
   scores: scoresReducer,
   genres: genresReducer,
+  sort: sortReducer,
 });
 
 export default filtersReducer;

@@ -1,0 +1,24 @@
+.SortBar-container {
+  border: 1px solid black;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 2.4em;
+}
+
+.SortBar-option {
+  width: 12.5%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid black;
+}
+
+.SortBar-option-selected {
+  background-color: lightblue;
+}
+
+.SortBar-option:hover {
+  cursor: pointer;
+}

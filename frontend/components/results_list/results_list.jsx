@@ -1,5 +1,6 @@
 import React from 'react';
 import FilterBarContainer from '../filter_bar/filter_bar_container';
+import SortBarContainer from '../sort_bar/sort_bar_container';
 import ListIndexContainer from './list_index_container';
 
 class ResultsList extends React.Component {
@@ -13,6 +14,7 @@ class ResultsList extends React.Component {
     return (
       <>
         <FilterBarContainer />
+        <SortBarContainer />
         <ListIndexContainer />
       </>
     )
