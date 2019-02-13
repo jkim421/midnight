@@ -1,21 +1,29 @@
 .SortBar-container {
-  border: 1px solid rgba(255,255,255,0.5);
-  border-top: none;
-  border-radius: 0 0 5px 5px;
   display: flex;
   justify-content: space-around;
   align-items: center;
   height: 2.4em;
 }
 
+.SortBar-body-open, .SortBar-body-closed {
+  max-height: 0;
+  overflow-y: hidden;
+  transition: max-height 0.1s ease-in-out;
+  border-bottom: 1px solid rgba(255,255,255,0.5);
+}
+
+.SortBar-body-open {
+  max-height: 2.4em;
+}
+
 .SortBar-option {
+  margin-top: 5px;
   width: 25%;
   height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   border-right: 1px solid rgba(255,255,255,0.5);
-  background-color: rgba(255,255,255,0.05);
   transition: all 0.15s ease-out;
   user-select: none;
 }

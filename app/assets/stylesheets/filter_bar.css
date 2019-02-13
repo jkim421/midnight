@@ -1,10 +1,13 @@
 .FilterBar-container {
   display: flex;
   flex-direction: column;
-  background-color: rgba(255,255,255,0.05);
+  /* background-color: rgba(255,255,255,0.05); */
+  /* background-image: linear-gradient(90deg, #101946, #2b1046);
+  background-size: inherit; */
   border: 1px solid rgba(255,255,255,0.5);
+  border-top: none;
   border-bottom: none;
-  border-radius: 5px 5px 0 0;
+  border-radius: 0 0 5px 5px;
 }
 
 .FilterBar-header {
@@ -48,8 +51,7 @@
 .FilterBar-body-open, .FilterBar-body-closed {
   max-height: 0;
   overflow-y: hidden;
-  transition: max-height 0.5s ease-in-out;
-  border-top: 1px solid rgba(255,255,255,0.5);
+  transition: max-height 0.3s ease-in-out;
   border-bottom: 1px solid rgba(255,255,255,0.5);
 }
 
@@ -62,6 +64,10 @@
   align-items: center;
   padding: 0.8em 0;
   /* border-bottom: 1px solid black; */
+}
+
+.FilterBar-filter:first-of-type {
+  margin-top: 5px;
 }
 
 .FilterBar-title {
@@ -91,6 +97,7 @@
 .FilterBar-option-div {
   width: 15%;
   padding: 0.1em 0;
+  /* border: 1px solid #eeeeee; */
   border: 1px solid black;
   border-radius: 4px;
   text-align: center;

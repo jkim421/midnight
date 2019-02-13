@@ -11,6 +11,14 @@ class SortBar extends React.Component {
     }
   }
 
+  toggleSort() {
+    this.props.toggleSort();
+  }
+
+  sortStyle() {
+    return this.props.sortOpen ? "SortBar-body-open" : "SortBar-body-closed";
+  }
+
   currentSort(sortNum) {
     if (this.props.sort === sortNum || this.props.sort === sortNum + 1) {
       return "SortBar-option-selected";
@@ -61,7 +69,7 @@ class SortBar extends React.Component {
 
   render() {
     return (
-      <div className="SortBar-container">
+      <div className={`SortBar-container ${ this.sortStyle() }`}>
         <div
           className={`SortBar-option ${ this.currentSort(1) }`}
           onClick={ () => this.handleSort("title") }

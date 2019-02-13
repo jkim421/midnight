@@ -15,14 +15,29 @@
   padding: 0.2em 0.4em;
   border: 1px solid black;
   border-radius: 4px;
-}
-
-.SearchBar-input:focus {
-  box-shadow: -5px 5px 5px #888888;
+  background-color: rgba(255,255,255,0.1);
+  color: #eeeeee;
+  font-size: 1.2em;
 }
 
 .SearchBar-button {
   padding: 0.1em 0.4em;
   border: 1px solid black;
   border-radius: 4px;
+  background-color: rgba(255,255,255,0.1);
+  color: #eeeeee;
+  font-size: 1.2em;
+}
+
+.SearchBar-button:focus {
+  outline: none;
+}
+
+.SearchBar-input:focus, .SearchBar-button:hover {
+  border: 1px solid #eeeeee;
+  outline: none;
+}
+
+.SearchBar-button:hover {
+  background-color: rgba(255,255,255,0.2);
 }

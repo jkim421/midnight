@@ -12,20 +12,26 @@ import GenresRow from './genres_row';
 class FilterBar extends React.Component {
   constructor(props) {
     super(props);
-    this.toggleFilter = this.toggleFilter.bind(this);
+    this.state = {
+      open: true,
+    };
+    this.sizeBar = this.sizeBar.bind(this);
     this.filterBody = React.createRef();
   }
 
-  toggleFilter() {
-    this.props.toggleFilter();
+  sizeBar() {
+    this.setState({ open: !this.state.open }, () => {
+      this.filterBody.current.classList.toggle("FilterBar-body-open");
+      this.filterBody.current.classList.toggle("FilterBar-body-closed");
+    });
   }
 
   filterStyle() {
-    return this.props.filterOpen ? "FilterBar-body-open" : "FilterBar-body-closed";
+    return this.state.open ? "FilterBar-body-open" : "FilterBar-body-closed";
   }
 
   renderIcon() {
-    if (this.props.filterOpen) {
+    if (this.state.open) {
       return <i className="fas fa-minus"></i>;
     } else {
       return <i className="fas fa-plus"></i>;
@@ -66,7 +72,18 @@ class FilterBar extends React.Component {
     return (
       <div className="FilterBar-container">
         <div
-          className={`${this.filterStyle()}`}
+          className="FilterBar-header"
+          onClick={ this.sizeBar }
+        >
+          <div className="FilterBar-sizer">
+            { this.renderIcon() }
+          </div>
+          <div className="FilterBar-header-title">
+            Filter
+          </div>
+        </div>
+        <div
+          className={`FilterBar-body-open`}
           ref={ this.filterBody }
         >
           <div className="FilterBar-filter">

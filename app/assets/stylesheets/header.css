@@ -5,16 +5,22 @@
   width: 100%;
   position: fixed;
   top: 0;
-  z-index: 1;
+  z-index: 10;
   box-sizing: border-box;
   border-bottom: 1px solid rgba(255,255,255,0.5);
   background-image: linear-gradient(90deg, #101946, #2b1046);
 }
 
 .Header-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   font-size: 1.2em;
   user-select: none;
   margin-left: 5%;
+  border-top: 3px solid transparent;
+  border-bottom: 3px solid transparent;
+  /* border: 1px solid red; */
 }
 
 .Header-title {
@@ -23,11 +29,53 @@
 }
 
 .Header-search {
-  width: 200px;
+  width: 250px;
+}
+
+.Header-filter-btn, .Header-sort-btn {
+  position: relative;
+  width: 100px;
+  height: 100%;
+  margin-left: 0;
+  box-sizing: border-box;
+  transition: border-bottom 0.15s ease-out;
+}
+
+.Header-filter-btn:hover, .Header-sort-btn:hover {
+  border-bottom: 3px solid rgba(255,255,255,0.5);
+}
+
+.Header-filter-btn {
+  margin-left: 1%;
+}
+
+.Header-filter-selected, .Header-sort-selected {
+  border-bottom: 3px solid rgba(255,255,255,0.5);
 }
 
 .Header-filter {
+  position: fixed;
+  top: 45px;
+  left: 300px;
+  width: 650px;
+  margin: 0 auto;
+  z-index: 5;
+  background-image: linear-gradient(90deg, #101946, #2b1046);
+  /* background-color: rgb(46,30,99); */
+  /* background-size: 931px 931px;
+  background-position: -300px 0; */
 }
 
 .Header-sort {
+  position: fixed;
+  top: 45px;
+  left: 300px;
+  width: 650px;
+  margin: 0 auto;
+  z-index: 5;
+  background-image: linear-gradient(90deg, #101946, #2b1046);
+  /* background-color: rgb(46,30,99); */
+  border: 1px solid rgba(255,255,255,0.5);
+  border-top: none;
+  border-radius: 0 0 5px 5px;
 }
