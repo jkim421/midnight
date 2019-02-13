@@ -41,8 +41,8 @@ class ListIndex extends React.Component {
   render() {
     const { shows } = this.props;
     return (
-      <div className="ResultsList-container">
-        <ul className="ResultsList-ul">
+      <div className="ListIndex-container">
+        <ul className="ListIndex-ul">
           { this.showList(shows) }
         </ul>
       </div>

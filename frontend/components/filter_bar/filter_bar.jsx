@@ -20,7 +20,6 @@ class FilterBar extends React.Component {
   }
 
   sizeBar() {
-    debugger
     this.setState({ open: !this.state.open }, () => {
       this.filterBody.current.classList.toggle("FilterBar-body-open");
       this.filterBody.current.classList.toggle("FilterBar-body-closed");

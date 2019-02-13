@@ -1,5 +1,4 @@
 export const sortResult = (shows, sort) => {
-  debugger
   if (sort === 1) {
     return shows.sort((a, b) => {
       const titleA = a.title.toLowerCase();
@@ -25,7 +24,6 @@ export const sortResult = (shows, sort) => {
       }
     });
   } else if (sort === 3) {
-    debugger
     return shows.sort((a, b) => {
       if (a.score < b.score) {
         return -1;

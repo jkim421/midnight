@@ -16,7 +16,7 @@ class SearchBar extends React.Component {
   }
 
   componentDidMount() {
-    this.sendSearch();
+    // this.sendSearch();
   }
 
   updateSearch(e) {
@@ -44,6 +44,7 @@ class SearchBar extends React.Component {
 
     if (pageData.anime.length === 0) {
       this.resetSearch();
+      this.props.endLoad();
       this.props.receiveUser(list);
       this.props.history.push("/list");
     } else {

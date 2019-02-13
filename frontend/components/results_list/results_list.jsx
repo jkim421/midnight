@@ -12,11 +12,11 @@ class ResultsList extends React.Component {
 
   render() {
     return (
-      <>
+      <div className="ResultsList-container">
         <FilterBarContainer />
         <SortBarContainer />
         <ListIndexContainer />
-      </>
+      </div>
     )
   }
 }
