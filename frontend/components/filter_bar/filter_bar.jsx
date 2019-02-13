@@ -20,6 +20,7 @@ class FilterBar extends React.Component {
   }
 
   sizeBar() {
+    debugger
     this.setState({ open: !this.state.open }, () => {
       this.filterBody.current.classList.toggle("FilterBar-body-open");
       this.filterBody.current.classList.toggle("FilterBar-body-closed");
@@ -71,10 +72,11 @@ class FilterBar extends React.Component {
   render() {
     return (
       <div className="FilterBar-container">
-        <div className="FilterBar-header">
-          <div className="FilterBar-sizer"
-            onClick={ this.sizeBar }
-          >
+        <div
+          className="FilterBar-header"
+          onClick={ this.sizeBar }
+        >
+          <div className="FilterBar-sizer">
             { this.renderIcon() }
           </div>
           <div className="FilterBar-header-title">

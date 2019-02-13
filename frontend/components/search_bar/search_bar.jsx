@@ -74,7 +74,7 @@ class SearchBar extends React.Component {
   }
 
   render() {
-    if (this.props.loading) { return <PulseLoader /> };
+    if (this.props.loading) { return <PulseLoader color={'#eeeeee'}/> };
     return (
       <div className="SearchBar-container">
         <form

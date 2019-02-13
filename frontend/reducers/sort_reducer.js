@@ -1,7 +1,7 @@
 import merge from 'lodash/merge';
 import { UPDATE_SORT } from '../actions/filter_actions';
 
-const sortReducer = (state = 1, action) => {
+const sortReducer = (state = 4, action) => {
   Object.freeze(state);
   switch(action.type) {
     case UPDATE_SORT:

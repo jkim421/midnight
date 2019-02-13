@@ -1,9 +1,46 @@
+
   .ListItem-li {
     display: flex;
     align-items: center;
     height: 150px;
-    border: 1px solid blue;
+    width: 100%;
+  }
+
+  .ListItem-li:first-of-type {
     margin-top: 0.4em;
+  }
+
+  .ListItem-container {
+    display: flex;
+    align-items: center;
+    width: 98%;
+  }
+
+  .ListItem-hover-hidden {
+    height: 100%;
+    width: 1%;
+    box-sizing: border-box;
+    margin-right: 1%;
+    background-color: none;
+    transition: background-color 0.15s ease-out;
+  }
+
+  .ListItem-hover {
+    background-color: rgba(255,255,255,0.5);
+  }
+
+  .ListItem-border-top {
+    display: none;
+  }
+
+  .ListItem-border-top:first-of-type {
+    margin-top: 0.4em;
+  }
+
+  .ListItem-border-bottom, .ListItem-border-top:first-of-type {
+    width: 98%;
+    border-top: 1px solid rgba(255,255,255,0.5);
+    margin: 0 auto;
   }
 
   .ListItem-img-container {
@@ -82,12 +119,12 @@
   .ListItem-title {
     font-size: 1.8em;
     font-weight: 700;
-    color: black;
     text-decoration: none;
+    color: #eeeeee;
   }
 
   .ListItem-title:visited {
-    color: black;
+    color: #eeeeee;
   }
 
   .ListItem-details {
@@ -123,10 +160,6 @@
     user-select: none;
   }
 
-  .ListItem-genre-selected {
-    background-color: lightblue;
-  }
-
   .ListItem-genre-container {
     width: 20%;
     margin-bottom: 0.4em;
@@ -142,9 +175,18 @@
     box-sizing: border-box;
     border: 1px solid black;
     border-radius: 8px;
-    transition: background-color 0.2s, color 0.2s;
+    transition: all 0.15s ease-out;
+    background-color: rgba(255,255,255,0.05);
   }
 
   .ListItem-genre:hover {
-    background-color: lightblue;
+    background-color: rgba(255,255,255,0.1);
+  }
+
+  .ListItem-genre-selected {
+    background-color: rgba(255,255,255,0.2);
+  }
+
+  .ListItem-genre-selected:hover {
+    background-color: rgba(255,255,255,0.2);
   }

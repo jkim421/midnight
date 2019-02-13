@@ -25,7 +25,7 @@ class ListIndex extends React.Component {
     const showsDisplay = shows.slice(0, 20 * this.state.pages);
     return (
       showsDisplay.map(show => {
-        return <ListItemContainer show={ show } key={ show.id }/>
+        return <ListItemContainer show={ show } key={ show.id }/>;
       })
     )
   }
