@@ -62,8 +62,8 @@ class Header extends React.Component {
 
   render() {
     return (
-      <>
-        <div className="Header-container">
+      <div className="Header-container">
+        <div className="Header-body">
           <div className="Header-item Header-title ">
             midnight
           </div>
@@ -91,7 +91,7 @@ class Header extends React.Component {
         <div className="Header-sort">
           <SortBarContainer />
         </div>
-      </>
+      </div>
     )
   }
 }

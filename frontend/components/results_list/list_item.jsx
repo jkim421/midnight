@@ -99,8 +99,6 @@ class ListItem extends React.Component {
       <>
         <li
           className="ListItem-li"
-          onMouseOver={ () => this.toggleHover() }
-          onMouseOut={ () => this.toggleHover() }
         >
           <div className="ListItem-container">
             <div className="ListItem-img-container">
