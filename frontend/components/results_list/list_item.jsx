@@ -92,10 +92,6 @@ class ListItem extends React.Component {
     }
   }
 
-  toggleHover() {
-    this.divHover.current.classList.toggle("ListItem-hover");
-  }
-
   render() {
     const { show } = this.props;
     const imgShow = this.state.imgShow;
@@ -155,10 +151,6 @@ class ListItem extends React.Component {
               </ul>
             </div>
           </div>
-          <div
-            className="ListItem-hover-hidden"
-            ref={ this.divHover }
-          />
         </li>
         <div className="ListItem-border-bottom"/>
       </>

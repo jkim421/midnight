@@ -16,20 +16,7 @@
   .ListItem-container {
     display: flex;
     align-items: center;
-    width: 98%;
-  }
-
-  .ListItem-hover-hidden {
-    height: 100%;
-    width: 1%;
-    box-sizing: border-box;
-    margin-right: 1%;
-    background-color: none;
-    transition: background-color 0.15s ease-out;
-  }
-
-  .ListItem-hover {
-    background-color: rgba(255,255,255,0.5);
+    width: 100%;
   }
 
   .ListItem-border-top {
