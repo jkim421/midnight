@@ -9,6 +9,25 @@ class SortBar extends React.Component {
       start: 6,
       end: 8,
     }
+    this.handleSortClick = this.handleSortClick.bind(this);
+    this.sortBody = this.sortBody.bind(this);
+  }
+
+  componentDidMount() {
+    document.addEventListener('mousedown', this.handleSortClick);
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener('mousedown', this.handleSortClick);
+  }
+
+  handleSortClick(e) {
+    if ((this.sortBody.current.contains(e.target)) ||
+    (!this.sortBody.current.contains(e.target) && !this.props.sortOpen)) {
+      return;
+    } else {
+      this.props.toggleSort();
+    }
   }
 
   toggleSort() {
@@ -69,7 +88,10 @@ class SortBar extends React.Component {
 
   render() {
     return (
-      <div className={`SortBar-container ${ this.sortStyle() }`}>
+      <div
+        className={`SortBar-container ${ this.sortStyle() }`}
+        ref={ this.sortBody }
+      >
         <div
           className={`SortBar-option ${ this.currentSort(1) }`}
           onClick={ () => this.handleSort("title") }

@@ -12,14 +12,6 @@ class Header extends React.Component {
     this.handleSort = this.handleSort.bind(this);
   }
 
-  componentDidMount() {
-
-  }
-
-  componentWillUnmount() {
-
-  }
-
   handleFilter() {
     if (this.props.sortOpen) {
       this.toggleSort();

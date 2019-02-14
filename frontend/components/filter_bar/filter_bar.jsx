@@ -12,8 +12,25 @@ import GenresRow from './genres_row';
 class FilterBar extends React.Component {
   constructor(props) {
     super(props);
-    this.toggleFilter = this.toggleFilter.bind(this);
+    this.handleFilterClick = this.handleFilterClick.bind(this);
     this.filterBody = React.createRef();
+  }
+
+  componentDidMount() {
+    document.addEventListener('mousedown', this.handleFilterClick);
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener('mousedown', this.handleFilterClick);
+  }
+
+  handleFilterClick(e) {
+    if ((this.filterBody.current.contains(e.target)) ||
+    (!this.filterBody.current.contains(e.target) && !this.props.filterOpen)) {
+      return;
+    } else {
+      this.props.toggleFilter();
+    }
   }
 
   toggleFilter() {
