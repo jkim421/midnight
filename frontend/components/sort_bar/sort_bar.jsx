@@ -10,7 +10,7 @@ class SortBar extends React.Component {
       end: 8,
     }
     this.handleSortClick = this.handleSortClick.bind(this);
-    this.sortBody = this.sortBody.bind(this);
+    this.sortBody = React.createRef();
   }
 
   componentDidMount() {
