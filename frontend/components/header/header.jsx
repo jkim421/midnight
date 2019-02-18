@@ -6,10 +6,30 @@ import SortBarContainer from '../sort_bar/sort_bar_container';
 class Header extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      filterLeft: 0,
+      sortLeft: 0,
+    }
     this.filterBtn = React.createRef();
     this.sortBtn = React.createRef();
     this.handleFilter = this.handleFilter.bind(this);
     this.handleSort = this.handleSort.bind(this);
+    this.updatePosition = this.updatePosition.bind(this);
+  }
+
+  componentDidMount() {
+    window.addEventListener("resize", this.updatePosition);
+    this.setState({
+      filterLeft: this.filterBtn.current.offsetLeft,
+      sortLeft: this.sortBtn.current.offsetLeft,
+    })
+  }
+
+  updatePosition() {
+    this.setState({
+      filterLeft: this.filterBtn.current.offsetLeft,
+      sortLeft: this.sortBtn.current.offsetLeft,
+    });
   }
 
   handleFilter() {
@@ -59,10 +79,8 @@ class Header extends React.Component {
           <div className="Header-item Header-title ">
             midnight
           </div>
-          <div className="Header-item Header-search">
-            <SearchBarContainer />
-          </div>
           <div
+            id="Header-filter"
             className="Header-item Header-filter-btn"
             ref={ this.filterBtn }
             onClick={ this.handleFilter }
@@ -70,17 +88,31 @@ class Header extends React.Component {
             filter
           </div>
           <div
+            id="Header-sort"
             className="Header-item Header-sort-btn"
             ref={ this.sortBtn }
             onClick={ this.handleSort }
           >
             sort
           </div>
+          <div className="Header-item Header-search">
+            <SearchBarContainer />
+          </div>
         </div>
-        <div className="Header-filter">
+        <div
+          className="Header-filter"
+          style={{
+            left: this.state.filterLeft
+          }}
+        >
           <FilterBarContainer />
         </div>
-        <div className="Header-sort">
+        <div
+          className="Header-sort"
+          style={{
+            left: this.state.sortLeft
+          }}
+        >
           <SortBarContainer />
         </div>
       </div>

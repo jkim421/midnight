@@ -21,7 +21,6 @@
   align-items: center;
   font-size: 1.2em;
   user-select: none;
-  margin-left: 5%;
   border-top: 3px solid transparent;
   border-bottom: 3px solid transparent;
   /* border: 1px solid red; */
@@ -29,18 +28,19 @@
 
 .Header-title {
   margin-left: 10%;
+  margin-right: 2em;
   font-size: 1.6em;
 }
 
 .Header-search {
   width: 250px;
+  margin-left: 5em;
 }
 
 .Header-filter-btn, .Header-sort-btn {
   position: relative;
   width: 100px;
   height: 100%;
-  margin-left: 0;
   box-sizing: border-box;
   transition: border-bottom 0.15s ease-out;
 }
@@ -60,7 +60,6 @@
 .Header-filter {
   position: fixed;
   top: 45px;
-  left: 20%;
   width: 650px;
   margin: 0 auto;
   z-index: 5;
@@ -73,13 +72,10 @@
 .Header-sort {
   position: fixed;
   top: 45px;
-  left: 20%;
-  width: 650px;
+  width: 100px;
   margin: 0 auto;
   z-index: 5;
   background-image: linear-gradient(90deg, #101946, #2b1046);
   /* background-color: rgb(46,30,99); */
-  border: 1px solid rgba(255,255,255,0.5);
-  border-top: none;
-  border-radius: 0 0 5px 5px;
+  /* border: 1px solid rgba(255,255,255,0.5); */
 }

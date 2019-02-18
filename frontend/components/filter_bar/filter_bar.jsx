@@ -17,6 +17,7 @@ class FilterBar extends React.Component {
   }
 
   componentDidMount() {
+    this.filterBtn = document.getElementById("Header-filter");
     document.addEventListener('mousedown', this.handleFilterClick);
   }
 
@@ -25,16 +26,18 @@ class FilterBar extends React.Component {
   }
 
   handleFilterClick(e) {
-    if ((this.filterBody.current.contains(e.target)) ||
+    if (this.filterBtn.contains(e.target) ||
+    this.filterBody.current.contains(e.target) ||
     (!this.filterBody.current.contains(e.target) && !this.props.filterOpen)) {
       return;
     } else {
-      this.props.toggleFilter();
+      this.toggleFilter();
     }
   }
 
   toggleFilter() {
     this.props.toggleFilter();
+    this.filterBtn.classList.toggle("Header-filter-selected");
   }
 
   filterStyle() {

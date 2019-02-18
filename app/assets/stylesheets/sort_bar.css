@@ -1,8 +1,13 @@
 .SortBar-container {
   display: flex;
+  flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  height: 2.4em;
+  height: 20em;
+  box-sizing: border-box;
+  border: 1px solid rgba(255,255,255,0.5);
+  border-top: none;
+  border-radius: 0 0 5px 5px;
 }
 
 .SortBar-body-open, .SortBar-body-closed {
@@ -13,17 +18,15 @@
 }
 
 .SortBar-body-open {
-  max-height: 2.4em;
+  max-height: 20em;
 }
 
 .SortBar-option {
-  margin-top: 5px;
-  width: 25%;
-  height: 100%;
+  width: 100%;
+  height: 25%;
   display: flex;
   justify-content: center;
   align-items: center;
-  border-right: 1px solid rgba(255,255,255,0.5);
   transition: all 0.15s ease-out;
   user-select: none;
 }

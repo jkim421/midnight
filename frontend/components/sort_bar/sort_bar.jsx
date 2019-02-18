@@ -15,6 +15,7 @@ class SortBar extends React.Component {
 
   componentDidMount() {
     document.addEventListener('mousedown', this.handleSortClick);
+    this.sortBtn = document.getElementById("Header-sort");
   }
 
   componentWillUnmount() {
@@ -22,16 +23,18 @@ class SortBar extends React.Component {
   }
 
   handleSortClick(e) {
-    if ((this.sortBody.current.contains(e.target)) ||
+    if (this.sortBtn.contains(e.target) ||
+    this.sortBody.current.contains(e.target) ||
     (!this.sortBody.current.contains(e.target) && !this.props.sortOpen)) {
       return;
     } else {
-      this.props.toggleSort();
+      this.toggleSort();
     }
   }
 
   toggleSort() {
     this.props.toggleSort();
+    this.sortBtn.classList.toggle("Header-sort-selected");
   }
 
   sortStyle() {

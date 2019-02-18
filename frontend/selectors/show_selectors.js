@@ -19,7 +19,7 @@ export const filterAnime = (animes, filters) => {
     .filter(show => filterGenres(show, genres));
 
   result = sortResult(result, sort);
-  
+
   return result;
 };
 
@@ -76,6 +76,7 @@ const parseShow = (raw) => {
     url: raw.url,
     img_url: raw.image_url,
     score: tags ? tags.score : null,
+    user_score: raw.score,
     genres: tags ? tags.genres : null,
   };
 };
