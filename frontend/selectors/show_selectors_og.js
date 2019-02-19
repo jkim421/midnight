@@ -7,7 +7,7 @@ export const filterAnime = (animes, filters) => {
   const high = parseFloat(scores[1]);
 
   let result = [];
-  debugger
+  
   for (let i = 0; i < categories.length; i++) {
     result = result.concat(animes[categories[i]]);
   }

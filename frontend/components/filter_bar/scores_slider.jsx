@@ -18,7 +18,6 @@ class ScoresSlider extends React.Component {
   }
 
   handleUpdate() {
-    debugger
     const scores = [
       this.lowerHandle.attributes[7].textContent,
       this.upperHandle.attributes[7].textContent
