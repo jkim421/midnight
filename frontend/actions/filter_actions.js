@@ -1,3 +1,5 @@
+export const UPDATE_SELECTION = "UPDATE_SELECTION";
+
 export const ADD_CATEGORY = "ADD_CATEGORY";
 export const REMOVE_CATEGORY = "REMOVE_CATEGORY";
 
@@ -20,6 +22,12 @@ export const RESET_GENRE = "RESET_GENRE";
 
 export const UPDATE_SORT = "UPDATE_SORT";
 
+export const updateSelection = (selection) => {
+  return {
+    type: UPDATE_SELECTION,
+    selection,
+  };
+};
 export const addCategory = (categoryId) => {
   return {
     type: ADD_CATEGORY,

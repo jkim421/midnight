@@ -1,22 +1,25 @@
 import { parseTags, parseYear } from './tag_selector';
 import { sortResult } from './show_sort';
 
-export const filterAnime = (animes, filters) => {
-  const { categories, types, ratings, scores, genres, sort } = filters;
+export const filterAnime = (animes, filters, selection) => {
+  const { selectionDisplay, categories, types, ratings, scores, genres, sort } = filters;
   const low = parseFloat(scores[0]);
   const high = parseFloat(scores[1]);
+
+  const selectedShows = [].concat.apply([], Object.values(selection));
 
   let result = [];
 
   for (let i = 0; i < categories.length; i++) {
     result = result.concat(Object.values(animes[categories[i]]));
   }
-  
+
   result = result
     .filter(show => types.includes(show.type))
     .filter(show => ratings.includes(show.rating))
     .filter(show => show.score >= low && show.score <= high)
-    .filter(show => filterGenres(show, genres));
+    .filter(show => filterGenres(show, genres))
+    .filter(show => filterSelection(show, selectionDisplay, selectedShows));
 
   result = sortResult(result, sort);
 
@@ -31,6 +34,16 @@ const filterGenres = (show, genres) => {
     return false;
   } else {
     return genres.every( genre => show.genres.includes(genre));
+  }
+};
+
+const filterSelection = (show, selectionDisplay, selectedShows) => {
+  if (selectionDisplay === "2") {
+    return selectedShows.includes(show.id) ? true : false;
+  } else if (selectionDisplay === "3") {
+    return selectedShows.includes(show.id) ? false : true;
+  } else {
+    return true;
   }
 };
 

@@ -25,6 +25,14 @@ class Header extends React.Component {
     })
   }
 
+  componentDidUpdate(oldProps) {
+    if (
+      (oldProps.showNum === 0 || this.props.showNum === 0) &&
+      (oldProps.showNum !== this.props.showNum)) {
+      this.updatePosition();
+    }
+  }
+
   updatePosition() {
     this.setState({
       filterLeft: this.filterBtn.current.offsetLeft,

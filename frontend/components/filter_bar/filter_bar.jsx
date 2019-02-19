@@ -3,6 +3,7 @@ import {
   LIST_CATEGORIES,
   TYPES,
   RATINGS } from '../../selectors/defined_tags';
+import SelectionCheckboxContainer from './selection_checkbox_container';
 import CategoryCheckboxContainer from './category_checkbox_container';
 import TypesCheckboxContainer from './types_checkbox_container';
 import RatingsCheckboxContainer from './ratings_checkbox_container';
@@ -52,6 +53,22 @@ class FilterBar extends React.Component {
     }
   }
 
+  renderSelection() {
+    const options = {
+      1: "All",
+      2: "Selected",
+      3: "Not Selected"
+    };
+
+    return Object.keys(options).map( id => (
+      <SelectionCheckboxContainer
+        key={ id }
+        optionId={ id }
+        optionName={ options[id] }
+      />
+    ))
+  }
+
   renderCategories() {
     const listIds = [6, 1, 2, 3, 4];
 
@@ -89,6 +106,15 @@ class FilterBar extends React.Component {
           className={`${this.filterStyle()}`}
           ref={ this.filterBody }
         >
+          <div className="FilterBar-filter">
+            <div className="FilterBar-title">
+              Selection
+            </div>
+            <div className="FilterBar-options-row FilterBar-selections">
+              { this.renderSelection() }
+            </div>
+          </div>
+          <div className="FilterBar-border"/>
           <div className="FilterBar-filter">
             <div className="FilterBar-title">
               List

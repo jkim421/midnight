@@ -6,10 +6,11 @@ import { filterAnime } from '../../selectors/show_selectors';
 
 const msp = state => {
   const filters = state.filters;
+  const selection = state.selection;
   const anime = state.entities.animes;
 
   return {
-    shows: filterAnime(anime, filters),
+    shows: filterAnime(anime, filters, selection),
   };
 };
 
