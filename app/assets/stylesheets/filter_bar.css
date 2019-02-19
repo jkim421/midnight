@@ -87,7 +87,8 @@
 }
 
 .FilterBar-slider-row {
-  width: 90%;
+  margin: 0 auto;
+  width: 75%;
   padding: 0 2em 0 1em;
 }
 

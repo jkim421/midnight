@@ -85,10 +85,12 @@ html:not([dir="rtl"]) .noUi-horizontal .noUi-handle {
   left: auto;
 }
 html:not([dir="rtl"]) .noUi-horizontal .noUi-handle-lower {
-  right: -22px;
+  right: -2px;
+  /* right: -22px; */
 }
 html:not([dir="rtl"]) .noUi-horizontal .noUi-handle-upper {
-  right: -6px;
+  right: -26px;
+  /* right: -6px; */
 }
 /* Styling;
  * Giving the connect element a border radius causes issues with using transform: scale

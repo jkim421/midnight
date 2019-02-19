@@ -18,6 +18,7 @@ class ScoresSlider extends React.Component {
   }
 
   handleUpdate() {
+    debugger
     const scores = [
       this.lowerHandle.attributes[7].textContent,
       this.upperHandle.attributes[7].textContent
@@ -30,7 +31,7 @@ class ScoresSlider extends React.Component {
       <Nouislider
         range={{ min: 0.0, max: 10.0 }}
         start={[0.0, 10.0]}
-        margin={1.0}
+        margin={0.1}
         tooltips={[wNumb({decimals: 1}), wNumb({decimals: 1})]}
         connect
         onChange={this.handleUpdate}/>
