@@ -40,6 +40,13 @@ class ListIndex extends React.Component {
 
   render() {
     const { shows } = this.props;
+    if (shows.length === 0) {
+      return (
+        <div className="ListIndex-none">
+          No Results
+        </div>
+      )
+    }
     return (
       <div className="ListIndex-container">
         <ul className="ListIndex-ul">
