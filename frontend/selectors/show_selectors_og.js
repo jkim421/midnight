@@ -7,11 +7,11 @@ export const filterAnime = (animes, filters) => {
   const high = parseFloat(scores[1]);
 
   let result = [];
-
+  debugger
   for (let i = 0; i < categories.length; i++) {
-    result = result.concat(Object.values(animes[categories[i]]));
+    result = result.concat(animes[categories[i]]);
   }
-  
+
   result = result
     .filter(show => types.includes(show.type))
     .filter(show => ratings.includes(show.rating))
@@ -36,26 +36,26 @@ const filterGenres = (show, genres) => {
 
 export const sortAnime = (anime) => {
   let sorted = {
-    1: {},
-    2: {},
-    3: {},
-    4: {},
-    6: {},
+    1: [],
+    2: [],
+    3: [],
+    4: [],
+    6: [],
   };
 
   anime.forEach( raw => {
     const show = parseShow(raw);
 
     if (show.watching_status === 1) {
-      sorted[1][show.id] = show;
+      sorted[1].push(show);
     } else if (show.watching_status === 2) {
-      sorted[2][show.id] = show;
+      sorted[2].push(show);
     } else if (show.watching_status === 3) {
-      sorted[3][show.id] = show;
+      sorted[3].push(show);
     } else if (show.watching_status === 4) {
-      sorted[4][show.id] = show;
+      sorted[4].push(show);
     } else if (show.watching_status === 6) {
-      sorted[6][show.id] = show;
+      sorted[6].push(show);
     }
   });
 

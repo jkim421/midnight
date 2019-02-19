@@ -8,8 +8,8 @@ class ListItem extends React.Component {
     this.state = {
       imgLoaded: false,
     }
+    this.toggleSelect = this.toggleSelect.bind(this);
     this.handleImgLoad = this.handleImgLoad.bind(this);
-    this.divHover = React.createRef();
   }
 
   handleImgLoad() {
@@ -29,6 +29,34 @@ class ListItem extends React.Component {
       )
     }
   };
+
+  isSelected() {
+    if (this.props.selected) return "ListItem-selected";
+  }
+
+  toggleSelect() {
+    if (this.props.selected) {
+      this.props.removeSelected(this.props.show);
+    } else {
+      this.props.addSelected(this.props.show);
+    }
+  }
+
+  displayTitle(title) {
+    if (title.length > 50) {
+      return title.slice(0, 48) + "..."
+    } else {
+      return title;
+    }
+  }
+
+  displaySelectOption() {
+    if (this.props.selected) {
+      return "Remove";
+    } else {
+      return "Add";
+    }
+  }
 
   renderDate(startStr, endStr) {
     const start = startStr ? startStr.slice(0, 4) : "?";
@@ -100,7 +128,10 @@ class ListItem extends React.Component {
         <li
           className="ListItem-li"
         >
-          <div className="ListItem-container">
+          <div
+            className={`ListItem-container ${ this.isSelected() }`}
+            onClick={ this.toggleSelect }
+          >
             <div className="ListItem-img-container">
               { this.renderImgLoader() }
               <a className="ListItem-img-link" href={ show.url } target="_blank">
@@ -124,8 +155,14 @@ class ListItem extends React.Component {
                   href={ show.url }
                   target="_blank"
                   >
-                  { show.title }
+                  { this.displayTitle(show.title) }
                 </a>
+                <div
+                  ref={ this.selection }
+                  className="ListItem-selection"
+                >
+                  { this.displaySelectOption() }
+                </div>
               </div>
               <div className="ListItem-details">
                 <div className="ListItem-detail">

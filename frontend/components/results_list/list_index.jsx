@@ -23,9 +23,16 @@ class ListIndex extends React.Component {
 
   showList(shows) {
     const showsDisplay = shows.slice(0, 20 * this.state.pages);
+    const selection = this.props.selection;
+
     return (
       showsDisplay.map(show => {
-        return <ListItemContainer show={ show } key={ show.id }/>;
+        return (
+          <ListItemContainer
+            show={ show }
+            key={ show.id }
+          />
+        );
       })
     )
   }

@@ -4,19 +4,31 @@ import {
   REMOVE_SELECTED, }
     from '../actions/selection_actions';
 
-const selectionReducer = (state = {}, action) => {
+const defaultState = {
+  1: [],
+  2: [],
+  3: [],
+  4: [],
+  6: [],
+};
+
+const selectionReducer = (state = defaultState, action) => {
   Object.freeze(state);
 
-  const id = action.animeId;
+  const id = action.id;
   const category = action.category;
-  let selection = { id: category };
+
+  let selection = state[category];
+  let newState = merge({}, state);
 
   switch(action.type) {
     case ADD_SELECTED:
-      return merge({}, state, selection);
+      selection.push(id);
+      newState[category] = selection;
+      return newState;
     case REMOVE_SELECTED:
-      let newState = merge({}, state);
-      delete newState[id];
+      selection = selection.filter( showId => showId !== id );
+      newState[category] = selection;
       return newState;
     default:
       return state;
