@@ -7,6 +7,7 @@ class ListItem extends React.Component {
     super(props);
     this.state = {
       imgLoaded: false,
+      selected: false,
     }
     this.toggleSelect = this.toggleSelect.bind(this);
     this.handleImgLoad = this.handleImgLoad.bind(this);

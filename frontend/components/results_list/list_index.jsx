@@ -21,9 +21,18 @@ class ListIndex extends React.Component {
     }
   }
 
+  shouldComponentUpdate(nextProps, nextState) {
+    if (this.state.pages !== nextState.pages) {
+      return true;
+    } else if (this.props.shows.length === nextProps.shows.length) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+
   showList(shows) {
     const showsDisplay = shows.slice(0, 20 * this.state.pages);
-    const selection = this.props.selection;
 
     return (
       showsDisplay.map(show => {
