@@ -38,7 +38,7 @@
   margin-left: 5em;
 }
 
-.Header-filter-btn, .Header-sort-btn {
+.Header-filter-btn, .Header-sort-btn, .Header-roulette-btn {
   position: relative;
   width: 100px;
   height: 100%;
@@ -46,7 +46,7 @@
   transition: border-bottom 0.15s ease-out;
 }
 
-.Header-filter-btn:hover, .Header-sort-btn:hover {
+.Header-filter-btn:hover, .Header-sort-btn:hover, .Header-roulette-btn:hover {
   border-bottom: 3px solid rgba(255,255,255,0.5);
 }
 

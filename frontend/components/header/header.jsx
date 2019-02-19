@@ -97,6 +97,12 @@ class Header extends React.Component {
           >
             sort
           </div>
+          <div
+            id="Header-roulette"
+            className="Header-item Header-roulette-btn"
+          >
+            roulette
+          </div>
           <div className="Header-item Header-search">
             <SearchBarContainer />
           </div>
