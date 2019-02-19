@@ -53,9 +53,9 @@ class ListItem extends React.Component {
 
   displaySelectOption() {
     if (this.props.selected) {
-      return "Remove";
+      return "REMOVE";
     } else {
-      return "Add";
+      return "ADD";
     }
   }
 
@@ -131,7 +131,6 @@ class ListItem extends React.Component {
         >
           <div
             className={`ListItem-container ${ this.isSelected() }`}
-            onClick={ this.toggleSelect }
           >
             <div className="ListItem-img-container">
               { this.renderImgLoader() }
@@ -161,6 +160,7 @@ class ListItem extends React.Component {
                 <div
                   ref={ this.selection }
                   className="ListItem-selection"
+                  onClick={ this.toggleSelect }
                 >
                   { this.displaySelectOption() }
                 </div>

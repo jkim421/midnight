@@ -27,11 +27,11 @@
   }
 
   .ListItem-container:hover {
-    background-color: rgba(255, 255, 255, 0.05);
+    background-color: rgba(255, 255, 255, 0.1);
   }
 
   .ListItem-selected {
-    background-color: rgba(255, 255, 255, 0.05);
+    background-color: rgba(255, 255, 255, 0.1);
   }
 
   .ListItem-border-top {
@@ -134,8 +134,8 @@
     color: #eeeeee;
   }
 
-  .ListItem-title:visited {
-    color: #eeeeee;
+  .ListItem-title:hover {
+    color: #cccccc;
   }
 
   .ListItem-selection {

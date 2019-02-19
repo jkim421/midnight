@@ -22,7 +22,7 @@ export const GENRES = [
   "Samurai",
   "Romance",
   "School",
-  "Sci Fi",
+  "Sci-Fi",
   "Shoujo",
   "Shoujo Ai",
   "Shounen",
@@ -55,7 +55,7 @@ export const GENRES_MAIN = [
   "Horror",
   "Mystery",
   "Romance",
-  "Sci Fi",
+  "Sci-Fi",
   "Slice of Life",
   "Thriller"
 ];

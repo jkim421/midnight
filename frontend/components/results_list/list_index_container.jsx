@@ -10,6 +10,7 @@ const msp = state => {
   const anime = state.entities.animes;
 
   return {
+    filters,
     shows: filterAnime(anime, filters, selection),
   };
 };

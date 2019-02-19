@@ -22,7 +22,9 @@ class ListIndex extends React.Component {
   }
 
   shouldComponentUpdate(nextProps, nextState) {
-    if (this.state.pages !== nextState.pages) {
+    if (
+      (this.state.pages !== nextState.pages) ||
+      (this.props.filters.sort !== nextProps.filters.sort)) {
       return true;
     } else if (this.props.shows.length === nextProps.shows.length) {
       return false;
