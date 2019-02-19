@@ -10,7 +10,10 @@ class ResultsList extends React.Component {
 
   render() {
     return (
-      <div className="ResultsList-container">
+      <div
+        id="ResultsList"
+        className="ResultsList-container"
+      >
         <ListIndexContainer />
       </div>
     )

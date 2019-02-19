@@ -4,6 +4,7 @@
 .Header-body {
   display: flex;
   align-items: center;
+  justify-content: center;
   height: 50px;
   width: 100%;
   min-width: 800px;
@@ -27,7 +28,7 @@
 }
 
 .Header-title {
-  margin-left: 10%;
+  /* margin-left: 10%; */
   margin-right: 2em;
   font-size: 1.6em;
 }
@@ -57,25 +58,19 @@
   border-bottom: 3px solid rgba(255,255,255,0.5);
 }
 
-.Header-filter {
+.Header-filter, .Header-sort {
   position: fixed;
   top: 45px;
-  width: 650px;
   margin: 0 auto;
   z-index: 5;
   background-image: linear-gradient(90deg, #101946, #2b1046);
-  /* background-color: rgb(46,30,99); */
-  /* background-size: 931px 931px;
-  background-position: -300px 0; */
+  background-attachment: fixed;
+}
+
+.Header-filter {
+  width: 650px;
 }
 
 .Header-sort {
-  position: fixed;
-  top: 45px;
   width: 100px;
-  margin: 0 auto;
-  z-index: 5;
-  background-image: linear-gradient(90deg, #101946, #2b1046);
-  /* background-color: rgb(46,30,99); */
-  /* border: 1px solid rgba(255,255,255,0.5); */
 }

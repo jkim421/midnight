@@ -75,8 +75,10 @@ class Header extends React.Component {
   render() {
     return (
       <div className="Header-container">
-        <div className="Header-body">
-          <div className="Header-item Header-title ">
+        <div
+          className="Header-body"
+        >
+          <div className="Header-item Header-title">
             midnight
           </div>
           <div
