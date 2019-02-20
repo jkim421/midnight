@@ -143,6 +143,12 @@
     opacity: 0;
     visibility: none;
     transition: opacity 0.1s linear;
+    user-select: none;
+  }
+
+  .ListItem-selection:hover {
+    cursor: pointer;
+    color: #cccccc;
   }
 
   .ListItem-container:hover .ListItem-selection {
