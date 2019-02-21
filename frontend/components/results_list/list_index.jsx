@@ -1,29 +1,38 @@
 import React from 'react';
 import ListItemContainer from './list_item_container';
+import { ClipLoader } from 'react-spinners';
 
 class ListIndex extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      pages: 1,
+      page: 1,
+      maxPages: Math.ceil(this.props.shows.length/20),
     };
-
     this.showList = this.showList.bind(this);
     this.handleScroll = this.handleScroll.bind(this);
     window.addEventListener('scroll', this.handleScroll)
   }
 
+  componentDidMount() {
+    this.props.endList();
+  }
+
   componentDidUpdate(oldProps) {
-    if (this.props.shows !== oldProps.shows) {
+    if (
+      (this.props.shows.length !== oldProps.shows.length) ||
+      (this.props.filters.sort !== oldProps.filters.sort)) {
+      window.scrollTo(0, 0);
       this.setState({
-        pages: 1,
+        page: 1,
+        maxPages: Math.ceil(this.props.shows.length/20)
       })
     }
   }
 
   shouldComponentUpdate(nextProps, nextState) {
     if (
-      (this.state.pages !== nextState.pages) ||
+      (this.state.page !== nextState.page) ||
       (this.props.filters.sort !== nextProps.filters.sort)) {
       return true;
     } else if (this.props.shows.length === nextProps.shows.length) {
@@ -34,7 +43,7 @@ class ListIndex extends React.Component {
   }
 
   showList(shows) {
-    const showsDisplay = shows.slice(0, 20 * this.state.pages);
+    const showsDisplay = shows.slice(0, 20 * this.state.page);
 
     return (
       showsDisplay.map(show => {
@@ -49,9 +58,12 @@ class ListIndex extends React.Component {
   }
 
   handleScroll() {
-    if ((window.innerHeight + window.pageYOffset) >= document.body.offsetHeight - 20) {
+    if (
+      (this.state.page !== this.state.maxPages) &&
+      ((window.innerHeight + window.pageYOffset) >= document.body.offsetHeight - 20)
+    ) {
       this.setState({
-        pages: this.state.pages + 1
+        page: this.state.page + 1
       })
     }
   }

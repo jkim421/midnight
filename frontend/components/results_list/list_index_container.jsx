@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import ListIndex from './list_index';
-
+import { startList, endList } from '../../actions/ui_actions';
 import { filterAnime } from '../../selectors/show_selectors';
 
 const msp = state => {
@@ -12,11 +12,14 @@ const msp = state => {
   return {
     filters,
     shows: filterAnime(anime, filters, selection),
+    updating: state.ui.loading.list,
   };
 };
 
 const mdp = dispatch => {
   return {
+    startList: () => dispatch(startList()),
+    endList: () => dispatch(endList()),
   };
 };
 

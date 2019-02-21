@@ -9,6 +9,7 @@ import {
   addSelected,
   removeSelected }
     from '../../actions/selection_actions';
+import { startList, endList } from '../../actions/ui_actions';
 
 const msp = (state, ownProps) => {
   const show = ownProps.show;
@@ -24,6 +25,8 @@ const mdp = dispatch => {
     removeSelected: (show) => dispatch(removeSelected(show)),
     addGenre: (genreName) => dispatch(addGenre(genreName)),
     removeGenre: (genreName) => dispatch(removeGenre(genreName)),
+    startList: () => dispatch(startList()),
+    endList: () => dispatch(endList()),
   };
 };
 

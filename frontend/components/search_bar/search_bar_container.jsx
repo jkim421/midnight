@@ -7,7 +7,7 @@ import { startLoad, endLoad } from '../../actions/ui_actions';
 
 const msp = state => {
   return {
-    loading: state.ui.loading,
+    loading: state.ui.loading.api,
   };
 };
 

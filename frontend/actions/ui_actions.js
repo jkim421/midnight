@@ -2,6 +2,8 @@ export const START_LOAD = "START_LOAD";
 export const END_LOAD = "END_LOAD";
 export const TOGGLE_FILTER = "TOGGLE_FILTER";
 export const TOGGLE_SORT = "TOGGLE_SORT";
+export const START_LIST = "START_LIST";
+export const END_LIST = "END_LIST";
 
 export const startLoad = () => {
   return {
@@ -21,9 +23,20 @@ export const toggleFilter = () => {
   };
 };
 
-
 export const toggleSort = () => {
   return {
     type: TOGGLE_SORT,
+  };
+};
+
+export const startList = () => {
+  return {
+    type: START_LIST,
+  };
+};
+
+export const endList = () => {
+  return {
+    type: END_LIST,
   };
 };
