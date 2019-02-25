@@ -21,7 +21,6 @@ class SearchBar extends React.Component {
         username: this.props.usernameParam,
       }, () => this.sendSearch())
     }
-    // this.sendSearch();
   }
 
   updateSearch(e) {

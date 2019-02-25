@@ -8,7 +8,7 @@ const msp = state => {
   const filters = state.filters;
   const selection = state.selection;
   const anime = state.entities.animes;
-  debugger
+  
   return {
     filters,
     shows: filterAnime(anime, filters, selection),

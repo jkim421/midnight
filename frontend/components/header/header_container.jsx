@@ -8,7 +8,6 @@ import {
 import { filterAnime } from '../../selectors/show_selectors';
 
 const msp = (state, ownProps) => {
-  const username = state.entities.username;
   const usernameParam = ownProps.match.params.username;
   const filters = state.filters;
   const selection = state.selection;
@@ -17,7 +16,6 @@ const msp = (state, ownProps) => {
   return {
     filterOpen: state.ui.header.filterOpen,
     sortOpen: state.ui.header.sortOpen,
-    username,
     usernameParam,
     showNum: filterAnime(anime, filters, selection).length,
   };
