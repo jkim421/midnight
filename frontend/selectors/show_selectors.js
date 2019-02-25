@@ -9,7 +9,7 @@ export const filterAnime = (animes, filters, selection) => {
   const selectedShows = [].concat.apply([], Object.values(selection));
 
   let result = [];
-
+  
   for (let i = 0; i < categories.length; i++) {
     result = result.concat(Object.values(animes[categories[i]]));
   }

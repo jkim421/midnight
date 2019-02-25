@@ -6,7 +6,7 @@ class SearchBar extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      username: "wisetail",
+      username: this.props.username,
       page: 1,
       list: [],
       error: null,
@@ -16,6 +16,11 @@ class SearchBar extends React.Component {
   }
 
   componentDidMount() {
+    if (this.state.username === "") {
+      this.setState({
+        username: this.props.usernameParam,
+      }, () => this.sendSearch())
+    }
     // this.sendSearch();
   }
 
@@ -39,14 +44,16 @@ class SearchBar extends React.Component {
   }
 
   handleSuccess(pageData) {
-    const page = this.state.page;
-    const list = this.state.list;
+    const { username, page, list } = this.state;
 
     if (pageData.anime.length === 0) {
       this.resetSearch();
       this.props.endLoad();
-      this.props.receiveUser(list);
-      this.props.history.push("/list");
+      this.props.receiveUser({
+        username,
+        list
+      });
+      this.props.history.push(`/${username}`);
     } else {
       this.setState({
         page: page + 1,

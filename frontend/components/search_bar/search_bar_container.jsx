@@ -5,8 +5,12 @@ import { fetchUser } from '../../api/user_api';
 import { receiveUser } from '../../actions/user_actions';
 import { startLoad, endLoad } from '../../actions/ui_actions';
 
-const msp = state => {
+const msp = (state, ownProps) => {
+  const username = state.entities.username;
+  const usernameParam = ownProps.usernameParam;
   return {
+    username,
+    usernameParam,
     loading: state.ui.loading.api,
   };
 };

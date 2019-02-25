@@ -112,7 +112,7 @@ class Header extends React.Component {
             roulette
           </div>
           <div className="Header-item Header-search">
-            <SearchBarContainer />
+            <SearchBarContainer usernameParam={this.props.usernameParam}/>
           </div>
         </div>
         <div

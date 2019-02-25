@@ -4,10 +4,11 @@ import { sortAnime } from '../selectors/show_selectors';
 
 export const RECEIVE_ANIME = "RECEIVE_ANIME";
 
-export const receiveUser = (anime) => {
-  const sortedAnime = sortAnime(anime);
+export const receiveUser = ({ username, list }) => {
+  const sortedAnime = sortAnime(list);
   return {
     type: RECEIVE_ANIME,
+    username,
     sortedAnime,
   };
 };

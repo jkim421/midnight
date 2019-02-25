@@ -33,7 +33,8 @@ class ListIndex extends React.Component {
   shouldComponentUpdate(nextProps, nextState) {
     if (
       (this.state.page !== nextState.page) ||
-      (this.props.filters.sort !== nextProps.filters.sort)) {
+      (this.props.filters.sort !== nextProps.filters.sort) ||
+      (this.props.loading !== nextProps.loading)) {
       return true;
     } else if (this.props.shows.length === nextProps.shows.length) {
       return false;
@@ -69,7 +70,15 @@ class ListIndex extends React.Component {
   }
 
   render() {
-    const { shows } = this.props;
+    const { shows, loading } = this.props;
+    
+    if (loading) {
+      return (
+        <div className="ListIndex-none">
+          Loading...
+        </div>
+      )
+    }
     if (shows.length === 0) {
       return (
         <div className="ListIndex-none">
