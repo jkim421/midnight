@@ -6,6 +6,7 @@ import { receiveUser } from '../../actions/user_actions';
 import { startLoad, endLoad } from '../../actions/ui_actions';
 
 const msp = (state, ownProps) => {
+  debugger
   const username = state.entities.username;
   const usernameParam = ownProps.usernameParam;
   return {

@@ -13,7 +13,7 @@ class HomePage extends React.Component {
     return (
       <div className="HomePage-container">
         <h1 className="HomePage-title">midnight</h1>
-        <SearchBarContainer />
+        <SearchBarContainer path={this.props.path}/>
       </div>
     )
   }

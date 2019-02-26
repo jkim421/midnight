@@ -16,7 +16,7 @@ class SearchBar extends React.Component {
   }
 
   componentDidMount() {
-    if (this.state.username === "") {
+    if (!this.props.path && this.state.username === "") {
       this.setState({
         username: this.props.usernameParam,
       }, () => this.sendSearch())

@@ -7,11 +7,11 @@ import ResultsListContainer from './results_list/results_list_container';
 const App = () => {
   return (
     <>
-      <Route path="/:username" component={ HeaderContainer } />
+      <Route path="/:username" component={HeaderContainer} />
       <div className="main-body">
         <Switch>
-          <Route exact path="/" component={ HomePageContainer } />
-          <Route path="/:username" component = { ResultsListContainer } />
+          <Route exact path="/" component={HomePageContainer} />
+          <Route path="/:username" component = {ResultsListContainer} />
         </Switch>
       </div>
     </>
