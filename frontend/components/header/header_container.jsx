@@ -12,7 +12,7 @@ const msp = (state, ownProps) => {
   const filters = state.filters;
   const selection = state.selection;
   const anime = state.entities.animes;
-
+  debugger
   return {
     filterOpen: state.ui.header.filterOpen,
     sortOpen: state.ui.header.sortOpen,

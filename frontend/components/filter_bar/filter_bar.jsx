@@ -45,14 +45,6 @@ class FilterBar extends React.Component {
     return this.props.filterOpen ? "FilterBar-body-open" : "FilterBar-body-closed";
   }
 
-  renderIcon() {
-    if (this.props.filterOpen) {
-      return <i className="fas fa-minus"></i>;
-    } else {
-      return <i className="fas fa-plus"></i>;
-    }
-  }
-
   renderSelection() {
     const options = {
       1: "All",
