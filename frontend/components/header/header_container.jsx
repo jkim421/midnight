@@ -13,7 +13,13 @@ const msp = (state, ownProps) => {
   const selection = state.selection;
   const anime = state.entities.animes;
 
+  const root =
+    document.compatMode == 'BackCompat' ?
+    document.body : document.documentElement;
+  const isVerticalScroll= root.scrollHeight > root.clientHeight;
+
   return {
+    isVerticalScroll,
     filterOpen: state.ui.header.filterOpen,
     sortOpen: state.ui.header.sortOpen,
     usernameParam,
