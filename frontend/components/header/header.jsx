@@ -26,9 +26,10 @@ class Header extends React.Component {
   }
 
   componentDidUpdate(oldProps) {
+
     if (
-      ((oldProps.showNum === 0 || this.props.showNum === 0) &&
-      (oldProps.showNum !== this.props.showNum))) {
+      (oldProps.showNum === 0 || this.props.showNum === 0) &&
+      (oldProps.showNum !== this.props.showNum)) {
       this.updatePosition();
     }
   }

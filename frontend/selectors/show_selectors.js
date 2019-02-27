@@ -8,13 +8,16 @@ export const filterAnime = (animes, filters, selection) => {
 
   const selectedShows = [].concat.apply([], Object.values(selection));
 
-  let result = [];
-  
-  for (let i = 0; i < categories.length; i++) {
-    result = result.concat(Object.values(animes[categories[i]]));
-  }
+  // let result = [];
+  //
+  // for (let i = 0; i < categories.length; i++) {
+  //   result = result.concat(Object.values(animes[categories[i]]));
+  // }
+
+  let result = Object.values(animes);
 
   result = result
+    .filter(show => categories.includes(show.watching_status))
     .filter(show => types.includes(show.type))
     .filter(show => ratings.includes(show.rating))
     .filter(show => show.score >= low && show.score <= high)
@@ -47,32 +50,15 @@ const filterSelection = (show, selectionDisplay, selectedShows) => {
   }
 };
 
-export const sortAnime = (anime) => {
-  let sorted = {
-    1: {},
-    2: {},
-    3: {},
-    4: {},
-    6: {},
-  };
+export const processAnime = (anime) => {
+  let result = {};
 
-  anime.forEach( raw => {
-    const show = parseShow(raw);
+  for (let i = 0; i < anime.length; i++) {
+    let raw = anime[i];
+    result[raw.mal_id] = parseShow(raw);
+  }
 
-    if (show.watching_status === 1) {
-      sorted[1][show.id] = show;
-    } else if (show.watching_status === 2) {
-      sorted[2][show.id] = show;
-    } else if (show.watching_status === 3) {
-      sorted[3][show.id] = show;
-    } else if (show.watching_status === 4) {
-      sorted[4][show.id] = show;
-    } else if (show.watching_status === 6) {
-      sorted[6][show.id] = show;
-    }
-  });
-
-  return sorted;
+  return result;
 };
 
 const parseShow = (raw) => {

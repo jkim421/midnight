@@ -9,11 +9,11 @@ const defaultState = {
   6: {},
 };
 
-const animesReducer = (state = defaultState, action) => {
+const animesReducer = (state = {}, action) => {
   Object.freeze(state);
   switch(action.type) {
     case RECEIVE_ANIME:
-      return merge({}, action.sortedAnime);
+      return merge({}, action.processedAnime);
     default:
       return state;
   }
