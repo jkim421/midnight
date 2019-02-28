@@ -27,10 +27,18 @@ class Header extends React.Component {
 
   componentDidUpdate(oldProps) {
     if (
+      window.matchMedia("(max-width: 800px)").matches &&
+      this.state.filterLeft !== 0) {
+      this.setState({
+        filterLeft: 0,
+        sortLeft: 0,
+      })
+    } else if (
       ((oldProps.showNum === 0 || this.props.showNum === 0) &&
-      (oldProps.showNum !== this.props.showNum)) ||
+      (oldProps.showNum !== this.props.showNum) &&
+      !window.matchMedia("(max-width: 800px)").matches) ||
       (oldProps.isVerticalScroll !== this.props.isVerticalScroll)) {
-      this.updatePosition();
+        this.updatePosition();
     }
   }
 
@@ -83,45 +91,13 @@ class Header extends React.Component {
 
   render() {
     return (
-      <div className="Header-container">
-        <div
-          className="Header-body"
-        >
-          <div className="Header-item Header-title">
-            midnight
-          </div>
-          <div
-            id="Header-filter"
-            className="Header-item Header-filter-btn"
-            ref={ this.filterBtn }
-            onClick={ this.handleFilter }
-          >
-            filter
-          </div>
-          <div
-            id="Header-sort"
-            className="Header-item Header-sort-btn"
-            ref={ this.sortBtn }
-            onClick={ this.handleSort }
-          >
-            sort
-          </div>
-          <div
-            id="Header-roulette"
-            className="Header-item Header-roulette-btn"
-          >
-            roulette
-          </div>
-          <div className="Header-item Header-search">
-            <SearchBarContainer usernameParam={this.props.usernameParam}/>
-          </div>
-        </div>
+      <>
         <div
           className="Header-filter"
           style={{
             left: this.state.filterLeft
           }}
-        >
+          >
           <FilterBarContainer />
         </div>
         <div
@@ -129,10 +105,40 @@ class Header extends React.Component {
           style={{
             left: this.state.sortLeft
           }}
-        >
+          >
           <SortBarContainer />
         </div>
-      </div>
+        <div className="Header-container">
+          <div
+            className="Header-body"
+          >
+            <div className="Header-actions">
+              <div className="Header-item Header-title">
+                midnight
+              </div>
+              <div
+                id="Header-filter"
+                className="Header-item Header-filter-btn"
+                ref={ this.filterBtn }
+                onClick={ this.handleFilter }
+                >
+                filter
+              </div>
+              <div
+                id="Header-sort"
+                className="Header-item Header-sort-btn"
+                ref={ this.sortBtn }
+                onClick={ this.handleSort }
+                >
+                sort
+              </div>
+            </div>
+            <div className="Header-item Header-search">
+              <SearchBarContainer usernameParam={this.props.usernameParam}/>
+            </div>
+          </div>
+        </div>
+      </>
     )
   }
 }

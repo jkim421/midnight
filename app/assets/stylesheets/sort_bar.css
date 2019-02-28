@@ -4,17 +4,12 @@
   justify-content: space-around;
   align-items: center;
   height: 20em;
-  box-sizing: border-box;
-  border: 1px solid rgba(255,255,255,0.5);
-  border-top: none;
-  border-radius: 0 0 5px 5px;
 }
 
 .SortBar-body-open, .SortBar-body-closed {
   max-height: 0;
   overflow-y: hidden;
   transition: max-height 0.1s ease-in-out;
-  border-bottom: 1px solid rgba(255,255,255,0.5);
 }
 
 .SortBar-body-open {
