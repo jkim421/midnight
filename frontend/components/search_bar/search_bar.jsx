@@ -83,7 +83,7 @@ class SearchBar extends React.Component {
   render() {
     if (this.props.loading) { return <PulseLoader color={'#eeeeee'}/> };
     return (
-      <div className="SearchBar-container">
+      <div className={this.props.home ? "SearchBar-home" : ""}>
         <form
           className="SearchBar-search"
           onSubmit={this.sendSearch}
@@ -98,7 +98,7 @@ class SearchBar extends React.Component {
             Search
           </button>
         </form>
-        <div className="SearchBar-errors">
+        <div className={this.props.home ? "SearchBar-errors SearchBar-errors-home" : "SearchBar-errors"}>
           { this.state.error }
         </div>
       </div>

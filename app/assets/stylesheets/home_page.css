@@ -2,12 +2,20 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 1em 0;
+  margin-top: 20%;
 }
 
 .HomePage-title {
   font-size: 2.4em;
   margin-bottom: 0.6em;
+  cursor: default;
+  user-select: none;
+}
+
+.SearchBar-home {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .SearchBar-input {
@@ -47,28 +55,50 @@
   overflow-x: visible;
 }
 
+.SearchBar-errors-home {
+  margin-top: 0.4em;
+}
+
 .HomePage-details {
-  margin: 0 auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 350px;
-  border: 1px solid white;
+  margin-top: 2em;
 }
 
-.HomePage-details-header {
+.HomePage-header {
   font-size: 1.2em;
+  margin-bottom: 0.4em;
 }
 
-.HomePage-details-content {
+.HomePage-header:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.HomePage-header-open {
+  text-decoration: underline;
+}
+
+.HomePage-content {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
-.HomePage-details-about {
+.HomePage-section-open {
+  margin-bottom: 2em;
+}
+
+.HomePage-section-closed {
+  max-height: 0;
+  visibility: hidden;
+}
+
+.HomePage-about {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -76,7 +106,14 @@
   text-align: center;
 }
 
-.HomePage-details-howto {
-  width: auto;
-  margin: 0 auto;
+.HomePage-howto2 {
+  text-align: center;
+}
+
+.HomePage-link {
+  color: #eeeeee;
+}
+
+.HomePage-link:visited {
+  color: #eeeeee;
 }
