@@ -113,9 +113,12 @@ class Header extends React.Component {
             className="Header-body"
           >
             <div className="Header-actions">
-              <div className="Header-item Header-title">
+              <a
+                className="Header-item Header-title"
+                href="/"
+              >
                 midnite
-              </div>
+              </a>
               <div
                 id="Header-filter"
                 className="Header-item Header-filter-btn"

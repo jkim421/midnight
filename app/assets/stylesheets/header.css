@@ -35,20 +35,21 @@
   user-select: none;
   border-top: 3px solid transparent;
   border-bottom: 3px solid transparent;
-  /* border: 1px solid red; */
 }
 
 .Header-title {
   font-size: 1.6em;
   margin-left: 1em;
   margin-right: 2em;
+  text-decoration: none;
+  color: #eeeeee
 }
 
 .Header-search {
   width: 350px;
 }
 
-.Header-filter-btn, .Header-sort-btn, .Header-roulette-btn {
+.Header-filter-btn, .Header-sort-btn {
   position: relative;
   width: 100px;
   height: 100%;
@@ -56,7 +57,8 @@
   transition: border-bottom 0.15s ease-out;
 }
 
-.Header-filter-btn:hover, .Header-sort-btn:hover, .Header-roulette-btn:hover {
+.Header-filter-btn:hover, .Header-sort-btn:hover {
+  cursor: pointer;
   border-bottom: 3px solid rgba(255,255,255,0.5);
 }
 
