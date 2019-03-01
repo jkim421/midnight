@@ -46,3 +46,37 @@
   margin-left: 0.2em;
   overflow-x: visible;
 }
+
+.HomePage-details {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 350px;
+  border: 1px solid white;
+}
+
+.HomePage-details-header {
+  font-size: 1.2em;
+}
+
+.HomePage-details-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.HomePage-details-about {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.HomePage-details-howto {
+  width: auto;
+  margin: 0 auto;
+}

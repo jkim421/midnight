@@ -114,7 +114,7 @@ class Header extends React.Component {
           >
             <div className="Header-actions">
               <div className="Header-item Header-title">
-                midnight
+                midnite
               </div>
               <div
                 id="Header-filter"
