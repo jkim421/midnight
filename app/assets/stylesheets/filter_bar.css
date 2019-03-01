@@ -144,7 +144,7 @@
   flex-direction: column;
 }
 
-.FilterBar-genre-div {
+/* .FilterBar-genre-div {
   width: 20%;
   margin-bottom: 0.4em;
 }
@@ -156,4 +156,4 @@
 
 .FilterBar-genre-checkbox, .FilterBar-genre-label:hover {
   cursor: pointer;
-}
+} */

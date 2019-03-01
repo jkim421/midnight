@@ -123,7 +123,7 @@ class ListItem extends React.Component {
 
   render() {
     const { show } = this.props;
-    const imgShow = this.state.imgShow;
+
     return (
       <>
         <li
@@ -137,11 +137,10 @@ class ListItem extends React.Component {
               <a className="ListItem-img-link" href={ show.url } target="_blank">
                 <div className="ListItem-img-mal">
                   <div className="ListItem-img-text">
-                    Open <br/>
-                  MAL
+                    Open <br/> MAL
+                  </div>
                 </div>
-              </div>
-              <img
+                <img
                 className="ListItem-img"
                 src={ show.img_url }
                 onLoad={ this.handleImgLoad }

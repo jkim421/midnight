@@ -1,0 +1,76 @@
+.FilterBar-genre-div {
+  width: 20%;
+  position: relative;
+  display: block;
+  margin-bottom: 0.4em;
+  display: flex;
+  align-items: center;
+}
+
+.FilterBar-genre-div input[type="checkbox"] {
+  visibility: hidden;
+  width: auto;
+  position: absolute;
+  left: 0;
+}
+
+.FilterBar-genre-div label {
+  position: relative;
+}
+
+.FilterBar-genre-div label:before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 1em;
+  height: 1em;
+  border-radius: 3px;
+  border: 1px solid #eeeeee;
+}
+
+.FilterBar-genre-div label:after {
+  content: '';
+  display: block;
+  width: 0.6em;
+  height: 0.3em;
+  border-bottom: 1px solid #eeeeee;
+  border-left: 1px solid #eeeeee;
+  -webkit-transform: rotate(-45deg) scale(0);
+  -moz-transform: rotate(-45deg) scale(0);
+  -ms-transform: rotate(-45deg) scale(0);
+  transform: rotate(-45deg) scale(0);
+  position: absolute;
+  top: 0.25em;
+  left: 0.25em;
+}
+
+.FilterBar-genre-div input[type="checkbox"]:checked ~ label::before {
+  color: #eeeeee;
+}
+
+.FilterBar-genre-div input[type="checkbox"]:checked ~ label::after {
+  -webkit-transform: rotate(-45deg) scale(1);
+  -moz-transform: rotate(-45deg) scale(1);
+  -ms-transform: rotate(-45deg) scale(1);
+  transform: rotate(-45deg) scale(1);
+}
+
+.FilterBar-genre-div label {
+  min-height: 1em;
+  display: block;
+  padding-left: 1.8em;
+  margin-bottom: 0;
+  font-weight: normal;
+  cursor: pointer;
+  vertical-align: sub;
+}
+.FilterBar-genre-div label span {
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+.FilterBar-genre-div input[type="checkbox"]:focus + label::before {
+  outline: 0;
+}

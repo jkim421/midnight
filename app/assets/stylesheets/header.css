@@ -87,6 +87,7 @@
 @media all and (max-width: 800px) {
   .Header-filter, .Header-sort {
     width: 800px;
+    /* min-width: 650px; */
     background-image: linear-gradient(90deg, #101946, #2b1046);
     background-attachment: fixed;
   }
