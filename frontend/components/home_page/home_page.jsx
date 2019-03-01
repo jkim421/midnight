@@ -57,10 +57,9 @@ class HomePage extends React.Component {
                 </a>
               </div>
               <div>
-                2. Search a username
+                2. Search a MAL username (e.g. wisetail)
               </div>
             </div>
-            <br/>
             <div className="HomePage-howto2">
               <i>without running the tags updater, lists can still be sorted/filtered on everything but score and genre</i>
             </div>
@@ -75,9 +74,8 @@ class HomePage extends React.Component {
               <div>
                 for questions or comments, reach me at jkim21@pm.me
               </div>
-              <br/>
-              <div>
-                midnite relies on the&nbsp;
+              <div className="HomePage-about2">
+                midnite utilizes the&nbsp;
                 <a
                   className="HomePage-link"
                   href="https://jikan.moe/"
@@ -92,7 +90,7 @@ class HomePage extends React.Component {
                   target="_blank"
                 >
                   MAL Tags Updater
-                </a> for its key functionality
+                </a>
               </div>
               <br/>
             </div>
