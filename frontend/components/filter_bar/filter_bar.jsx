@@ -136,7 +136,7 @@ class FilterBar extends React.Component {
           <div className="FilterBar-border"/>
           <div className="FilterBar-filter">
             <div className="FilterBar-title">
-              Score
+              MAL
             </div>
             <div className="FilterBar-slider-row">
               <ScoresSliderContainer />

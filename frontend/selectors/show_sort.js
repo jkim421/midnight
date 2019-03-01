@@ -45,6 +45,26 @@ export const sortResult = (shows, sort) => {
     });
   } else if (sort === 5) {
     return shows.sort((a, b) => {
+      if (a.user_score < b.user_score) {
+        return -1;
+      } else if (a.user_score > b.user_score) {
+        return 1;
+      } else {
+        return 0;
+      }
+    });
+  } else if (sort === 6) {
+    return shows.sort((a, b) => {
+      if (a.user_score > b.user_score) {
+        return -1;
+      } else if (a.user_score < b.user_score) {
+        return 1;
+      } else {
+        return 0;
+      }
+    });
+  } else if (sort === 7) {
+    return shows.sort((a, b) => {
       if (Date.parse(a.start_date) > Date.parse(b.start_date)) {
         return 1;
       } else if (Date.parse(a.start_date) < Date.parse(b.start_date)) {
@@ -53,7 +73,7 @@ export const sortResult = (shows, sort) => {
         return 0;
       }
     });
-  } else if (sort === 6) {
+  } else if (sort === 8) {
     return shows.sort((a, b) => {
       if (Date.parse(a.start_date) > Date.parse(b.start_date)) {
         return -1;
@@ -63,7 +83,7 @@ export const sortResult = (shows, sort) => {
         return 0;
       }
     });
-  } else if (sort === 7) {
+  } else if (sort === 9) {
     return shows.sort((a, b) => {
       if (!a.end_date || Date.parse(a.end_date) > Date.parse(b.end_date)) {
         return 1;
@@ -73,7 +93,7 @@ export const sortResult = (shows, sort) => {
         return 0;
       }
     });
-  } else if (sort === 8) {
+  } else if (sort === 10) {
     return shows.sort((a, b) => {
       if (!a.end_date || Date.parse(a.end_date) > Date.parse(b.end_date)) {
         return -1;
