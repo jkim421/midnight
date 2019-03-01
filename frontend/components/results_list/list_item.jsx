@@ -81,6 +81,14 @@ class ListItem extends React.Component {
     }
   }
 
+  renderUserScore(userScore) {
+    if (userScore) {
+      return (
+        "User: " + userScore
+      )
+    }
+  }
+
   renderGenres(genres) {
     if (genres) {
       return (
@@ -123,7 +131,7 @@ class ListItem extends React.Component {
 
   render() {
     const { show } = this.props;
-
+    const imgShow = this.state.imgShow;
     return (
       <>
         <li
@@ -137,10 +145,11 @@ class ListItem extends React.Component {
               <a className="ListItem-img-link" href={ show.url } target="_blank">
                 <div className="ListItem-img-mal">
                   <div className="ListItem-img-text">
-                    Open <br/> MAL
-                  </div>
+                    Open <br/>
+                  MAL
                 </div>
-                <img
+              </div>
+              <img
                 className="ListItem-img"
                 src={ show.img_url }
                 onLoad={ this.handleImgLoad }
@@ -176,6 +185,9 @@ class ListItem extends React.Component {
                 </div>
                 <div className="ListItem-detail">
                   { this.renderScore(show.score) }
+                </div>
+                <div className="ListItem-detail">
+                  { this.renderUserScore(show.user_score) }
                 </div>
               </div>
               <div className="ListItem-userlist">
