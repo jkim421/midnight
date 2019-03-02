@@ -36,7 +36,6 @@ gem 'jbuilder', '~> 2.5'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'pry-rails'
-gem 'jikan.rb'
 gem 'jquery-rails'
 gem 'rails_12factor'
 
