@@ -72,9 +72,6 @@ class HomePage extends React.Component {
           <div className={`${this.sectionOpen(false, "aboutOpen")}`}>
             <div className="HomePage-about">
               <div>
-                for questions or comments, reach me at jkim21@pm.me
-              </div>
-              <div className="HomePage-about2">
                 midnite utilizes the&nbsp;
                 <a
                   className="HomePage-link"
@@ -91,6 +88,9 @@ class HomePage extends React.Component {
                 >
                   MAL Tags Updater
                 </a>
+              </div>
+              <div className="HomePage-about2">
+                for questions or comments, reach me at jkim21@pm.me
               </div>
               <br/>
             </div>
