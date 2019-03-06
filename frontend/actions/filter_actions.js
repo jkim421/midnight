@@ -1,4 +1,5 @@
 export const UPDATE_SELECTION = "UPDATE_SELECTION";
+export const RESET_SELECTION = "RESET_SELECTION";
 
 export const ADD_CATEGORY = "ADD_CATEGORY";
 export const REMOVE_CATEGORY = "REMOVE_CATEGORY";
@@ -28,6 +29,13 @@ export const updateSelection = (selection) => {
     selection,
   };
 };
+
+export const resetSelection = () => {
+  return {
+    type: RESET_SELECTION,
+  };
+};
+
 export const addCategory = (categoryId) => {
   return {
     type: ADD_CATEGORY,

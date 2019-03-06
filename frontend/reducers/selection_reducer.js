@@ -3,33 +3,25 @@ import {
   ADD_SELECTED,
   REMOVE_SELECTED, }
     from '../actions/selection_actions';
+import { RESET_SELECTION } from '../actions/filter_actions';
 
-const defaultState = {
-  1: [],
-  2: [],
-  3: [],
-  4: [],
-  6: [],
-};
-
-const selectionReducer = (state = defaultState, action) => {
+const selectionReducer = (state = [], action) => {
   Object.freeze(state);
 
   const id = action.id;
   const category = action.category;
 
-  let selection = state[category];
-  let newState = merge({}, state);
+  let newState = state.slice(0);
 
   switch(action.type) {
     case ADD_SELECTED:
-      selection.push(id);
-      newState[category] = selection;
+      newState.push(id);
       return newState;
     case REMOVE_SELECTED:
-      selection = selection.filter( showId => showId !== id );
-      newState[category] = selection;
+      newState = newState.filter( showId => showId !== id);
       return newState;
+    case RESET_SELECTION:
+      return [];
     default:
       return state;
   }

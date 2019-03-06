@@ -15,7 +15,7 @@ const msp = (state, ownProps) => {
   const show = ownProps.show;
   return {
     genres: state.filters.genres,
-    selected: state.selection[show.watching_status].includes(show.id),
+    selected: state.selection.includes(show.id),
   };
 };
 

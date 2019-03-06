@@ -3,30 +3,38 @@ import { sortResult } from './show_sort';
 
 export const filterAnime = (animes, filters, selection) => {
   const { selectionDisplay, categories, types, ratings, scores, genres, sort } = filters;
-  const low = parseFloat(scores[0]);
-  const high = parseFloat(scores[1]);
-
-  const selectedShows = [].concat.apply([], Object.values(selection));
-
-  // let result = [];
-  //
-  // for (let i = 0; i < categories.length; i++) {
-  //   result = result.concat(Object.values(animes[categories[i]]));
-  // }
 
   let result = Object.values(animes);
-
+  console.time("filter");
   result = result
-    .filter(show => categories.includes(show.watching_status))
-    .filter(show => types.includes(show.type))
-    .filter(show => ratings.includes(show.rating))
-    .filter(show => show.score >= low && show.score <= high)
+    .filter(show => filterCategories(show, categories))
+    .filter(show => filterTypes(show, types))
+    .filter(show => filterRatings(show, ratings))
+    .filter(show => filterScore(show, scores))
     .filter(show => filterGenres(show, genres))
-    .filter(show => filterSelection(show, selectionDisplay, selectedShows));
+    .filter(show => filterSelection(show, selectionDisplay, selection));
 
   result = sortResult(result, sort);
-
+  console.timeEnd("filter");
   return result;
+};
+
+const filterCategories = (show, categories) => {
+  return categories.includes(show.watching_status);
+};
+
+const filterTypes = (show, types) => {
+  return types.includes(show.type);
+};
+
+const filterRatings = (show, ratings) => {
+  return ratings.includes(show.rating);
+};
+
+const filterScore = (show, scores) => {
+  const low = parseFloat(scores[0]);
+  const high = parseFloat(scores[1]);
+  return show.score >= low && show.score <= high;
 };
 
 const filterGenres = (show, genres) => {
@@ -40,11 +48,11 @@ const filterGenres = (show, genres) => {
   }
 };
 
-const filterSelection = (show, selectionDisplay, selectedShows) => {
+const filterSelection = (show, selectionDisplay, selection) => {
   if (selectionDisplay === "2") {
-    return selectedShows.includes(show.id) ? true : false;
+    return selection.includes(show.id) ? true : false;
   } else if (selectionDisplay === "3") {
-    return selectedShows.includes(show.id) ? false : true;
+    return selection.includes(show.id) ? false : true;
   } else {
     return true;
   }

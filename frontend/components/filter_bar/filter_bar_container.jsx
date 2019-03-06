@@ -1,7 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import FilterBar from './filter_bar';
-import { resetGenre } from '../../actions/filter_actions';
+import {
+  resetSelection,
+  resetGenre } from '../../actions/filter_actions';
 import { toggleFilter } from '../../actions/ui_actions';
 
 const msp = state => {
@@ -14,6 +16,7 @@ const msp = state => {
 
 const mdp = dispatch => {
   return {
+    resetSelection: () => dispatch(resetSelection()),
     resetGenre: () => dispatch(resetGenre()),
     toggleFilter: () => dispatch(toggleFilter()),
   };
