@@ -2,21 +2,36 @@ import { parseTags, parseYear } from './tag_selector';
 import { sortResult } from './show_sort';
 
 export const filterAnime = (animes, filters, selection) => {
-  const { selectionDisplay, categories, types, ratings, scores, genres, sort } = filters;
+  const {
+    selectionDisplay,
+    categories, types,
+    ratings,
+    scores,
+    genres,
+    sort
+  } = filters;
 
-  let result = Object.values(animes);
+  let shows = Object.values(animes);
+
+  const filterFuncs = [
+    show => filterCategories(show, categories),
+    show => filterTypes(show, types),
+    show => filterRatings(show, ratings),
+    show => filterScore(show, scores),
+    show => filterGenres(show, genres),
+    show => filterSelection(show, selectionDisplay, selection)
+  ];
+
   console.time("filter");
-  result = result
-    .filter(show => filterCategories(show, categories))
-    .filter(show => filterTypes(show, types))
-    .filter(show => filterRatings(show, ratings))
-    .filter(show => filterScore(show, scores))
-    .filter(show => filterGenres(show, genres))
-    .filter(show => filterSelection(show, selectionDisplay, selection));
 
-  result = sortResult(result, sort);
+  let filtered = filterFuncs.reduce(
+    (result, func) => result.filter(func), shows
+  );
+
+  filtered = sortResult(filtered, sort);
+
   console.timeEnd("filter");
-  return result;
+  return filtered;
 };
 
 const filterCategories = (show, categories) => {
