@@ -89,10 +89,19 @@ class ListItem extends React.Component {
     }
   }
 
-  renderGenres(genres) {
-    if (genres) {
+  sortGenres(showGenres) {
+    const filter = this.props.genres;
+    let selected = showGenres.filter( genre => filter.includes(genre)).sort();
+    let unselected = showGenres.filter( genre => !filter.includes(genre)).sort();
+    
+    return selected.concat(unselected);
+  }
+
+  renderGenres(showGenres) {
+    if (showGenres) {
+      const sorted = this.sortGenres(showGenres);
       return (
-        genres.map(genre => {
+        sorted.map(genre => {
           return (
             <li
               className="ListItem-genre-container"
