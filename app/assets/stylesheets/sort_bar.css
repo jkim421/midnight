@@ -44,9 +44,16 @@
 
 .SortBar-option-selected {
   background-color: rgba(255,255,255,0.2);
-  /* font-weight: 700; */
 }
 
 .SortBar-option-selected:hover {
   background-color: rgba(255,255,255,0.2);
+}
+
+.SortBar-option-title {
+  font-size: 10px;
+}
+
+.SortBar-option-sym {
+  font-size: 8px;
 }

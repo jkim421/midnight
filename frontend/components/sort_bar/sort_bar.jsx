@@ -58,9 +58,9 @@ class SortBar extends React.Component {
 
   renderSymbol(type, num) {
     if (this.state[type] === num) {
-      return "\u2191";
+      return "\u25B2";
     } else {
-      return "\u2193";
+      return "\u25BC";
     }  }
 
   handleSort(type) {
@@ -105,7 +105,7 @@ class SortBar extends React.Component {
           <span className="SortBar-option-type">
             Title
           </span>
-          <span className="SortBar-option-sym">
+          <span className="SortBar-option-title">
             { this.renderTitle() }
           </span>
         </div>
