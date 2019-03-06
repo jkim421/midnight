@@ -135,7 +135,7 @@
   }
 
   .ListItem-title:hover {
-    color: #cccccc;
+    color: #bbbbbb;
   }
 
   .ListItem-selection {
@@ -148,7 +148,7 @@
 
   .ListItem-selection:hover {
     cursor: pointer;
-    color: #cccccc;
+    color: #bbbbbb;
   }
 
   .ListItem-container:hover .ListItem-selection {

@@ -22,15 +22,12 @@ export const filterAnime = (animes, filters, selection) => {
     show => filterSelection(show, selectionDisplay, selection)
   ];
 
-  console.time("filter");
-
   let filtered = filterFuncs.reduce(
     (result, func) => result.filter(func), shows
   );
 
   filtered = sortResult(filtered, sort);
 
-  console.timeEnd("filter");
   return filtered;
 };
 

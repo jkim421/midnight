@@ -58,7 +58,7 @@ class FilterBar extends React.Component {
         optionId={ id }
         optionName={ options[id] }
       />
-    ))
+    ));
   }
 
   renderCategories() {
@@ -101,14 +101,18 @@ class FilterBar extends React.Component {
           <div className="FilterBar-filter">
             <div className="FilterBar-title FilterBar-titles-selection">
               Selection
-              <span
-                className="FilterBar-reset"
-                onClick={ () => this.props.resetSelection() }>
-                Reset
-              </span>
             </div>
-            <div className="FilterBar-options-row FilterBar-selections">
+            <div className="FilterBar-options-row">
               { this.renderSelection() }
+              <div className="FilterBar-reset-container">
+                <div
+                  className="FilterBar-option-reset FilterBar-reset"
+                  onClick = { this.props.resetSelection }
+                  >
+                  Reset
+                </div>
+              </div>
+              <div className="FilterBar-option-empty" />
             </div>
           </div>
           <div className="FilterBar-border"/>
@@ -153,7 +157,7 @@ class FilterBar extends React.Component {
               Genres
               <span
                 className="FilterBar-reset"
-                onClick={ () => this.props.resetGenre() }>
+                onClick={ this.props.resetGenre }>
                 Reset
               </span>
             </div>
