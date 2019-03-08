@@ -44,7 +44,7 @@ class SortBar extends React.Component {
 
   currentSort(sortNum) {
     if (this.props.sort === sortNum || this.props.sort === sortNum + 1) {
-      return "SortBar-option-selected";
+      return "SortSelect-option-selected";
     }
   }
 
@@ -99,7 +99,7 @@ class SortBar extends React.Component {
         ref={ this.sortBody }
       >
         <div
-          className={`SortBar-option ${ this.currentSort(1) }`}
+          className={`SortSelect-option SortBar-option ${ this.currentSort(1) }`}
           onClick={ () => this.handleSort("title") }
         >
           <span className="SortBar-option-type">
@@ -110,7 +110,7 @@ class SortBar extends React.Component {
           </span>
         </div>
         <div
-          className={`SortBar-option ${ this.currentSort(3) }`}
+          className={`SortSelect-option SortBar-option ${ this.currentSort(3) }`}
           onClick={ () => this.handleSort("score") }
         >
           <span className="SortBar-option-type">
@@ -121,7 +121,7 @@ class SortBar extends React.Component {
           </span>
         </div>
         <div
-          className={`SortBar-option ${ this.currentSort(5) }`}
+          className={`SortSelect-option SortBar-option ${ this.currentSort(5) }`}
           onClick={ () => this.handleSort("user_score") }
         >
           <span className="SortBar-option-type">
@@ -132,7 +132,7 @@ class SortBar extends React.Component {
           </span>
         </div>
         <div
-          className={`SortBar-option ${ this.currentSort(7) }`}
+          className={`SortSelect-option SortBar-option ${ this.currentSort(7) }`}
           onClick={ () => this.handleSort("start") }
         >
           <span className="SortBar-option-type">
@@ -143,15 +143,15 @@ class SortBar extends React.Component {
           </span>
         </div>
         <div
-          className={`SortBar-option ${ this.currentSort(9) }`}
+          className={`SortSelect-option SortBar-option ${ this.currentSort(9) }`}
           onClick={ () => this.handleSort("end") }
         >
-        <span className="SortBar-option-type">
-          End Yr
-        </span>
-        <span className="SortBar-option-sym">
-          { this.renderSymbol("end", 9) }
-        </span>
+          <span className="SortBar-option-type">
+            End Yr
+          </span>
+          <span className="SortBar-option-sym">
+            { this.renderSymbol("end", 9) }
+          </span>
         </div>
       </div>
     )

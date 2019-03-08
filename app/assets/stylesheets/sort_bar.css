@@ -16,11 +16,10 @@
   max-height: 20em;
 }
 
-.SortBar-option {
+.SortSelect-option {
   width: 100%;
   height: 25%;
   display: flex;
-  justify-content: space-between;
   align-items: center;
   transition: all 0.15s ease-out;
   user-select: none;
@@ -29,24 +28,28 @@
   padding-right: 0.7em;
 }
 
-.SortBar-option:last-of-type {
+.SortBar-option {
+  justify-content: space-between;
+}
+
+.SortSelect-option:last-of-type {
   border-right: none;
 }
 
-.SortBar-option-type {
+.SortSelect-option-type {
   margin-right: 1em;
 }
 
-.SortBar-option:hover {
+.SortSelect-option:hover {
   cursor: pointer;
   background-color: rgba(255,255,255,0.1);
 }
 
-.SortBar-option-selected {
+.SortSelect-option-selected {
   background-color: rgba(255,255,255,0.2);
 }
 
-.SortBar-option-selected:hover {
+.SortSelect-option-selected:hover {
   background-color: rgba(255,255,255,0.2);
 }
 
@@ -56,4 +59,41 @@
 
 .SortBar-option-sym {
   font-size: 8px;
+}
+
+.SelectionBar-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  height: 15em;
+}
+
+.SelectionBar-option {
+  justify-content: center;
+  height: 27%;
+}
+
+.SelectionBar-reset {
+  justify-content: center;
+  height: 19%
+}
+
+.SelectionBar-reset-btn {
+  padding: 0.4em;
+}
+
+.SelectionBar-reset:hover {
+  cursor: inherit;
+  background-color: transparent;
+}
+
+.SelectionBar-reset-btn:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.SelectionBar-spacer {
+  border-top: 1px solid #b6b6b6;
+  width: 80%;
 }

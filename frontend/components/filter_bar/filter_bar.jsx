@@ -91,6 +91,31 @@ class FilterBar extends React.Component {
     )
   }
 
+  insertSelectionRow() {
+    return (
+      <>
+        <div className="FilterBar-filter">
+          <div className="FilterBar-title FilterBar-titles-selection">
+            Selection
+          </div>
+          <div className="FilterBar-options-row">
+            { this.renderSelection() }
+            <div className="FilterBar-reset-container">
+              <div
+                className="FilterBar-option-reset FilterBar-reset"
+                onClick = { this.props.resetSelection }
+                >
+                Reset
+              </div>
+            </div>
+            <div className="FilterBar-option-empty" />
+          </div>
+        </div>
+        <div className="FilterBar-border"/>
+      </>
+    )
+  }
+
   render() {
     return (
       <div className="FilterBar-container">
@@ -98,24 +123,6 @@ class FilterBar extends React.Component {
           className={`${this.filterStyle()}`}
           ref={ this.filterBody }
         >
-          <div className="FilterBar-filter">
-            <div className="FilterBar-title FilterBar-titles-selection">
-              Selection
-            </div>
-            <div className="FilterBar-options-row">
-              { this.renderSelection() }
-              <div className="FilterBar-reset-container">
-                <div
-                  className="FilterBar-option-reset FilterBar-reset"
-                  onClick = { this.props.resetSelection }
-                  >
-                  Reset
-                </div>
-              </div>
-              <div className="FilterBar-option-empty" />
-            </div>
-          </div>
-          <div className="FilterBar-border"/>
           <div className="FilterBar-filter">
             <div className="FilterBar-title">
               List

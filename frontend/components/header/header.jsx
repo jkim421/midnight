@@ -2,6 +2,7 @@ import React from 'react';
 import SearchBarContainer from '../search_bar/search_bar_container';
 import FilterBarContainer from '../filter_bar/filter_bar_container';
 import SortBarContainer from '../sort_bar/sort_bar_container';
+import SelectionBarContainer from '../selection_bar/selection_bar_container';
 
 class Header extends React.Component {
   constructor(props) {
@@ -9,11 +10,14 @@ class Header extends React.Component {
     this.state = {
       filterLeft: 0,
       sortLeft: 0,
+      selectionLeft: 0,
     }
     this.filterBtn = React.createRef();
     this.sortBtn = React.createRef();
+    this.selectionBtn = React.createRef();
     this.handleFilter = this.handleFilter.bind(this);
     this.handleSort = this.handleSort.bind(this);
+    this.handleSelection = this.handleSelection.bind(this);
     this.updatePosition = this.updatePosition.bind(this);
   }
 
@@ -22,6 +26,7 @@ class Header extends React.Component {
     this.setState({
       filterLeft: this.filterBtn.current.offsetLeft,
       sortLeft: this.sortBtn.current.offsetLeft,
+      selectionLeft: this.selectionBtn.current.offsetLeft,
     })
   }
 
@@ -32,6 +37,7 @@ class Header extends React.Component {
       this.setState({
         filterLeft: 0,
         sortLeft: 0,
+        selectionLeft: 0,
       })
     } else if (
       ((oldProps.showNum === 0 || this.props.showNum === 0) &&
@@ -46,12 +52,15 @@ class Header extends React.Component {
     this.setState({
       filterLeft: this.filterBtn.current.offsetLeft,
       sortLeft: this.sortBtn.current.offsetLeft,
+      selectionLeft: this.selectionBtn.current.offsetLeft,
     });
   }
 
   handleFilter() {
     if (this.props.sortOpen) {
       this.toggleSort();
+    } else if (this.props.selectionOpen) {
+      this.toggleSelection();
     }
     this.toggleFilter();
   }
@@ -59,8 +68,19 @@ class Header extends React.Component {
   handleSort() {
     if (this.props.filterOpen) {
       this.toggleFilter();
+    } else if (this.props.selectionOpen) {
+      this.toggleSelection();
     }
     this.toggleSort();
+  }
+
+  handleSelection() {
+    if (this.props.filterOpen) {
+      this.toggleFilter();
+    } else if (this.props.sortOpen) {
+      this.toggleSort();
+    }
+    this.toggleSelection();
   }
 
   toggleFilter() {
@@ -73,20 +93,9 @@ class Header extends React.Component {
     this.sortBtn.current.classList.toggle("Header-sort-selected")
   }
 
-  handleOutsideClickFilter() {
-    this.props.toggleFilter();
-  }
-
-  handleOutsideClickSort() {
-    this.props.toggleSort();
-  }
-
-  handleClick(e) {
-    if (this.gearIcon.current.contains(e.target)) {
-      return;
-    }
-
-    this.handleOutsideClick();
+  toggleSelection() {
+    this.props.toggleSelection();
+    this.selectionBtn.current.classList.toggle("Header-sort-selected")
   }
 
   render() {
@@ -107,6 +116,14 @@ class Header extends React.Component {
           }}
           >
           <SortBarContainer />
+        </div>
+        <div
+          className="Header-sort"
+          style={{
+            left: this.state.selectionLeft
+          }}
+          >
+          <SelectionBarContainer />
         </div>
         <div className="Header-container">
           <div
@@ -134,6 +151,14 @@ class Header extends React.Component {
                 onClick={ this.handleSort }
                 >
                 sort
+              </div>
+              <div
+                id="Header-selection"
+                className="Header-item Header-sort-btn"
+                ref={ this.selectionBtn }
+                onClick={ this.handleSelection }
+                >
+                selection
               </div>
             </div>
             <div className="Header-item Header-search">
