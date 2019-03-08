@@ -53,9 +53,11 @@ class ListItem extends React.Component {
 
   displaySelectOption() {
     if (this.props.selected) {
-      return "REMOVE";
+      // return "REMOVE SELECTION";
+      return "remove selection";
     } else {
-      return "ADD";
+      // return "ADD SELECTION";
+      return "add selection";
     }
   }
 
@@ -93,7 +95,7 @@ class ListItem extends React.Component {
     const filter = this.props.genres;
     let selected = showGenres.filter( genre => filter.includes(genre)).sort();
     let unselected = showGenres.filter( genre => !filter.includes(genre)).sort();
-    
+
     return selected.concat(unselected);
   }
 

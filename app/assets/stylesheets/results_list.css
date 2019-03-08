@@ -139,6 +139,7 @@
   }
 
   .ListItem-selection {
+    font-size: 0.9em;
     margin-right: 1em;
     opacity: 0;
     visibility: none;
@@ -149,6 +150,7 @@
   .ListItem-selection:hover {
     cursor: pointer;
     color: #bbbbbb;
+    text-decoration: underline;
   }
 
   .ListItem-container:hover .ListItem-selection {
