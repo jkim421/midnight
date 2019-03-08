@@ -43,7 +43,8 @@ class Header extends React.Component {
       ((oldProps.showNum === 0 || this.props.showNum === 0) &&
       (oldProps.showNum !== this.props.showNum) &&
       !window.matchMedia("(max-width: 800px)").matches) ||
-      (oldProps.isVerticalScroll !== this.props.isVerticalScroll)) {
+      (oldProps.isVerticalScroll !== this.props.isVerticalScroll) ||
+      (oldProps.showNum !== this.props.showNum)) {
         this.updatePosition();
     }
   }
