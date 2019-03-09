@@ -46,7 +46,7 @@ class HomePage extends React.Component {
           </div>
           <div className={`${this.sectionOpen(false, "howtoOpen")}`}>
             <div className="HomePage-howto">
-              <div>
+              <div className="HomePage-bullet">
                 1. Run the&nbsp;
                 <a
                   className="HomePage-link"
@@ -55,10 +55,17 @@ class HomePage extends React.Component {
                 >
                   MAL Tags Updater
                 </a>
+                &nbsp;on your MAL lists
               </div>
-              <div>
-                2. Search a MAL username (e.g. wisetail)
+              <div className="HomePage-bullet">
+                2. Search your MAL username
               </div>
+              <div className="HomePage-bullet">
+                3. Use the filter and sort dropdowns to look through your lists
+              </div>
+            </div>
+            <div className="HomePage-howto2">
+              <i>to preview results from an updated list, you can search "wisetail"</i>
             </div>
             <div className="HomePage-howto2">
               <i>without running the tags updater, lists can still be sorted/filtered on everything but score and genre</i>
