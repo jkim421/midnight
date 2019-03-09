@@ -4,7 +4,8 @@ import { sortResult } from './show_sort';
 export const filterAnime = (animes, filters, selection) => {
   const {
     selectionDisplay,
-    categories, types,
+    categories,
+    types,
     ratings,
     scores,
     genres,
