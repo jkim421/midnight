@@ -92,7 +92,7 @@ class SearchBar extends React.Component {
             className="SearchBar-input"
             onChange={this.updateSearch}
             value={this.state.username}
-            placeholder="username"
+            placeholder={this.props.home ? "username (e.g. wisetail)" : "username"}
           />
           <button className="SearchBar-button">
             Search
