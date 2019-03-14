@@ -23,13 +23,15 @@ export const filterAnime = (animes, filters, selection) => {
     show => filterSelection(show, selectionDisplay, selection)
   ];
 
-  let filtered = filterFuncs.reduce(
-    (result, func) => result.filter(func), shows
-  );
+  let filtered = filterPipe(filterFuncs)(shows);
 
   filtered = sortResult(filtered, sort);
 
   return filtered;
+};
+
+const filterPipe = (filters) => (showList) => {
+  return filters.reduce((result, fn) => result.filter(fn), showList);
 };
 
 const filterCategories = (show, categories) => {
