@@ -97,7 +97,7 @@ class HomePage extends React.Component {
                 </a>
               </div>
               <div className="HomePage-about2">
-                for questions or comments, reach me at jkim21@pm.me
+                any questions or comments can be sent to jkim21@pm.me
               </div>
               <br/>
             </div>
