@@ -3,8 +3,6 @@ import React from 'react';
 class SelectionCheckbox extends React.Component {
   constructor(props) {
     super(props);
-    this.checkedBox = this.checkedBox.bind(this);
-    this.handleSelect = this.handleSelect.bind(this);
   }
 
   checkedBox(option) {

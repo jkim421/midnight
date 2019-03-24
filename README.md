@@ -6,4 +6,5 @@
 
 ## Key Features
 ### Seamless Filtering/Sorting of Shows
+Implements a pipe function
 ### User Selections

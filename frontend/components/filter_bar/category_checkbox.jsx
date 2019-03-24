@@ -7,8 +7,6 @@ class CategoryCheckbox extends React.Component {
     this.state = {
       selected: this.props.categories.includes(this.props.categoryId),
     }
-    this.checkedBox = this.checkedBox.bind(this);
-    this.handleClick = this.handleClick.bind(this);
   }
 
   checkedBox(id) {
@@ -35,7 +33,7 @@ class CategoryCheckbox extends React.Component {
 
   render() {
     const { categoryId, categoryName } = this.props;
-    
+
     return (
       <div
         className={`FilterBar-option-div ${this.checkedBox(categoryId)}`}

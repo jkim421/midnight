@@ -4,7 +4,6 @@ import { PulseLoader } from 'react-spinners';
 class GenreCheckbox extends React.Component {
   constructor(props) {
     super(props);
-    this.handleClick = this.handleClick.bind(this);
   }
 
   handleClick() {

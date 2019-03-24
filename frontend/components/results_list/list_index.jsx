@@ -9,7 +9,6 @@ class ListIndex extends React.Component {
       page: 1,
       maxPages: Math.ceil(this.props.shows.length/20),
     };
-    this.showList = this.showList.bind(this);
     this.handleScroll = this.handleScroll.bind(this);
     window.addEventListener('scroll', this.handleScroll)
   }
@@ -71,7 +70,7 @@ class ListIndex extends React.Component {
 
   render() {
     const { shows, loading } = this.props;
-    
+
     if (loading) {
       return (
         <div className="ListIndex-none">
